@@ -66,7 +66,7 @@
 				<div id="accordion">
 					<c:forEach varStatus="mcnt" var="msgs" items="${datas }">
 						<c:set var="m" value="${msgs.message }" />
-						<h3>{${m.uid }]${m.msg } :: [좋아요 ${m.favcount } | 댓글
+						<h3>[${m.uid }]${m.msg } :: [좋아요 ${m.favcount } | 댓글
 							${m.replycount }]</h3>
 						<div>
 							<p></p>

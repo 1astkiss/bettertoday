@@ -23,7 +23,9 @@
 	}else if(action.equals("login")){
 		if(mdao.login(member.getUid(), member.getPasswd())){
 			session.setAttribute("uid", member.getUid());
-			response.sendRedirect("sns_control.jsp?action=getall");
+			System.out.println("logged in");
+	//		response.sendRedirect("sns_control.jsp?action=getall");
+			pageContext.forward("sns_control.jsp?action=getall");
 		}else{
 			out.println("<script>alert('아이디나 비밀번호가 틀렸습니다.'); history.go(-1);</script>");
 		}

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="UTF-8" %>
 
-<%@ page import="mysns.sns.*, mysns.member.*, java.util.*" %>
+<%@ page import="mysns.sns.*, mysns.member.*, java.util.*, java.lang.*" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -23,7 +23,8 @@
 	String cnt = request.getParameter("cnt");
 
 	// 특정 회원 게시물 only
-	String suid = request.getParameter("suid");
+	String suid;
+	suid = request.getParameter("suid");
 
 	// 홈 url
 	String home;
@@ -49,7 +50,8 @@
 	// 새로운 메시지 등록
 	if (action.equals("newmsg")) {
 		if (msgdao.newMsg(msg)) {
-			response.sendRedirect(home);
+	//		response.sendRedirect(home);
+			pageContext.forward(home);
 		} else {
 			throw new Exception("메시지 등록 오류!!");
 		}
@@ -65,7 +67,9 @@
 	// 메시지 삭제
 	}else if(action.equals("delmsg")){
 		if(msgdao.delMsg(reply.getMid())){
-			response.sendRedirect(home);
+		//	response.sendRedirect(home);
+			System.out.println("home : " + home);
+			pageContext.forward(home);
 		}else{
 			throw new Exception("메시지 삭제 오류!!");
 		}
@@ -80,6 +84,7 @@
 
 	// 전체 게시글 가져오기	
 	}else if(action.equals("getall")){
+		System.out.println("getall at sns_control.jsp");
 		ArrayList<MessageSet> datas = msgdao.getAll(mcnt, suid);
 		ArrayList<String> nusers = new MemberDAO().getNewMembers();
 		
