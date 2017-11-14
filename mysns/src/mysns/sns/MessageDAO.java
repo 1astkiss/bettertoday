@@ -185,7 +185,7 @@ public class MessageDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1,  replay.getMid());
+			pstmt.setInt(1,  reply.getMid());
 			pstmt.setString(2,  reply.getUid());
 			pstmt.setString(3, reply.getRmsg());
 			pstmt.executeUpdate();

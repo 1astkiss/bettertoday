@@ -15,7 +15,7 @@ public class DBManager {
 	
 	public static Connection getConnection() {
 		
-		Connection conn;
+		Connection conn = null;
 		
 		try {
 			Context initContext = new InitialContext();

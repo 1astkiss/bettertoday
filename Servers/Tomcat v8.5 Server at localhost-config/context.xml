@@ -25,4 +25,11 @@
     <!--
     <Manager pathname="" />
     -->
+    
+    <Resource name="jdbc/mysql" auth="Container"
+    type="javax.sql.DataSource"
+    driverClassName = "com.mysql.jdbc.Driver"
+    url="jdbc:mysql://127.0.0.1/mysns"
+    username="lastkiss" password="1234"
+    maxActive="5" maxIdle="3" maxWait="-1" />
 </Context>

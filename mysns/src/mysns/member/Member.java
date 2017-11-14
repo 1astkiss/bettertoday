@@ -4,16 +4,16 @@ import java.util.Date;
 
 public class Member {
 
-	// È¸¿ø¸í
+	// íšŒì›ëª…
 	private String name;
 	
-	// È¸¿ø ¾ÆÀÌµğ(·Î±×ÀÎ¿ë)
+	// íšŒì› ì•„ì´ë””(ë¡œê·¸ì¸ìš©)
 	private String uid;
 	
 	private String passwd;
 	private String email;
 	
-	// °¡ÀÔÀÏ
+	// ê°€ì…ì¼
 	private Date date;
 
 	public String getName() {
@@ -55,6 +55,4 @@ public class Member {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
-	
 }

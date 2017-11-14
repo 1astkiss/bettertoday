@@ -36,6 +36,7 @@ public class MemberDAO {
 			pstmt.setString(2, member.getUid());
 			pstmt.setString(3, member.getPasswd());
 			pstmt.setString(4, member.getEmail());
+			pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
 			logger.info("Error Code : {}", e.getErrorCode());
