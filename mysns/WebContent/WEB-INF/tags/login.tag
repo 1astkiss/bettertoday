@@ -7,7 +7,7 @@
 		<c:when test="${uid != null }">
 			<li><a href="#"> :: </a></li>
 			<li><a href="sns_control.jsp?action=getall&suid=${uid }">${uid }님
-					글 모아보기</a></li>
+					글 모아보기 &nbsp;&nbsp; </a></li>
 			<input type="hidden" name="action" value="logout">
 			<input type="submit" value="로그아웃">
 		</c:when>

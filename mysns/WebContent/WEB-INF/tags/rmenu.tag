@@ -7,5 +7,5 @@
 
 <!-- 현재 사용자 id와 댓글 작성자 id가 같으면 댓글 삭제 버튼 활성화 -->
 <c:if test="${uid == ruid }">
-[<a href="sns_control.jsp?action=delreply&rid=$curmsg=${curmsg }&cnt=${cnt}&suid=${suid }">삭제</a>]
+[<a href="sns_control.jsp?action=delreply&rid=${rid }&curmsg=${curmsg }cnt=${cnt}&suid=${suid }">삭제</a>]
 </c:if>

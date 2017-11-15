@@ -71,7 +71,7 @@ public class MessageDAO {
 					Reply r = new Reply();
 					r.setRid(rrs.getInt("rid"));
 					r.setUid(rrs.getString("uid"));
-					r.setRmsg(rrs.getDate("date") + " / " + rrs.getTime("date"));
+					r.setRmsg(rrs.getString("rmsg") + " - " + rrs.getDate("date") + " / " + rrs.getTime("date"));
 					rlist.add(r);
 				}
 
@@ -255,6 +255,7 @@ public class MessageDAO {
 
 		conn = DBManager.getConnection();
 
+		System.out.println("favcount increase...");
 		// 좋아요 카운트 증가
 		String sql = "update s_message set favcount=favcount+1 where mid=?";
 

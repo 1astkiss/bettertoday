@@ -14,7 +14,7 @@
 	// 신규회원 등록
 	if(action.equals("new")){
 		if(mdao.addMember(member)){
-			out.println("<script>alert('등록 성공! 로그인하세요~'); opener.window.location.reload();window.close();</script>");
+			out.println("<script>alert('등록 성공! 로그인하세요~'); window.opener.location.reload();window.close();</script>");
 		}else{
 			out.println("<script>alert('같은 아이디가 있네요...'); history.go(-1);</script>");
 		}
@@ -24,8 +24,8 @@
 		if(mdao.login(member.getUid(), member.getPasswd())){
 			session.setAttribute("uid", member.getUid());
 			System.out.println("logged in");
-	//		response.sendRedirect("sns_control.jsp?action=getall");
-			pageContext.forward("sns_control.jsp?action=getall");
+			response.sendRedirect("sns_control.jsp?action=getall");
+			//pageContext.forward("sns_control.jsp?action=getall");
 		}else{
 			out.println("<script>alert('아이디나 비밀번호가 틀렸습니다.'); history.go(-1);</script>");
 		}

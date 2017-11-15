@@ -26,7 +26,7 @@
 				.open(
 						"new_user.jsp",
 						"newuser",
-						"titlebar=no,location=no,scrollbars=no,resizeable=no,menubar=no,toolbar=no,width=300,height=240");
+						"titlebar=no,location=no,scrollbars=no,resizeable=no,menubar=no,toolbar=no,width=400,height=240");
 	}
 </script>
 
@@ -76,25 +76,13 @@
 								/ ${m.date }에 작성된 글입니다.
 							</p>
 
-							<ul class="reply"></ul>
+							<ul class="reply">
 							<c:forEach var="r" items="${msgs.rlist }">
 								<li>${r.uid }::${r.rmsg } - ${r.date } <sns:rmenu
 										curmsg="${mcnt.index}" rid="${r.rid }" ruid="${r.uid }" /></li>
 							</c:forEach>
 							</ul>
 
-
-
-							<!-- <h3>김프리 :: 2013.7.8:14:00 작성 [좋아요 6 | 댓글 4]</h3>
-					<div>
-						<p>어제는 나홀로 영화를 보았습니다. ^^ 사람들이 이상하다고 해도 나는 즐거워요..</p>
-						<p>[삭제] 좋아요 / 2013.7.8:14:00</p>
-						<ul class="reply">
-							<li>홍길동 :: 저랑 똑 같네요.... - 2013.7.8:14:00 <a href="">삭제</a></li>
-							<li>아무개 :: 이런일은 있어서는 안되지요.. 파이팅~~~ - 2013.7.8:14:00</li>
-							<li>김사랑 :: 전화 하지 그랬니.... 친구 좋다는 것이 ㅋㅋㅋ - 2013.7.8:14:00</li>
-						</ul>
-					 -->
 							<form action="sns_control.jsp?action=newreply&cnt=${cnt }"
 								method="post">
 								<input type="hidden" name="mid" value="${m.mid }"> <input
@@ -116,9 +104,9 @@
 				<!-- sidebar2 -->
 				<h2>새로운 친구들.!!</h2>
 				<ul>
-				<c:forEach var="n" items="${nusers }">
-					<li><a href="sns_control.jsp?action=getall&suid=${n}">${n}</a></li>
-				</c:forEach>
+					<c:forEach var="n" items="${nusers }">
+						<li><a href="sns_control.jsp?action=getall&suid=${n}">${n}</a></li>
+					</c:forEach>
 				</ul>
 
 				<br> <br>

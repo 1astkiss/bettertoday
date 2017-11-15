@@ -50,14 +50,15 @@
 	// 새로운 메시지 등록
 	if (action.equals("newmsg")) {
 		if (msgdao.newMsg(msg)) {
-	//		response.sendRedirect(home);
-			pageContext.forward(home);
+			response.sendRedirect(home);
+	//		pageContext.forward(home);
 		} else {
 			throw new Exception("메시지 등록 오류!!");
 		}
 	
 	// 댓글 등록	
 	} else if (action.equals("newreply")) {
+		System.out.println(reply.getRmsg());
 		if(msgdao.newReply(reply)){
 			pageContext.forward(home);
 		}else{
@@ -76,6 +77,7 @@
 
 	// 댓글 삭제
 	}else if(action.equals("delreply")){
+		System.out.println("reply.getRid() : " + reply.getRid());
 		if(msgdao.delReply(reply.getRid())){
 			pageContext.forward(home);
 		}else{
@@ -104,6 +106,7 @@
 	
 	// 좋아요 추가
 	}else if(action.equals("fav")){
+		System.out.println("msg.getMid() : " + msg.getMid());
 		msgdao.favorite(msg.getMid());
 		pageContext.forward(home);
 	}
