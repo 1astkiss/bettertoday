@@ -44,87 +44,70 @@
 		<div class="menu">
 			<ul>
 				<li><a href="#">Home</a></li>
-<!-- 				<li><a href="javascript:newuser()">New User</a></li> -->
+				<!-- 				<li><a href="javascript:newuser()">New User</a></li> -->
 				<li><a href="new_user.jsp">New User</a></li>
-				<li><a href="words_control.jsp?action=getall">전체글보기</a>
 				<li><words:login /></li>
 			</ul>
 		</div>
 	</nav>
+	<div align="center">
+		<hr>
+		<h2 style="text-align: center">다음 문제에 5초내에 답하세요</h2>
+		<br>
+		<table>
+			<tr>
+				<td colspan="2"><h2>delay</h2></td>
+			</tr>
+			<tr>
+				<td><a href="#">.1.</a>
+				<td>
+				<td>지연하다</td>
+			</tr>
+			<tr>
+				<td><a href="#">.2.</a>
+				<td>
+				<td>빨리가다</td>
+			</tr>
+			<tr>
+				<td><a href="#">.3.</a>
+				<td>
+				<td>돌아서다</td>
+			</tr>
+			<tr>
+				<td><a href="#">.4.</a>
+				<td>
+				<td>당연하다</td>
+			</tr>
+		</table>
 
-	<div id="wrapper">
-		<section id="main">
-			<section id="content">
-				<b>내소식 업데이트</b>
-				<form class="m_form" method="post"
-					action="words_control.jsp?action=newmsg">
-					<input type="hidden" name="uid" value="${uid}">
-					<words:write type="msg" />
-					<button class="submit" type="submit">등록</button>
-				</form>
-				<br> <br>
-				<h3>친구들의 최신 소식</h3>
-				<div id="accordion">
-					<c:forEach varStatus="mcnt" var="msgs" items="${datas }">
-						<c:set var="m" value="${msgs.message }" />
-						<h3>[${m.uid }]${m.msg } :: [좋아요 ${m.favcount } | 댓글
-							${m.replycount }]</h3>
-						<div>
-							<p></p>
-							<p>
-								<words:smenu mid="${m.mid }" auid="${m.uid }"
-									curmsg="${mcnt.index }" />
-								/ ${m.date }에 작성된 글입니다.
-							</p>
+		<a href="words_control.jsp?action=getall&cnt=${cnt+5 }&suid=${suid }">더보기&gt;&gt;</a>
+	</div>
+	</section>
 
-							<ul class="reply">
-							<c:forEach var="r" items="${msgs.rlist }">
-								<li>${r.uid }::${r.rmsg } - ${r.date } <words:rmenu
-										curmsg="${mcnt.index}" rid="${r.rid }" ruid="${r.uid }" /></li>
-							</c:forEach>
-							</ul>
+	<aside id="sidebar2">
+		<!-- sidebar2 -->
+		<h2>새로운 친구들.!!</h2>
+		<ul>
+			<c:forEach var="n" items="${nusers }">
+				<li><a href="words_control.jsp?action=getall&suid=${n}">${n}</a></li>
+			</c:forEach>
+		</ul>
 
-							<form action="words_control.jsp?action=newreply&cnt=${cnt }"
-								method="post">
-								<input type="hidden" name="mid" value="${m.mid }"> <input
-									type="hidden" name="uid" value="${uid }"> <input
-									type="hidden" name="suid" value="${suid }"> <input
-									type="hidden" name="curmsg" value="${mcnt.index }">
-								<words:write type="rmsg" />
-							</form>
-						</div>
-					</c:forEach>
-				</div>
+		<br> <br>
+		<h3>We're Social Too!!</h3>
+		<img src="img/facebook_32.png"> <img src="img/twitter_32.png">
+		<img src="img/youtube_32.png"> <br> <br> <br> <br>
 
-				<div align="center">
-					<a href="words_control.jsp?action=getall&cnt=${cnt+5 }&suid=${suid }">더보기&gt;&gt;</a>
-				</div>
-			</section>
+		<h3>Links</h3>
+		<ul>
+			<li><a href="#">한빛미디어</a></li>
+			<li><a href="#">가천대학교</a></li>
+			<li><a href="#">가천대학교 길병원</a></li>
+		</ul>
 
-			<aside id="sidebar2">
-				<!-- sidebar2 -->
-				<h2>새로운 친구들.!!</h2>
-				<ul>
-					<c:forEach var="n" items="${nusers }">
-						<li><a href="words_control.jsp?action=getall&suid=${n}">${n}</a></li>
-					</c:forEach>
-				</ul>
-
-				<br> <br>
-				<h3>We're Social Too!!</h3>
-				<img src="img/facebook_32.png"> <img src="img/twitter_32.png">
-				<img src="img/youtube_32.png"> <br> <br> <br> <br>
-
-				<h3>Links</h3>
-				<ul>
-					<li><a href="#">한빛미디어</a></li>
-					<li><a href="#">가천대학교</a></li>
-					<li><a href="#">가천대학교 길병원</a></li>
-				</ul>
-
-			</aside>
-			<!-- end of sidebar -->
-		</section>
+	</aside>
+	<!-- end of sidebar -->
+	</section>
 	</div>
 
 	<footer>

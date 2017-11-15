@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="words.member.Member" %>
+    pageEncoding="UTF-8" import="words.member.Member, java.util.concurrent.TimeUnit" %>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -14,9 +14,10 @@
 	// 신규회원 등록
 	if(action.equals("new")){
 		if(mdao.addMember(member)){
-			out.println("<script>alert('등록 성공! 로그인하세요~'); window.opener.location.reload();window.close();</script>");
+//			out.println("<script>document.write('등록 성공!<br>3초후 시작페이지로 이동합니다~'); setTimeout(function(){document.location.href = 'words_main.jsp';},3000);</script>");
+			response.sendRedirect("new_user_success.jsp");
 		}else{
-			out.println("<script>alert('같은 아이디가 있네요...'); history.go(-1);</script>");
+			out.println("<script>document.write()'같은 아이디가 있네요...'); history.go(-1);</script>");
 		}
 		
 	// 로그인
