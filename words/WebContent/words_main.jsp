@@ -10,11 +10,10 @@
 <title>My words</title>
 <link rel="stylesheet" href="css/styles.css" type="text/css"
 	media="screen" />
-<link rel="stylesheet"
-	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-<script>
+
+<!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+ --><!-- <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+ --><script>
 	$(function() {
 		$("#accordion").accordion({
 			heightStyle : "content",
@@ -29,53 +28,51 @@
 						"titlebar=no,location=no,scrollbars=no,resizeable=no,menubar=no,toolbar=no,width=400,height=240");
 	}
 </script>
+<style>
+
+</style>
 
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 
 <body>
 	<header>
-		<div class="container1">
-			<h1 class="fontface" id="title">My Simple words</h1>
-		</div>
+			<h1>My Simple Words</h1>
 	</header>
 
 	<nav>
 		<div class="menu">
 			<ul>
-				<li><a href="#">Home</a></li>
+				<li><a href="#"><span>Home &nbsp;&nbsp;</span></a></li>
 				<!-- 				<li><a href="javascript:newuser()">New User</a></li> -->
-				<li><a href="new_user.jsp">New User</a></li>
-				<li><words:login /></li>
+				
+				<words:login />
 			</ul>
 		</div>
 	</nav>
 	<div align="center">
+	<br>
 		<hr>
 		<h2 style="text-align: center">다음 문제에 5초내에 답하세요</h2>
-		<br>
-		<table>
+		<hr>
+		<table id="question_table">
 			<tr>
-				<td colspan="2"><h2>delay</h2></td>
+				<td id="table_head" colspan="2">delay</td>
 			</tr>
 			<tr>
-				<td><a href="#">.1.</a>
-				<td>
+				<td><a href="#">.1.</a></td>
 				<td>지연하다</td>
 			</tr>
 			<tr>
 				<td><a href="#">.2.</a>
-				<td>
 				<td>빨리가다</td>
 			</tr>
 			<tr>
 				<td><a href="#">.3.</a>
-				<td>
 				<td>돌아서다</td>
 			</tr>
 			<tr>
 				<td><a href="#">.4.</a>
-				<td>
 				<td>당연하다</td>
 			</tr>
 		</table>
