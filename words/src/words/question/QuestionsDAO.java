@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import words.member.MemberDAO;
 import words.util.DBManager;
 
-public class MessageDAO {
+public class QuestionsDAO {
 
 	Connection conn;
 	PreparedStatement pstmt;
@@ -21,6 +21,46 @@ public class MessageDAO {
 	ResultSet rs;
 	Logger logger = LoggerFactory.getLogger(MemberDAO.class);
 
+	
+	/**
+	 * 신규 문제 등록
+	 * 
+	 * @param msg
+	 * @return
+	 */
+	public boolean newQuestion(Question question) {
+
+		conn = DBManager.getConnection();
+		String sql = "insert into questions(date_created, creator_id, word, selection1, selection2, selection3, selection4, answer)"
+				+ " values(now(),?,?,?,?,?,?,?)";
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, question.getCreator_id());
+			pstmt.setString(2, question.getWord());
+			pstmt.setString(3, question.getSelection1());
+			pstmt.setString(4, question.getSelection2());
+			pstmt.setString(5, question.getSelection3());
+			pstmt.setString(6, question.getSelection4());
+			pstmt.setInt(7, question.getAnswer());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getErrorCode());
+			return false;
+		} finally {
+			try {
+				// 자원 정리
+				pstmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return true;
+	}
+	
 	/**
 	 * 메시지 조회
 	 * 
@@ -28,7 +68,7 @@ public class MessageDAO {
 	 * @param suid
 	 * @return
 	 */
-	public ArrayList<MessageSet> getAll(int cnt, String suid) {
+	/*public ArrayList<MessageSet> getAll(int cnt, String suid) {
 		ArrayList<MessageSet> datas = new ArrayList<MessageSet>();
 		conn = DBManager.getConnection();
 		String sql;
@@ -51,7 +91,7 @@ public class MessageDAO {
 			// 위에서 조회한 메시지 별로 MessageSet object를 생성하여 datas에 추가
 			while (rs.next()) {
 				MessageSet ms = new MessageSet();
-				Message m = new Message();
+				Question m = new Question();
 				ArrayList<Reply> rlist = new ArrayList<Reply>();
 
 				m.setMid(rs.getInt("mid"));
@@ -117,47 +157,16 @@ public class MessageDAO {
 		}
 
 		return datas;
-	}
+	}*/
 
-	/**
-	 * 신규 메시지 등록
-	 * 
-	 * @param msg
-	 * @return
-	 */
-	public boolean newMsg(Message msg) {
-
-		conn = DBManager.getConnection();
-		String sql = "insert into s_message(uid, msg, date) values(?,?,now())";
-
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, msg.getUid());
-			pstmt.setString(2, msg.getMsg());
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println(e.getErrorCode());
-			return false;
-		} finally {
-			try {
-				// 자원 정리
-				pstmt.close();
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
-		return true;
-	}
+	
 
 	/**
 	 * 메시지 삭제
 	 * 
 	 * @param mid
 	 * @return
-	 */
+	 *//*
 	public boolean delMsg(int mid) {
 
 		conn = DBManager.getConnection();
@@ -182,97 +191,6 @@ public class MessageDAO {
 
 		return true;
 	}
-
-	/**
-	 * 새로운 답글 등록
-	 * 
-	 * @param reply
-	 * @return
-	 */
-	public boolean newReply(Reply reply) {
-
-		conn = DBManager.getConnection();
-		String sql = "insert into s_reply(mid, uid, rmsg, date) values(?,?,?,now())";
-
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, reply.getMid());
-			pstmt.setString(2, reply.getUid());
-			pstmt.setString(3, reply.getRmsg());
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println(e.getErrorCode());
-			return false;
-		} finally {
-			try {
-				pstmt.close();
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
-		return true;
-	}
-
-	/**
-	 * 답글 삭제
-	 * 
-	 * @param rid
-	 * @return
-	 */
-	public boolean delReply(int rid) {
-		conn = DBManager.getConnection();
-		String sql = "delete from s_reply where rid=?";
-
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, rid);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println(e.getErrorCode());
-			return false;
-		} finally {
-			try {
-				pstmt.close();
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
-		return true;
-	}
-
-	/**
-	 * 좋아요 카운트 증가
-	 * 
-	 * @param mid
-	 */
-	public void favorite(int mid) {
-
-		conn = DBManager.getConnection();
-
-		System.out.println("favcount increase...");
-		// 좋아요 카운트 증가
-		String sql = "update s_message set favcount=favcount+1 where mid=?";
-
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, mid);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-			System.out.println(e.getErrorCode());
-		} finally {
-			try {
-				pstmt.close();
-				conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+*/
+	
 }

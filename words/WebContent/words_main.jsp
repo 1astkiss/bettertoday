@@ -30,7 +30,7 @@
 	<nav>
 		<div class="menu">
 			<ul>
-				<li><a href="#"><span>Home &nbsp;&nbsp;</span></a></li>
+				<li><a href="#">Home &nbsp;&nbsp;</a></li>
 				<words:login />
 			</ul>
 		</div>

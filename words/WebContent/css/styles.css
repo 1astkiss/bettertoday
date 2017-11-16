@@ -1,6 +1,7 @@
 * {
 	/* 	border:1px solid black;
  */
+ font-family: 'Malgun Gothic', sans-serif;
 	
 }
 
@@ -39,9 +40,13 @@ nav li a, nav span, nav li{
 	color:orange;
 }
 
+nav li a {
+	text-decoration: none;
+}
+
 nav li a:link {
 	color:orange
-	font-size: 16px;
+	font-size: 14px;
 }
 
 nav li a:hover {
@@ -55,7 +60,6 @@ nav ul {
 }
 
 nav ul li {
-	font-size : 18px;
 	float: left;
 	line-height: normal;
 	margin-left: 5px;
@@ -89,7 +93,6 @@ nav form input[type="submit"]{
 }
 
 nav span {
-	font-size : 16px;
 }
 
 #question_table .select{

@@ -26,8 +26,8 @@ table {
 		<h1>Add a new word here</h1>
 		<hr>
 		<br>
-		<form name="add_question" method="post"
-				action="words_control.jsp">
+		<form name="add_question" method="post"	action="words_control.jsp">
+			<input type="hidden" name="action" value="add">
 			<table id="question_table">
 				<tr>
 					<td id="table_head" colspan="2"><textarea name="word"
@@ -63,7 +63,8 @@ table {
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="submit"
-						value="Add a new word"></td>
+						value="Add a new word"> <input type="button"
+						value="Back to Main" onclick="document.location.href='words_main.jsp'" ></td>
 				</tr>
 			</table>
 		</form>
