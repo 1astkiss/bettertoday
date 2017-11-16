@@ -27,15 +27,16 @@ public class MemberDAO {
 	public boolean addMember(Member member) {
 		
 		conn = DBManager.getConnection();
-		String sql = "insert into s_member(name, uid, passwd, email, date) "
-				+ "values(?,?,?,?,now())";
+		String sql = "insert into words_member(member_id, passwd, nickname, email, date_created, birth_year) "
+				+ "values(?,?,?,?,now(),?)";
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1,  member.getName());
-			pstmt.setString(2, member.getUid());
-			pstmt.setString(3, member.getPasswd());
+			pstmt.setString(1,  member.getMember_id());
+			pstmt.setString(2, member.getPasswd());
+			pstmt.setString(3,  member.getNickname());
 			pstmt.setString(4, member.getEmail());
+			pstmt.setInt(5, member.getBirth_year());
 			pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -60,16 +61,21 @@ public class MemberDAO {
 	 * @param passwd
 	 * @return
 	 */
-	public boolean login(String uid, String passwd) {
+	public boolean login(String member_id, String passwd) {
 		
 		conn = DBManager.getConnection();
-		String sql = "select uid, passwd from s_member where uid = ?";
+		String sql = "select member_id, passwd from words_member where member_id=?";
 		boolean result = false;
+		System.out.println("member_id : " + member_id);
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, uid);
+			pstmt.setString(1, member_id);
+			
+			System.out.println("pstmt : " + pstmt);
+			System.out.println("Is rs null? : " + rs=="");
 			rs = pstmt.executeQuery();
+			System.out.println("Is rs null? : " + rs=="");
 			rs.next();
 			
 			if(rs.getString("passwd").equals(passwd)) {
@@ -89,36 +95,6 @@ public class MemberDAO {
 		
 		return result;
 	}
-	
-	/**
-	 * 메인화면 우측 신규회원 목록
-	 */
-	public ArrayList<String> getNewMembers(){
-		ArrayList<String> nmembers = new ArrayList<String>();
-		conn = DBManager.getConnection();
-		
-		// 최근에 등록한 회원 목록  7개를 가져 옴 (0은 offset 값)
-		String sql = "select * from s_member order by date desc limit 0,7";
-		
-		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				nmembers.add(rs.getString("uid"));
-			}
-		}catch(SQLException e) {
-			e.printStackTrace();
-			logger.info("Error Code : {}", e.getErrorCode());
-		}finally{
-			try {
-				pstmt.close();
-				conn.close();
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return nmembers;
-	}
 }
+	
+	

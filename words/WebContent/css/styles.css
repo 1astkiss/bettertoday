@@ -28,21 +28,20 @@ nav {
 	padding-top: 0px;
 	background: #444;
 	border-bottom: 1px solid #333;
-	height: 40px;
+	height: 45px;
 }
 
 nav.menu{
 	height: 40px;
 }
 
-nav li a, nav span{
+nav li a, nav span, nav li{
 	color:orange;
 }
 
 nav li a:link {
-	color: #aaa;
+	color:orange
 	font-size: 16px;
-	text-decoration: none;
 }
 
 nav li a:hover {
@@ -67,11 +66,11 @@ nav ul > li {
 	padding-top: 10px;
 }
 
-nav div ul li:nth-child(3){
+.nav_menu_right{
 	float:right;
+	padding-right:10px;
 }
 
-nav form {
 	vertical-align:top;
 position:relative;
 display: block;
@@ -93,8 +92,11 @@ nav span {
 	font-size : 16px;
 }
 
-
-
+#question_table .select{
+	background : orange;
+	width: 20%;
+	text-align:center;
+}
 #table_head {
 	text-align: center;
 	font-size: 2em;
@@ -108,4 +110,10 @@ nav span {
 td {
 	vertical-align: middle;
 	border: 1px solid orange;
+}
+
+a.disabled{
+	pointer-events: none;
+	color:orange;
+   	cursor: default;
 }

@@ -88,13 +88,9 @@
 	}else if(action.equals("getall")){
 		System.out.println("getall at words_control.jsp");
 		ArrayList<MessageSet> datas = msgdao.getAll(mcnt, suid);
-		ArrayList<String> nusers = new MemberDAO().getNewMembers();
 		
 		// 게시글 목록
 		request.setAttribute("datas", datas);
-		
-		// 신규 회원 목록
-		request.setAttribute("users", nusers);
 		
 		// 특정 회원 only인 경우 회원 uid 저장
 		request.setAttribute("suid", suid);
