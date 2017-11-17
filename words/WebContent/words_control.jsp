@@ -7,7 +7,7 @@
 
 <!-- 메시지 처리 beans -->
 <jsp:useBean id="question" class="words.question.Question" />
-<jsp:useBean id="result" class="java.util.ArrayList" />
+<jsp:useBean id="result" class="java.util.LinkedList" />
 <jsp:useBean id="questions_dao" class="words.question.QuestionsDAO" />
 
 <!-- Property 설정 -->

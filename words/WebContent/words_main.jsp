@@ -41,5 +41,7 @@
 		<words:quiz />
 		<hr>
 	</div>
+	</body>
+	</html>
 
 	

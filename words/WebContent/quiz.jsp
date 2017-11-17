@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.*"%>
+	pageEncoding="UTF-8" import="java.util.*, words.question.Question"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="words"%>
 
@@ -13,12 +13,26 @@
 
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<%
+	LinkedList<Question> questions = (LinkedList<Question>)request.getAttribute("result");
+	Question question = new Question();
+	int answer;
+	question = questions.get(1);
+	
+	request.setAttribute("answer", question.getAnswer());
+	request.setAttribute("word", question.getWord());
+	request.setAttribute("selection1", question.getSelection1());
+	request.setAttribute("selection2", question.getSelection2());
+	request.setAttribute("selection3", question.getSelection3());
+	request.setAttribute("selection4", question.getSelection4());
+%>
+
 <script>
 
-	for(var result : ${result}){
-		var answer = '${result.answer}';
-		
-	
+	var answer = '${answer}';
+	alert('${result.pop().answer}'); 
+	alert('${result.pop().answer}'); 
+
 	var check_answer = function(selected_answer) {
 		
 		//오답인 경우
@@ -54,9 +68,21 @@
 			document.location.href="words_control.jsp?action=quiz"; */
 		}
 	};
-	}
 	
 </script>
+<script>
+$(document).ready(function(){
+	/* var question = ${result.pop()}; */
+	/* alert(${result.peek().word}); */
+	/* $("#table_head").html("delay");
+	$("#1").html("달리다");
+	$("#2").html("뛰다");
+	$("#3").html("멈추다"); */
+/* 	$("#4").html("지연하다");
+ */});
+
+</script>
+
 <style>
 </style>
 
@@ -75,27 +101,27 @@
 		<hr>
 		<table id="question_table">
 			<tr>
-				<td id="word" colspan="2">${result.word}</td>
+				<td id="table_head" colspan="2">${word }</td>
 			</tr>
 			<tr>
 				<td class="select 1" id="cc"><a
 					href="javascript:check_answer(1)">( 1 )</a></td>
-				<td>${result.selection1}</td>
+				<td id="1">${selection1 }</td>
 			</tr>
 			<tr>
 				<td class="select 2"><a href="javascript:check_answer(2)">(
 						2 )</a></td>
-				<td>${result.selection2}</td>
+				<td id="2">${selection2 }</td>
 			</tr>
 			<tr>
 				<td class="select 3"><a href="javascript:check_answer(3)">(
 						3 )</a></td>
-				<td>${result.selection3}</td>
+				<td id="3">${selection3 }</td>
 			</tr>
 			<tr>
 				<td class="select 4"><a href="javascript:check_answer(4)">(
 						4 )</a></td>
-				<td>${result.selection4}</td>
+				<td id="4">${selection4 }</td>
 			</tr>
 		</table>
 

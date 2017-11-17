@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,11 +68,11 @@ public class QuestionsDAO {
 	 * @param suid
 	 * @return
 	 */
-	public ArrayList<Question> getQuestion(String member_id) {
+	public LinkedList<Question> getQuestion(String member_id) {
 		conn = DBManager.getConnection();
 		String sql;
 		Question question = new Question();
-		ArrayList<Question> questions = new ArrayList<Question>();
+		LinkedList<Question> questions = new LinkedList<Question>();
 
 		try {
 			sql = "select word, selection1, selection2, selection3, selection4, answer, weight from questions order by date_created desc limit 0,?";
