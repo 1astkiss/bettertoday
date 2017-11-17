@@ -16,6 +16,7 @@ public class MemberDAO {
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
+	Member result = new Member();
 	
 	Logger logger = LoggerFactory.getLogger(MemberDAO.class);
 	
@@ -57,15 +58,14 @@ public class MemberDAO {
 	
 	/**
 	 * 회원 로그인
-	 * @param uid
+	 * @param member_id
 	 * @param passwd
 	 * @return
 	 */
-	public boolean login(String member_id, String passwd) {
+	public Member login(String member_id) {
 		
 		conn = DBManager.getConnection();
-		String sql = "select member_id, passwd from words_member where member_id=?";
-		boolean result = false;
+		String sql = "select member_id, passwd, can_make_question from words_member where member_id=?";
 		System.out.println("member_id : " + member_id);
 		
 		try {
@@ -78,12 +78,15 @@ public class MemberDAO {
 			System.out.println("Is rs null? : " + rs=="");
 			rs.next();
 			
-			if(rs.getString("passwd").equals(passwd)) {
+			System.out.println(member_id);
+			result.setMember_id(member_id);
+			result.setPasswd(rs.getString("passwd"));
+			result.setCan_make_question(rs.getInt("can_make_question"));
+			/*if(rs.getString("passwd").equals(passwd)) {
 				result = true;
-			}
+			}*/
 		}catch(SQLException e) {
 			e.printStackTrace();
-			return false;
 		}finally {
 			try {
 				pstmt.close();

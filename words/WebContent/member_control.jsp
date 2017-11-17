@@ -26,9 +26,12 @@
 		
 	// 로그인
 	case "login":
-		if(mdao.login(member.getMember_id(), member.getPasswd())){
+		Member result = new Member();
+		result= mdao.login(member.getMember_id());
+		if(result.getPasswd().equals(member.getPasswd())){
 			System.out.println("member_id : " + session.getAttribute("member_id"));
 			session.setAttribute("member_id", member.getMember_id());
+			session.setAttribute("can_make_question", result.getCan_make_question());
 			System.out.println("member_id : " + session.getAttribute("member_id"));
 			pageContext.forward("words_main.jsp?");
 		}else{

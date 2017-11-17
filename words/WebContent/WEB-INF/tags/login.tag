@@ -7,7 +7,7 @@
 		<li><a href="#"> 틀린문제복습 &nbsp;&nbsp; </a></li>
 		
 			<!-- 출제권한이 있는 회원인 경우 문제출제 버튼 활성화 --> 
-			<c:if test="${true}">
+			<c:if test="${can_make_question == 1}">
 				<li><a href="add_question.jsp"> 문제출제 &nbsp;&nbsp; </a></li>
 			</c:if>
 		<li class="nav_menu_right"><form name="loginform" method="post"
