@@ -22,7 +22,7 @@ public class Member {
 	private int birth_year;
 	
 	// 회원의 현재 수준
-	private int level;
+	private int member_level;
 	
 	// 회원의 현재 상태(active/inactive)
 	private int status;
@@ -78,12 +78,12 @@ public class Member {
 		this.birth_year = birth_year;
 	}
 
-	public int getLevel() {
-		return level;
+	public int getMember_level() {
+		return member_level;
 	}
 
-	public void setLevel(int level) {
-		this.level = level;
+	public void setMember_level(int member_level) {
+		this.member_level = member_level;
 	}
 
 	public int getStatus() {

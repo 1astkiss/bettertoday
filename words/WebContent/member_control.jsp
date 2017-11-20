@@ -3,8 +3,10 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:useBean id="member" class="words.member.Member" />
+<jsp:useBean id="member" class="words.member.Member" >
 <jsp:setProperty name="member" property="*" />
+</jsp:useBean>
+
 <jsp:useBean id="mdao" class="words.member.MemberDAO" />
 
 <%
@@ -27,12 +29,15 @@
 	// 로그인
 	case "login":
 		Member result = new Member();
+		System.out.println("member id before login() : " + member.getMember_id());
 		result= mdao.login(member.getMember_id());
 		if(result.getPasswd().equals(member.getPasswd())){
 			System.out.println("member_id : " + session.getAttribute("member_id"));
 			session.setAttribute("member_id", member.getMember_id());
 			session.setAttribute("can_make_question", result.getCan_make_question());
-			System.out.println("member_id : " + session.getAttribute("member_id"));
+			System.out.println("member_level at member_control.jsp before setting : " + result.getMember_level());
+			session.setAttribute("member_level", result.getMember_level());
+			System.out.println("member_level at member_control.jsp after setting : " + session.getAttribute("member_level"));
 			pageContext.forward("words_main.jsp?");
 		}else{
 			out.println("<script>alert('아이디나 비밀번호가 틀렸습니다.'); history.go(-1);</script>");

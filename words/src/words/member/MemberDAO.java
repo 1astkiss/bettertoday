@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,26 +64,21 @@ public class MemberDAO {
 	public Member login(String member_id) {
 		
 		conn = DBManager.getConnection();
-		String sql = "select member_id, passwd, can_make_question from words_member where member_id=?";
+		String sql = "select member_id, passwd, can_make_question, member_level from words_member where member_id=?";
 		System.out.println("member_id : " + member_id);
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member_id);
-			
-			System.out.println("pstmt : " + pstmt);
-			System.out.println("Is rs null? : " + rs=="");
 			rs = pstmt.executeQuery();
-			System.out.println("Is rs null? : " + rs=="");
 			rs.next();
 			
-			System.out.println(member_id);
 			result.setMember_id(member_id);
 			result.setPasswd(rs.getString("passwd"));
 			result.setCan_make_question(rs.getInt("can_make_question"));
-			/*if(rs.getString("passwd").equals(passwd)) {
-				result = true;
-			}*/
+			result.setMember_level(rs.getInt("member_level"));
+			System.out.println("member_level at MemberDAO : " + rs.getInt("member_level"));
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {

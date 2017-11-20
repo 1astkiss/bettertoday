@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8" import="java.util.*, words.question.Question"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="words"%>
+<jsp:useBean id="mwh" class="words.question.MemberWordHistory" scope="session"/>
+
 
 <!DOCTYPE html>
 <html>
@@ -14,26 +16,29 @@
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <%
-	LinkedList<Question> questions = (LinkedList<Question>)request.getAttribute("result");
 	Question question = new Question();
-	int answer;
-	question = questions.get(1);
-	
+	question=(Question) request.getAttribute("question");
 	request.setAttribute("answer", question.getAnswer());
 	request.setAttribute("word", question.getWord());
 	request.setAttribute("selection1", question.getSelection1());
 	request.setAttribute("selection2", question.getSelection2());
 	request.setAttribute("selection3", question.getSelection3());
 	request.setAttribute("selection4", question.getSelection4());
+	request.setAttribute("question_id", question.getQuestion_id());
 %>
 
 <script>
 
-	var answer = '${answer}';
-	alert('${result.pop().answer}'); 
-	alert('${result.pop().answer}'); 
-
+	var count_tried = 0;
+	
+	var save_history_and_go_home = function(){
+		document.location.href='words_control.jsp?action=home&history=yes';
+	};
+	
 	var check_answer = function(selected_answer) {
+	var answer = '${answer}';
+		
+		count_tried++;
 		
 		//오답인 경우
 		if (answer != selected_answer){
@@ -52,16 +57,37 @@
 				break;
 			}
 			
-		}else{ //오답인 경우
+		}else{ //정답인 경우
 			//$(document).ready(function(){ 
 				//if($('#next_quiz').html() == null ){
 					$('div').append("<tr id='next_quiz'>");
-					$('div').append("<td colspan='2'>");
+					$('div').append("<td colspan='2'>정답입니다!!!<br>"
+					+ "<form method='post' action='words_control.jsp?action=quiz&history=yes'>"
+					+ "<input type='hidden' name='question_id' value='${question_id}'>"
+					+ "<input type='hidden' name='count_tried' value='' id='count_tried_next'>"
+					+ "<input type='submit' value='다음문제'>"
+					+ "</form>"
+					+ "<form method='post' action='words_control.jsp?action=home&history=yes'>"
+					+ "<input type='hidden' name='question_id' value='${question_id}'>"
+					+ "<input type='hidden' name='count_tried' value='' id='count_tried_home'>"
+					+ "<input type='submit' value='퀴즈그만' id='quit_button'>"
+					+ "</form>"
+					+ "</td>"
+					+ "</tr>");
+					$('#count_tried_next,#count_tried_home').attr('value', count_tried);
+					$('form').css('display','inline');
+/* 					$('div').append("<td colspan='2'>");
 					$('div').append("정답입니다!!!<br>");
-					$('div').append("<a href='words_control.jsp?action=quiz'>다음문제&gt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;</a>");
-					$('div').append("<a href='words_control.jsp?action=home'>퀴즈그만&gt;&gt;</a>");
+					$('div').append("<form method='post' action='words_control.jsp?action=quiz&history=yes'>");
+					$('div').append("<input type='hidden' name='question_id' value='${question_id}'>");
+					$('div').append("<input type='hidden' name='count_tried' value=" + count_tried + ">");
+					$('div').append("<input type='submit' value='다음문제'>");
+					$('div').append("<input type='button' onclick='words_control.jsp?action=home&history=yes' value='퀴즈그만'>");
+//					$('div').append("<a href='words_control.jsp?action=quiz&history=yes'>다음문제&gt;&gt;&nbsp;&nbsp;&nbsp;&nbsp;</a>");
+//					$('div').append("<a href='words_control.jsp?action=home'>퀴즈그만&gt;&gt;</a>");
+					$('div').append("</form>");
 					$('div').append("</td>");
-					$('div').append("</tr>");
+					$('div').append("</tr>"); */
 				//}
 			//});
 			/* alert("correct!");
@@ -71,15 +97,6 @@
 	
 </script>
 <script>
-$(document).ready(function(){
-	/* var question = ${result.pop()}; */
-	/* alert(${result.peek().word}); */
-	/* $("#table_head").html("delay");
-	$("#1").html("달리다");
-	$("#2").html("뛰다");
-	$("#3").html("멈추다"); */
-/* 	$("#4").html("지연하다");
- */});
 
 </script>
 
@@ -101,7 +118,7 @@ $(document).ready(function(){
 		<hr>
 		<table id="question_table">
 			<tr>
-				<td id="table_head" colspan="2">${word }</td>
+				<td id="table_head" colspan="2">'${word}'</td>
 			</tr>
 			<tr>
 				<td class="select 1" id="cc"><a

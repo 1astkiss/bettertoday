@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import org.slf4j.Logger;
@@ -71,11 +70,10 @@ public class QuestionsDAO {
 	public LinkedList<Question> getQuestion(String member_id) {
 		conn = DBManager.getConnection();
 		String sql;
-		Question question = new Question();
 		LinkedList<Question> questions = new LinkedList<Question>();
 
 		try {
-			sql = "select word, selection1, selection2, selection3, selection4, answer, weight from questions order by date_created desc limit 0,?";
+			sql = "select word, selection1, selection2, selection3, selection4, answer, weight, question_id from questions order by date_created desc limit 0,?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, 10);
 			System.out.println("pstmt at QuestionsDao : " + pstmt);
@@ -83,6 +81,8 @@ public class QuestionsDAO {
 
 			// 위에서 조회한 메시지 별로 MessageSet object를 생성하여 datas에 추가
 			while (rs.next()) {
+				Question question = new Question();
+				
 				question.setWord(rs.getString("word"));
 				question.setSelection1(rs.getString("selection1"));
 				question.setSelection2(rs.getString("selection2"));
@@ -90,6 +90,7 @@ public class QuestionsDAO {
 				question.setSelection4(rs.getString("selection4"));
 				question.setAnswer(rs.getInt("answer"));
 				question.setWeight(rs.getInt("weight"));
+				question.setQuestion_id(rs.getInt("question_id"));
 				questions.add(question);
 			}
 		} catch (SQLException e) {
@@ -115,6 +116,11 @@ public class QuestionsDAO {
 			}
 		}
 
+		System.out.println(questions.get(0).getWord());
+		System.out.println(questions.get(1).getWord());
+		System.out.println(questions.get(2).getWord());
+		System.out.println(questions.get(3).getWord());
+		System.out.println(questions.get(4).getWord());
 		return questions;
 	}
 
