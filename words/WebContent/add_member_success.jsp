@@ -9,7 +9,7 @@
 <body align="center">
 	<H2>회원가입 완료</h2>
 	<hr>
-	<form method="post" action="words_main.jsp">
+	<form method="post" action="words_main.jsp?action=home">
 		<table align="center">
 			<tr>
 				<td>회원 가입이 완료되었습니다.<br>확인을 누르시면 시작페이지로 이동합니다...</td>

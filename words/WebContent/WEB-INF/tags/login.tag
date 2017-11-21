@@ -1,10 +1,11 @@
 <%@ tag pageEncoding="UTF-8" body-content="scriptless"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+	<!-- request객체나 session객체에 저장된 변수는 별도 처리 없이 표현언어로 접근 가능
+		단, 표현언어는 java scriptlet 영역에서는 쓸 수 없음 -->
 
 	<!-- 회원이 로그인한 상태인 경우 -->
 <c:choose>
-
 	<c:when test="${member_id != null }">
 		<!--  틀린문제 복습페이지로 링크 -->
 		<li><a href="#"> 틀린문제복습 &nbsp;&nbsp; </a></li>

@@ -24,7 +24,7 @@ public class QuestionsDAO {
 	/**
 	 * 신규 문제 등록
 	 * 
-	 * @param msg
+	 * @param question
 	 * @return
 	 */
 	public boolean newQuestion(Question question) {
@@ -34,6 +34,7 @@ public class QuestionsDAO {
 				+ " values(now(),?,?,?,?,?,?,?)";
 
 		try {
+			// query문 작성
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, question.getCreator_id());
 			pstmt.setString(2, question.getWord());
@@ -42,6 +43,8 @@ public class QuestionsDAO {
 			pstmt.setString(5, question.getSelection3());
 			pstmt.setString(6, question.getSelection4());
 			pstmt.setInt(7, question.getAnswer());
+			
+			// 문제등록
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -50,8 +53,13 @@ public class QuestionsDAO {
 		} finally {
 			try {
 				// 자원 정리
-				pstmt.close();
-				conn.close();
+				if (pstmt != null) {
+					pstmt.close();
+				}
+
+				if (conn != null) {
+					conn.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -61,10 +69,8 @@ public class QuestionsDAO {
 	}
 
 	/**
-	 * 메시지 조회
-	 * 
-	 * @param cnt
-	 * @param suid
+	 * 매개변수로 넘겨받은 회원아이디를 바탕으로 회원별 맞춤 문제를 선정하여 return
+	 * @param member_id
 	 * @return
 	 */
 	public LinkedList<Question> getQuestion(String member_id) {
@@ -79,7 +85,7 @@ public class QuestionsDAO {
 			System.out.println("pstmt at QuestionsDao : " + pstmt);
 			ResultSet rs = pstmt.executeQuery();
 
-			// 위에서 조회한 메시지 별로 MessageSet object를 생성하여 datas에 추가
+			// 위에서 조회한 문제별로 Question object를 생성하여 LinkedList에 추가
 			while (rs.next()) {
 				Question question = new Question();
 				
@@ -91,6 +97,8 @@ public class QuestionsDAO {
 				question.setAnswer(rs.getInt("answer"));
 				question.setWeight(rs.getInt("weight"));
 				question.setQuestion_id(rs.getInt("question_id"));
+				
+				// Question객체를 LinkedList에 추가
 				questions.add(question);
 			}
 		} catch (SQLException e) {
@@ -116,32 +124,8 @@ public class QuestionsDAO {
 			}
 		}
 
-		System.out.println(questions.get(0).getWord());
-		System.out.println(questions.get(1).getWord());
-		System.out.println(questions.get(2).getWord());
-		System.out.println(questions.get(3).getWord());
-		//System.out.println(questions.get(4).getWord());
+		// LinkedList 객체를 return
 		return questions;
 	}
-
-	/**
-	 * 메시지 삭제
-	 * 
-	 * @param mid
-	 * @return
-	 *//*
-		 * public boolean delMsg(int mid) {
-		 * 
-		 * conn = DBManager.getConnection(); String sql =
-		 * "delete from s_message where mid=?";
-		 * 
-		 * try { pstmt = conn.prepareStatement(sql); pstmt.setInt(1, mid);
-		 * pstmt.executeUpdate(); } catch (SQLException e) { e.printStackTrace();
-		 * System.out.println(e.getErrorCode()); return false; } finally { try {
-		 * pstmt.close(); conn.close(); } catch (SQLException e) { e.printStackTrace();
-		 * } }
-		 * 
-		 * return true; }
-		 */
 
 }

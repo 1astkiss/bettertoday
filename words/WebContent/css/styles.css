@@ -107,8 +107,14 @@ td {
 	border: 1px solid orange;
 }
 
-a.disabled{
+a.wrong_answer{
 	pointer-events: none;
 	color:orange;
+   	cursor: default;
+}
+
+a.right_answer{
+	pointer-events: none;
+	color: white;
    	cursor: default;
 }

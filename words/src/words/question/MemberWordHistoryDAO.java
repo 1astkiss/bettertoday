@@ -22,9 +22,8 @@ public class MemberWordHistoryDAO {
 	Logger logger = LoggerFactory.getLogger(MemberDAO.class);
 
 	/**
-	 * 신규 문제 등록
-	 * 
-	 * @param msg
+	 * 매개변수로 넘겨 받은 회원별 이력자료를 DB에 저장 
+	 * @param history
 	 * @return
 	 */
 	public boolean addMemberWordHistory(ArrayList<MemberWordHistory> history) {
@@ -49,8 +48,13 @@ public class MemberWordHistoryDAO {
 		} finally {
 			try {
 				// 자원 정리
-				pstmt.close();
-				conn.close();
+				if (pstmt != null) {
+					pstmt.close();
+				}
+
+				if (conn != null) {
+					conn.close();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
