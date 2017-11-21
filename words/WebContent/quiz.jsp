@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*, words.question.Question"%>
+<!-- JSTL을 사용하기 위한 처리 -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- 회원별 문제 이력 데이터를 저장하는 변수 -->
 <jsp:useBean id="mwh" class="words.question.MemberWordHistory" scope="session"/>
@@ -18,22 +20,18 @@
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
-<%
-	//Question question = new Question();
-
-	// words_control.jsp에서 넘겨준 Question객체를 local변수에저장
-	// question = (Question) request.getAttribute("question");
-	//request.setAttribute("answer", question.getAnswer());
-	//request.setAttribute("word", question.getWord());
-	//request.setAttribute("selection1", question.getSelection1());
-	//request.setAttribute("selection2", question.getSelection2());
-	//request.setAttribute("selection3", question.getSelection3());
-	//request.setAttribute("selection4", question.getSelection4());
-	//request.setAttribute("question_id", question.getQuestion_id());
-%>
-
 <script>
 
+	var q_array = new Array();
+	
+	var question = {
+			'answer':'${question.answer}',
+			'selection1':'${question.selection1}',
+	};
+	
+	q_array.push(question);
+	alert(q_array.shift().answer);
+	
 	var count_tried = 0;
 	
 	var save_history_and_go_home = function(){
