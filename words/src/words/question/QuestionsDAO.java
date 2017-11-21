@@ -120,7 +120,7 @@ public class QuestionsDAO {
 		System.out.println(questions.get(1).getWord());
 		System.out.println(questions.get(2).getWord());
 		System.out.println(questions.get(3).getWord());
-		System.out.println(questions.get(4).getWord());
+		//System.out.println(questions.get(4).getWord());
 		return questions;
 	}
 

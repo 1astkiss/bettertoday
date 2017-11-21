@@ -7,7 +7,8 @@
 
 <!-- 메시지 처리 beans -->
 <!-- 문제 DB로부터 가져오 문제들을 저장하는 LinkedList -->
-<jsp:useBean id="result" class="java.util.LinkedList" scope="session"/>
+<jsp:useBean id="questionDAO_result" class="java.util.LinkedList" scope="session">
+</jsp:useBean>
 
 <!-- 문제하나가 종료될때마다 회원별 이력을 담아 두는 객체  -->
 <jsp:useBean id="mwh" class="words.question.MemberWordHistory">
@@ -33,14 +34,18 @@
 <%
 	// 기본 파라미터 정리
 	
+	// LinkedList<Question> questionDAO_result = new LinkedList<Question>();
+	// questionDAO_result = (LinkedList<Question>)session.getAttribute("questionDAO_result");
+	
 	// 컨트롤러페이지를 요청하는 페이지에서 넘겨주는 action 값
 	String action = request.getParameter("action");
 
-	// 문제풀이 페이지에서 넘겨주는 이력저장 여부 값
+	// 문제풀이 페이지에서 넘겨주는 이력저장 여부 flag
 	String history = request.getParameter("history");
 	
-	
+	// 문제이력 DB로 보내기 위한 회원별 문제풀이 이력을 임시로 저장해두는 객체
 	ArrayList<MemberWordHistory> mwh_list = new ArrayList<MemberWordHistory>();
+	// session에 저장되어 있는 내용을 내려 받음
 	mwh_list = (ArrayList<MemberWordHistory>)session.getAttribute("word_history");
 	
 	// 홈 url
@@ -54,31 +59,32 @@
 	
 	// 문제 출제	
 	case "quiz":
-		System.out.println(result.size());
+		System.out.println(questionDAO_result.size());
 		if(history != null && history.equals("yes")){
 			System.out.println("count_tried : " + mwh.getCount_tried());
 			mwh.setMember_id(member_id);
 			mwh.setMember_level(member_level);
 			mwh_list.add(mwh);
+			//System.out.println("first word in history : " + ((ArrayList<MemberWordHistory>)word_history).get(0).getHistory_id());
 			session.setAttribute("word_history", mwh_list);
 		}
 		
-		if(result.size() > 0){
+		if(questionDAO_result.size() > 0){
 			
 		}else{
- 			result = questions_dao.getQuestion(member_id);
+ 			questionDAO_result = questions_dao.getQuestion(member_id);
  			
  			if(history != null){
  				if(mwh_dao.addMemberWordHistory((ArrayList<MemberWordHistory>)word_history)){
  					word_history.clear();
  				}
- 			}
+ 			} 
  			
-			System.out.println(result.size());
+			System.out.println(questionDAO_result.size());
 		}
 		
-		request.setAttribute("question", result.pop());
-		session.setAttribute("result", result);
+		request.setAttribute("question", questionDAO_result.pop());
+		session.setAttribute("questionDAO_result", questionDAO_result);
 		// DB에서 가져온 문제를 request 객체에 담기
 		pageContext.forward("quiz.jsp");
 		 
