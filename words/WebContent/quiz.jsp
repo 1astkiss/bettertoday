@@ -35,6 +35,7 @@
 	var q_array = new Array();
 	var list_size = '${questions.size()}';
 	var current_answer;
+	var question_count = 0;
 	
 	<c:forEach var="i" items="${questions}" begin="0" varStatus="status">
 		var question = {
@@ -49,6 +50,8 @@
 		q_array.push(question);
 	
 	</c:forEach>
+	
+		console.log(JSON.stringify(q_array));
 	/* for(var i = 0; i < list_size; i++){
 		var exp_str_answer = '\${questions.get(' + i + ').answer}';
 		alert(exp_str_word);
@@ -67,6 +70,17 @@
 			$('td a').removeClass('wrong_answer');
 			$('td a').removeClass('right_answer');
 			var current_question = q_array.shift();
+			alert('size of questions before : ' + '${questions.size()}');
+			alert('size of questions before : ' + '${questions.size()}');
+			alert('question_count :' + question_count);
+			
+			if(false){
+			'${questions.poll()}';
+			S}
+			<c:set target="${mwh}" property="question_id" value="${questions[0].question_id}" >
+			</c:set>
+			alert('mwh.question_id : ' + '${mwh.question_id}');
+			alert('size of questions after : ' + '${questions.size()}');
 			current_answer = current_question.answer;
 			$('#table_head').html(current_question.word);
 			$('#1').html(current_question.selection1);
@@ -74,6 +88,8 @@
 			$('#3').html(current_question.selection3);
 			$('#4').html(current_question.selection4);
 		}
+		
+		question_count++;
 	};
 	
 	
@@ -145,12 +161,14 @@
 			//MemberWordHistory객체에 회원ID와 회원레벨 정보를 추가
 			<c:set target="${mwh}" property="member_id" value="${member_id}" />
 			<c:set target="${mwh}" property="member_level" value="${member_level}"/>
-			alert(count_tried);
+			alert('count_tried : ' + count_tried);
 			alert('${mwh.member_id}');
-			${word_history.add(mwh)};
-			alert('${word_history.get(0).member_id}');
+			
+			alert('mwh.count_tried' + '${mwh.count_tried}');
+			'${word_history.add(mwh)}';
+			/* alert('${word_history.get(0).member_id}');
 			alert('${word_history.get(0).count_tried}');
-			alert('${word_history.get(0).member_level}');
+			alert('${word_history.get(0).member_level}'); */
 			
 			
 			/* mwh.setMember_id(member_id);
