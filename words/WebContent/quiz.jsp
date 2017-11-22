@@ -3,11 +3,18 @@
 <!-- JSTL을 사용하기 위한 처리 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+<!-- words_control.jsp에서 보내온 Question 객체 (새로운 문제가 담겨 있음) -->
+<jsp:useBean id="question" class="words.question.Question" scope="page"/>
+
+<!-- words_control.jsp에서 보내온 Question 객체 LinkedList (새로운 문제가 담겨 있음) -->
+<jsp:useBean id="questions" class="java.util.LinkedList" scope="request"/>
+
+<!-- 문제이력 DB로 보내기 위한 회원별 문제풀이 이력을 임시로 저장해두는 객체  -->
+<jsp:useBean id="word_history" class="java.util.ArrayList" scope="session"/>
+
 <!-- 회원별 문제 이력 데이터를 저장하는 변수 -->
 <jsp:useBean id="mwh" class="words.question.MemberWordHistory" scope="session"/>
-
-<!-- words_control.jsp에서 보내온 Question 객제 (새로운 문제가 담겨 있음) -->
-<jsp:useBean id="question" class="words.question.Question" scope="request"/>
 
 <!DOCTYPE html>
 <html>
@@ -21,16 +28,56 @@
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 <script>
+	window.onload = function(){
+		next_question();
+	};
 
 	var q_array = new Array();
+	var list_size = '${questions.size()}';
+	var current_answer;
 	
-	var question = {
-			'answer':'${question.answer}',
-			'selection1':'${question.selection1}',
+	<c:forEach var="i" items="${questions}" begin="0" varStatus="status">
+		var question = {
+			'word': '${i.word}',
+			'answer': '${i.answer}',
+			'selection1': '${i.selection1}',
+			'selection2': '${i.selection2}',
+			'selection3': '${i.selection3}',
+			'selection4': '${i.selection4}',
+		};
+		
+		q_array.push(question);
+	
+	</c:forEach>
+	/* for(var i = 0; i < list_size; i++){
+		var exp_str_answer = '\${questions.get(' + i + ').answer}';
+		alert(exp_str_word);
+		var exp_result = eval(exp_str_word);
+		var exp_result = "'" + exp_str_word + "'";
+		alert(exp_result);
+		
+	} */
+	
+	var next_question = function(){
+		
+		if(q_array.length <= 0){
+			document.location.href='words_control.jsp?action=quiz&history=yes';
+		}else{
+			$('#next_table').remove();
+			$('td a').removeClass('wrong_answer');
+			$('td a').removeClass('right_answer');
+			var current_question = q_array.shift();
+			current_answer = current_question.answer;
+			$('#table_head').html(current_question.word);
+			$('#1').html(current_question.selection1);
+			$('#2').html(current_question.selection2);
+			$('#3').html(current_question.selection3);
+			$('#4').html(current_question.selection4);
+		}
 	};
 	
-	q_array.push(question);
-	alert(q_array.shift().answer);
+	
+	//alert(current_question .answer + ":" + current_question .selection1+":" + current_question .selection2);
 	
 	var count_tried = 0;
 	
@@ -39,12 +86,12 @@
 	};
 	
 	var check_answer = function(selected_answer) {
-		var answer = '${question.answer}';
+		//var answer = '${question.answer}';
 		
 		count_tried++;
 		
 		//오답인 경우
-		if (answer != selected_answer){
+		if (current_answer != selected_answer){
 			switch(selected_answer){ 
 			case 1:
 				$(".1>a").addClass("wrong_answer");
@@ -77,23 +124,43 @@
 				break;
 			};
 		
-			$('div').append("<tr id='next_quiz'>");
-			$('div').append("<td colspan='2'>정답입니다!!!<br>"
-			+ "<form method='post' action='words_control.jsp?action=quiz&history=yes'>"
+			$('div').append("<table id='next_table'><tr id='next_quiz'>"
+			+"<td colspan='2'>정답입니다!!!<br>"
+					+ "<input type='button' value='다음문제' onclick='next_question()'>"
+			/* + "<form method='post' action='words_control.jsp?action=quiz&history=yes'>"
 			+ "<input type='hidden' name='question_id' value='${question.question_id}'>"
 			+ "<input type='hidden' name='count_tried' value='' id='count_tried_next'>"
 			+ "<input type='submit' value='다음문제'>"
-			+ "</form>"
+			+ "</form>" */
 			+ "<form method='post' action='words_control.jsp?action=home&history=yes'>"
 			+ "<input type='hidden' name='question_id' value='${question.question_id}'>"
 			+ "<input type='hidden' name='count_tried' value='' id='count_tried_home'>"
 			+ "<input type='submit' value='퀴즈그만' id='quit_button'>"
 			+ "</form>"
 			+ "</td>"
-			+ "</tr>");
+			+ "</tr></table>");
 			$('#count_tried_next,#count_tried_home').attr('value', count_tried);
 			$('form').css('display','inline');
 
+			//MemberWordHistory객체에 회원ID와 회원레벨 정보를 추가
+			<c:set target="${mwh}" property="member_id" value="${member_id}" />
+			<c:set target="${mwh}" property="member_level" value="${member_level}"/>
+			alert(count_tried);
+			alert('${mwh.member_id}');
+			${word_history.add(mwh)};
+			alert('${word_history.get(0).member_id}');
+			alert('${word_history.get(0).count_tried}');
+			alert('${word_history.get(0).member_level}');
+			
+			
+			/* mwh.setMember_id(member_id);
+			mwh.setMember_level(member_level);
+			
+			// 회원이력저장 ArrayList에 MemberWordHistory객체를 추가 
+			word_history.add(mwh);
+			
+			// ArrayList를 session에 저장. 추후에 DB로 보낼때 session에서 꺼내서 보냄
+			session.setAttribute("word_history", word_history); */
 		}
 	};
 	
@@ -142,7 +209,7 @@
 						4 )</a></td>
 				<td id="4">${question.selection4 }</td>
 			</tr>
-		</table>
+		</table><br>
 
 	</div>
 </body>

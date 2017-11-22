@@ -93,7 +93,7 @@
 		}
 		
 		// DB에서 가져온 문제중 첫 문제를 꺼내서 request 객체에 담음
-		request.setAttribute("question", questionDAO_result.pop());
+		request.setAttribute("questions", questionDAO_result);
 		
 		// 페이지 이동시 session에 저장된 변수에 변경 내용을 저장해 두어야  추후에 변경된 내용을 활용할 수 있음
 		session.setAttribute("questionDAO_result", questionDAO_result);
