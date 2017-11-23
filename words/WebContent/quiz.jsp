@@ -3,18 +3,8 @@
 <!-- JSTL을 사용하기 위한 처리 -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-<!-- words_control.jsp에서 보내온 Question 객체 (새로운 문제가 담겨 있음) -->
-<jsp:useBean id="question" class="words.question.Question" scope="page"/>
-
 <!-- words_control.jsp에서 보내온 Question 객체 LinkedList (새로운 문제가 담겨 있음) -->
-<jsp:useBean id="questions" class="java.util.LinkedList" scope="request"/>
-
-<!-- 문제이력 DB로 보내기 위한 회원별 문제풀이 이력을 임시로 저장해두는 객체  -->
-<jsp:useBean id="word_history" class="java.util.ArrayList" scope="session"/>
-
-<!-- 회원별 문제 이력 데이터를 저장하는 변수 -->
-<jsp:useBean id="mwh" class="words.question.MemberWordHistory" scope="session"/>
+<jsp:useBean id="questions" class="java.util.LinkedList" scope="request" />
 
 <!DOCTYPE html>
 <html>
@@ -28,87 +18,152 @@
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
 <script>
-	window.onload = function(){
+	window.onload = function() {
+		
+		// 퀴즈를 시작할때 첫번째 문제 load
 		next_question();
 	};
 
+	// words_control.jsp에서 보내온 Question객체 LinkedList를 담아두기 위한 Array
 	var q_array = new Array();
-	var list_size = '${questions.size()}';
-	var current_answer;
-	var question_count = 0;
 	
+	// 현재 load된 문제
+	var current_question;
+	
+	// 정답 여부를 확인하기 위해 현재 load된 문제의 정답(DB에서 가져온 값)을 보관
+	var current_answer;
+	
+	// 회원별 문제풀이 이력을 저장했다가 words_control.jsp로 보내기 위해 임시보관하는 Array
+	var history_array = new Array();
+	
+	// 문제를 몇번만에 맞추었는가를 저장
+	var count_tried = 0;
+	
+	// 문제 최대 시도 가능 횟수. 3이상은 점수 산정이 같으므로 최대값을 3으로 설정
+	var MAX_TRY = 3;
+	
+	// 문제 최대 시도 가능 횟수. 3이상은 점수 산정이 같으므로 최대값을 3으로 설정
+	var TIME_LIMIT = 5;
+	
+	var intervalId1;
+	
+	// 회원별 문제풀이 이력 Array를 words_control.jsp로 보내기 위해 Json String으로 변환한 값
+	var json_string = "";
+
+	// request객체에 저장되어 있는 LinkedList(DB에서 가져온 문제)의 문제 정보를 JavaScript 변수에 저장
 	<c:forEach var="i" items="${questions}" begin="0" varStatus="status">
-		var question = {
-			'word': '${i.word}',
-			'answer': '${i.answer}',
-			'selection1': '${i.selection1}',
-			'selection2': '${i.selection2}',
-			'selection3': '${i.selection3}',
-			'selection4': '${i.selection4}',
-		};
 		
+		// 개별 문제 정보 저장
+		var question = {
+			'question_id' : '${i.question_id}',
+			'word' : '${i.word}',
+			'answer' : '${i.answer}',
+			'selection1' : '${i.selection1}',
+			'selection2' : '${i.selection2}',
+			'selection3' : '${i.selection3}',
+			'selection4' : '${i.selection4}',
+		};
+	
+		// 개별 문제를 Array에 저장
 		q_array.push(question);
 	
 	</c:forEach>
+
 	
-		console.log(JSON.stringify(q_array));
-	/* for(var i = 0; i < list_size; i++){
-		var exp_str_answer = '\${questions.get(' + i + ').answer}';
-		alert(exp_str_word);
-		var exp_result = eval(exp_str_word);
-		var exp_result = "'" + exp_str_word + "'";
-		alert(exp_result);
-		
-	} */
+	/***************************************
 	
-	var next_question = function(){
+	사용자가 다음 문제 버튼을 눌렀을 때 다음 문제를 출제하는 함수 
+	
+	****************************************/
+	var next_question = function() {
 		
-		if(q_array.length <= 0){
-			document.location.href='words_control.jsp?action=quiz&history=yes';
-		}else{
+		// 문제 시도 횟수 초기화
+		count_tried = 0;
+		
+		// 문제가 하나도 안 남아 있으면 새로운 문제를 가져오러 감
+		if (q_array.length <= 0) {
+			
+			$('#more_question_button').click();
+			
+		} else { //문제가 남아 있으면 해당 문제를 화면에 load
+			
+			// 문제를 푸는 동안 다음문제 출제 버튼과 홈으로 이동 버튼을 화면에서 제거
 			$('#next_table').remove();
+		
+			// 문제 번호의 선택 초기화 
 			$('td a').removeClass('wrong_answer');
 			$('td a').removeClass('right_answer');
-			var current_question = q_array.shift();
-			alert('size of questions before : ' + '${questions.size()}');
-			alert('size of questions before : ' + '${questions.size()}');
-			alert('question_count :' + question_count);
 			
-			if(false){
-			'${questions.poll()}';
-			S}
-			<c:set target="${mwh}" property="question_id" value="${questions[0].question_id}" >
-			</c:set>
-			alert('mwh.question_id : ' + '${mwh.question_id}');
-			alert('size of questions after : ' + '${questions.size()}');
+			// q_array에서 다음 문제를 꺼내서 load
+			current_question = q_array.shift();
 			current_answer = current_question.answer;
 			$('#table_head').html(current_question.word);
 			$('#1').html(current_question.selection1);
 			$('#2').html(current_question.selection2);
 			$('#3').html(current_question.selection3);
 			$('#4').html(current_question.selection4);
+			$('#timer').html(TIME_LIMIT);
+			$('#time_info').html(TIME_LIMIT);
+			
+			var time_remain = TIME_LIMIT;
+			
+			var intervalId1 = setInterval(function(){
+				time_remain--;
+				$('#timer').html(time_remain);
+			}, 1000);
+			
+			setTimeout(function(){
+				clearInterval(intervalId1);
+				time_remain = TIME_LIMIT;
+				$('#timer').html(time_remain);
+			}, (TIME_LIMIT) * 1000);
+			
+			intervalId2 = setInterval(function(){
+				
+				var intervalId3 = setInterval(function(){
+					time_remain--;
+					$('#timer').html(time_remain);
+				}, 1000);
+				
+				setTimeout(function(){
+					clearInterval(intervalId3);
+					time_remain = TIME_LIMIT;
+					$('#timer').html(time_remain);
+				}, TIME_LIMIT * 1000);
+				
+				increase_count_tried();
+				
+			}, TIME_LIMIT * 1000);
 		}
-		
-		question_count++;
 	};
 	
-	
-	//alert(current_question .answer + ":" + current_question .selection1+":" + current_question .selection2);
-	
-	var count_tried = 0;
-	
-	var save_history_and_go_home = function(){
-		document.location.href='words_control.jsp?action=home&history=yes';
+	var increase_count_tried = function(){
+		if(count_tried < MAX_TRY){
+			count_tried++;
+			$('#out_count').html(count_tried);
+			if(count_tried >= MAX_TRY){
+				clearInterval(intervalId2);
+			}
+		}else{
+			clearInterval(intervalId2);
+		}
 	};
 	
+	/***************************************
+	
+	 사용자가 다음 문제 버튼을 눌렀을 때 다음 문제를 출제하는 함수 
+	
+	****************************************/
 	var check_answer = function(selected_answer) {
-		//var answer = '${question.answer}';
-		
-		count_tried++;
-		
+
+		// 문제시도 횟수를 1 증가
+		if(count_tried < MAX_TRY){
+			increase_count_tried();
+		}
+
 		//오답인 경우
-		if (current_answer != selected_answer){
-			switch(selected_answer){ 
+		if (current_answer != selected_answer) {
+			switch (selected_answer) {
 			case 1:
 				$(".1>a").addClass("wrong_answer");
 				break;
@@ -121,77 +176,77 @@
 			case 4:
 				$(".4>a").addClass("wrong_answer");
 				break;
-			};
-			
-		}else{ //정답인 경우
-			
-			switch(selected_answer){ 
+			}
+			;
+
+		} else { //정답인 경우 해당 
+			clearInterval(intervalId2);
+
+			// 선택번호를 제외한 모든 선택번호 비활성화 
+			switch (selected_answer) {
 			case 1:
+				$('.2>a, .3>a, .4>a').addClass('wrong_answer');
 				$(".1>a").addClass("right_answer");
 				break;
 			case 2:
+				$('.1>a, .3>a, .4>a').addClass('wrong_answer');
 				$(".2>a").addClass("right_answer");
 				break;
 			case 3:
+				$('.1>a, .2>a, .4>a').addClass('wrong_answer');
 				$(".3>a").addClass("right_answer");
 				break;
 			case 4:
+				$('.1>a, .2>a, .3>a').addClass('wrong_answer');
 				$(".4>a").addClass("right_answer");
 				break;
 			};
-		
-			$('div').append("<table id='next_table'><tr id='next_quiz'>"
-			+"<td colspan='2'>정답입니다!!!<br>"
-					+ "<input type='button' value='다음문제' onclick='next_question()'>"
-			/* + "<form method='post' action='words_control.jsp?action=quiz&history=yes'>"
-			+ "<input type='hidden' name='question_id' value='${question.question_id}'>"
-			+ "<input type='hidden' name='count_tried' value='' id='count_tried_next'>"
-			+ "<input type='submit' value='다음문제'>"
-			+ "</form>" */
-			+ "<form method='post' action='words_control.jsp?action=home&history=yes'>"
-			+ "<input type='hidden' name='question_id' value='${question.question_id}'>"
-			+ "<input type='hidden' name='count_tried' value='' id='count_tried_home'>"
-			+ "<input type='submit' value='퀴즈그만' id='quit_button'>"
-			+ "</form>"
-			+ "</td>"
-			+ "</tr></table>");
-			$('#count_tried_next,#count_tried_home').attr('value', count_tried);
-			$('form').css('display','inline');
+			
+			
+			// 다음문제 버튼, 퀴즈 더불러오기(숨김), 그만두기 버튼을 화면에 추가. 
+			$('div')
+					.append(
+							"<table id='next_table'><tr id='next_quiz'>"
+									+ "<td colspan='2'>정답입니다!!!<br>"
+									+ "<input type='button' value='다음문제' onclick='next_question()'>"
+									
+									+ "<form id='hidden_form' method='post' action='words_control.jsp?action=quiz'>"
+									+ "<input type='hidden' name='history_array' value='' id='history_array2'>"
+									+ "<input type='submit' value='퀴즈더' id='more_question_button'>"
+									+ "</form>"
+									
+									+ "<form method='post' action='words_control.jsp?action=home'>"
+									+ "<input type='hidden' name='history_array' value='' id='history_array'>"
+									+ "<input type='submit' value='퀴즈그만' id='quit_button'>"
+									+ "</form>" + "</td>" + "</tr></table>");
+			
+			// 문제별 history 객체 생성
+			var history={
+					'member_id': '${member_id}',
+					'member_level': '${member_level}',
+					'question_id': current_question.question_id,
+					'count_tried': count_tried,
+			};
+			
+			// history객체를 array에 저장
+			history_array.push(history);
+			
+			// history가 저장된 Array객체를 words_control.jsp로 보내기 위해 String으로 변환
+			json_string =  JSON.stringify(history_array);
+			
+			// json String을 request객체에 담아 보내기 위해 입력폼에 저장
+			$('#history_array').attr('value',json_string);
+			$('#history_array2').attr('value',json_string);
+			
+			// 위에서 추가한 세개의 버튼을 한줄에 표시 
+			$('form').css('display', 'inline');
+			
+			// DB에서 가져온 문제를 다 사용했을 경우 추가로 문제를 가져오는 처리를 위한 버튼을 숨김(사용자 입력없이 자동으로 처리되므로)
+			$('#hidden_form').css('display', 'none');
 
-			//MemberWordHistory객체에 회원ID와 회원레벨 정보를 추가
-			<c:set target="${mwh}" property="member_id" value="${member_id}" />
-			<c:set target="${mwh}" property="member_level" value="${member_level}"/>
-			alert('count_tried : ' + count_tried);
-			alert('${mwh.member_id}');
-			
-			alert('mwh.count_tried' + '${mwh.count_tried}');
-			'${word_history.add(mwh)}';
-			/* alert('${word_history.get(0).member_id}');
-			alert('${word_history.get(0).count_tried}');
-			alert('${word_history.get(0).member_level}'); */
-			
-			
-			/* mwh.setMember_id(member_id);
-			mwh.setMember_level(member_level);
-			
-			// 회원이력저장 ArrayList에 MemberWordHistory객체를 추가 
-			word_history.add(mwh);
-			
-			// ArrayList를 session에 저장. 추후에 DB로 보낼때 session에서 꺼내서 보냄
-			session.setAttribute("word_history", word_history); */
 		}
 	};
-	
 </script>
-<script>
-
-</script>
-
-<style>
-</style>
-
-<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-</head>
 
 <body>
 	<header>
@@ -201,7 +256,7 @@
 	<div align="center">
 		<br>
 		<hr>
-		<h2 style="text-align: center">다음 문제에 5초내에 답하세요</h2>
+		<h2 style="text-align: center">다음 문제에 <span id="time_info"></span>초내에 답하세요</h2>
 		<hr>
 		<table id="question_table">
 			<tr>
@@ -227,7 +282,11 @@
 						4 )</a></td>
 				<td id="4">${question.selection4 }</td>
 			</tr>
-		</table><br>
+		</table>
+		
+		<h1>Out Count : <span id='out_count'>0</span></h1>
+				
+		<H1 id='timer'></H1>
 
 	</div>
 </body>

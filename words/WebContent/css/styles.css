@@ -109,8 +109,9 @@ td {
 
 a.wrong_answer{
 	pointer-events: none;
-	color:orange;
-   	cursor: default;
+/* 	color:orange;
+ */   	cursor: default;
+   	display: none;
 }
 
 a.right_answer{
