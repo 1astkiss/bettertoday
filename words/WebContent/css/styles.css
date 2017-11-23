@@ -119,3 +119,7 @@ a.right_answer{
 	color: white;
    	cursor: default;
 }
+
+.hide_element{
+	display: none;
+}
