@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="UTF-8" %>
-<%@ page import="words.question.*, words.member.*, java.util.*, java.lang.*, org.json.*" %>
+<%@ page import="words.question.*, words.member.*, java.util.*, java.lang.*, org.json.*, javax.swing.JOptionPane" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- 문제이력DB에 Access하는 객체 -->
@@ -58,7 +58,9 @@
 			mwh.setMember_level(e.getInt("member_level"));
 			mwh.setQuestion_id(e.getInt("question_id"));
 			mwh.setCount_tried(e.getInt("count_tried"));
-			
+			mwh.setWeight(e.getDouble("weight"));
+			mwh.setScore(e.getDouble("score"));
+			System.out.println("score : " + e.getDouble("score"));
 			// 회원이력저장 ArrayList에 MemberWordHistory객체를 추가 
 			word_history.add(mwh);
 		}
@@ -88,14 +90,20 @@
 		questionDAO_result.clear();
 		
 		// 문제를 가져와서 ArrayList<Qeustion>에 저장
-		questionDAO_result = questions_dao.getQuestion(member_id);
+		questionDAO_result = questions_dao.getQuestion(member_id, member_level);
 			
+		if(questionDAO_result.size() == 0){
+			pageContext.forward(home);		
+			JOptionPane.showMessageDialog(null, "not enough questions for you");
+			System.out.println("not enough questions for you");
+			return;
+		}
 		// DB에서 가져온 문제들을 request 객체에 담음 (quiz.jsp로 보내기 위해)
 		request.setAttribute("questions", questionDAO_result);
 		
 		// 문제 출제 페이지로 이동
 		pageContext.forward("quiz.jsp");
-		 
+		
 		break;
 	
 	// 메인화면으로	

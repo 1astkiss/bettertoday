@@ -2,7 +2,7 @@ CREATE
     ALGORITHM = UNDEFINED 
     DEFINER = `root`@`localhost` 
     SQL SECURITY DEFINER
-VIEW `question_weight` AS
+VIEW `questions_with_weight` AS
     SELECT 
         `qcbl`.`question_id` AS `question_id`,
         `q`.`word` AS `word`,
@@ -11,6 +11,7 @@ VIEW `question_weight` AS
         `q`.`selection3` AS `selection3`,
         `q`.`selection4` AS `selection4`,
         `q`.`answer` AS `answer`,
+        `q`.`date_created` AS `date_created`,
         (100 - ((((((((((COALESCE((SELECT 
                         `qcbl2`.`ratio_1st`
                     FROM

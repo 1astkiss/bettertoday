@@ -42,6 +42,7 @@
 			session.setAttribute("member_id", memberInfoFromDB.getMember_id());
 			session.setAttribute("can_make_question", memberInfoFromDB.getCan_make_question());
 			session.setAttribute("member_level", memberInfoFromDB.getMember_level());
+			System.out.println("member_level : " + memberInfoFromDB.getMember_level());
 			
 			// 시작페이지로 이동
 			pageContext.forward("words_main.jsp?");

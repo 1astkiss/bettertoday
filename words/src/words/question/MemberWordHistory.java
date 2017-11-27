@@ -8,6 +8,20 @@ public class MemberWordHistory {
 	private int question_id;
 	private String date_created;
 	private int count_tried;
+	private double weight;
+	private double score;
+	public double getScore() {
+		return score;
+	}
+	public void setScore(double score) {
+		this.score = score;
+	}
+	public double getWeight() {
+		return weight;
+	}
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
 	public int getHistory_id() {
 		return history_id;
 	}

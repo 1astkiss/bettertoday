@@ -29,8 +29,8 @@ public class MemberWordHistoryDAO {
 	public boolean addMemberWordHistory(ArrayList<MemberWordHistory> history) {
 
 		conn = DBManager.getConnection();
-		String sql = "insert into member_word_history(member_id, member_level, question_id, date_created, count_tried)"
-				+ " values(?,?,?,now(),?)";
+		String sql = "insert into member_word_history(member_id, member_level, question_id, date_created, count_tried, weight, score)"
+				+ " values(?,?,?,now(),?,?,?)";
 
 		try {
 			for(MemberWordHistory mwh : history ) {
@@ -39,6 +39,8 @@ public class MemberWordHistoryDAO {
 				pstmt.setInt(2, mwh.getMember_level());
 				pstmt.setInt(3, mwh.getQuestion_id());
 				pstmt.setInt(4, mwh.getCount_tried());
+				pstmt.setDouble(5, mwh.getWeight());
+				pstmt.setDouble(6, mwh.getScore());
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {

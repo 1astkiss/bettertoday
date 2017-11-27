@@ -65,6 +65,7 @@
 			'selection2' : '${i.selection2}',
 			'selection3' : '${i.selection3}',
 			'selection4' : '${i.selection4}',
+			'weight' : '${i.weight}',
 		};
 	
 		// 개별 문제를 Array에 저장
@@ -151,13 +152,31 @@
 		// 다음문제 버튼, 퀴즈 더불러오기(숨김), 그만두기 버튼을 화면에 표시. 
 		$('#next_table').removeClass('hide_element');
 		$("#answer").html(current_answer);
-				
+			
+		var score;
+		
+		switch(count_tried) {
+		case 1:
+			score = current_question.weight;
+			break;
+		case 2:
+			score = current_question.weight * 0.5;
+			break;
+		case 3:
+			score = current_question.weight * 0.5 * 0.5;
+			break;
+		default:
+			score = 0;
+		}
+		
 		// 문제별 history 객체 생성
 		var history={
 				'member_id': '${member_id}',
 				'member_level': '${member_level}',
 				'question_id': current_question.question_id,
 				'count_tried': count_tried,
+				'weight': current_question.weight,
+				'score': score,
 		};
 		
 		// history객체를 array에 저장
@@ -190,6 +209,9 @@
 			
 			// 타이머 정지
 			clearInterval(intervalId2);
+			
+			// 문제시도 횟수 증가(0점 처리를 위해 시도횟수를 4로 세팅)
+			count_tried++;
 			
 			// 문제 종료 및 정답 표시
 			mark_answer(current_answer);
@@ -268,6 +290,7 @@
 			// 시도횟수가 시도 가능횟수를 초과하면 문제를 종료하고 정답을 표시
 			if(count_tried >= MAX_TRY){
 				
+				count_tried++; // 0점 처리를 위해 시도횟수를 4로 세팅
 				mark_answer(current_answer);
 				
 			}else{

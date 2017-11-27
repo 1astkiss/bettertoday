@@ -30,7 +30,7 @@ public class Question {
 	private int answer;
 	
 	// 가중치
-	private int weight;
+	private double weight;
 	
 	// 상태 (active/inactive)
 	private int status;
@@ -107,11 +107,11 @@ public class Question {
 		this.answer = answer;
 	}
 
-	public int getWeight() {
+	public double getWeight() {
 		return weight;
 	}
 
-	public void setWeight(int weight) {
+	public void setWeight(double weight) {
 		this.weight = weight;
 	}
 
