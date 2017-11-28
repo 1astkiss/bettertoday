@@ -240,30 +240,32 @@ public class QuestionsDAO {
 				tmp_wrong_questions.add(question);
 			}
 			
-			
-			//3배수로 추출된 오답 문제중 random하게 추출
-			for(int i = 0; i < NUM_OF_WRONG; i++) {
-				System.out.println("tmp_wrong_questions.size() : " + tmp_wrong_questions.size());
-				
-				//난수 생성
-				randomInt = rand.nextInt(tmp_wrong_questions.size());
-				System.out.println("randomInt : " + randomInt);
-				
-				//3배수 문제중 선정된 문제를 문제 pool에 등록
-				tmp_questions.add(tmp_wrong_questions.get(randomInt));
-				
-				//선정된 문제를 pool에서 삭제
-				tmp_wrong_questions.remove(randomInt);
-				
-				//3배수로 추출한 문제가 오답문제수보다 적을 경우 loop 종료
-				if(tmp_wrong_questions.size()==0) {
-					break;
+			//tmp_wrong_questions.size()가 0일 경우 난수발생에서 에러가 발생하기때문...
+			if(tmp_wrong_questions.size() != 0) {
+				//3배수로 추출된 오답 문제중 random하게 추출
+				for(int i = 0; i < NUM_OF_WRONG; i++) {
+					System.out.println("tmp_wrong_questions.size() : " + tmp_wrong_questions.size());
+					
+					//난수 생성
+					randomInt = rand.nextInt(tmp_wrong_questions.size());
+					System.out.println("randomInt : " + randomInt);
+					
+					//3배수 문제중 선정된 문제를 문제 pool에 등록
+					tmp_questions.add(tmp_wrong_questions.get(randomInt));
+					
+					//선정된 문제를 pool에서 삭제
+					tmp_wrong_questions.remove(randomInt);
+					
+					//3배수로 추출한 문제가 오답문제수보다 적을 경우 loop 종료
+					if(tmp_wrong_questions.size()==0) {
+						break;
+					}
 				}
 			}
 			
 			//최근에 출제된 문제를 3배수로 추출 
 			sql = "SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id "
-					+ "FROM questions_with_weight "
+					+ "FROM questions "
 					+ "ORDER BY date_created limit 0,?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, NUM_OF_NEW * 3);
@@ -288,47 +290,52 @@ public class QuestionsDAO {
 				
 			}
 
-			//3배수로 추출된 오답 문제중 random하게 추출
-			for(int i = 0; i < NUM_OF_NEW; i++) {
-				System.out.println("tmp_new_questions.size() : " + tmp_new_questions.size());
-				
-				//난수 생성
-				randomInt = rand.nextInt(tmp_new_questions.size());
-				System.out.println("randomInt : " + randomInt);
-				
-				//3배수 문제중 선정된 문제를 문제 pool에 등록
-				tmp_questions.add(tmp_new_questions.get(randomInt));
-				
-				//선정된 문제를 pool에서 삭제
-				tmp_new_questions.remove(randomInt);
-				
-				//3배수로 추출한 문제가 오답문제수보다 적을 경우 loop 종료
-				if(tmp_new_questions.size()==0) {
-					break;
+			//tmp_new_questions.size()가 0일 경우 난수발생에서 에러가 발생하기때문...
+			if(tmp_new_questions.size() != 0) {
+				//3배수로 추출된 오답 문제중 random하게 추출
+				for(int i = 0; i < NUM_OF_NEW; i++) {
+					System.out.println("tmp_new_questions.size() : " + tmp_new_questions.size());
+					
+					//난수 생성
+					randomInt = rand.nextInt(tmp_new_questions.size());
+					System.out.println("randomInt : " + randomInt);
+					
+					//3배수 문제중 선정된 문제를 문제 pool에 등록
+					tmp_questions.add(tmp_new_questions.get(randomInt));
+					
+					//선정된 문제를 pool에서 삭제
+					tmp_new_questions.remove(randomInt);
+					
+					//3배수로 추출한 문제가 오답문제수보다 적을 경우 loop 종료
+					if(tmp_new_questions.size()==0) {
+						break;
+					}
 				}
 			}
 			
 			
-			//최종 문제를 random하게 선정
-			for(int i = 0; i < NUM_OF_QUESTIONS; i++) {
-				System.out.println("tmp_questions.size() : " + tmp_questions.size());
-				
-				//난수 생성
-				randomInt = rand.nextInt(tmp_questions.size());
-				System.out.println("randomInt : " + randomInt);
-				
-				//문제pool에서 선정된 문제를 최종 출제 문제 List에 저장
-				questions.add(tmp_questions.get(randomInt));
-				
-				//선정된 문제를 pool에서 삭제
-				tmp_questions.remove(randomInt);
-				
-				//문제 pool수가 선정 목표보다 적을 경우 loop 종료
-				if(tmp_questions.size()==0) {
-					break;
+			//tmp_questions.size()가 0일 경우 난수발생에서 에러가 발생하기때문...
+			if(tmp_questions.size() != 0) {
+				//최종 문제를 random하게 선정
+				for(int i = 0; i < NUM_OF_QUESTIONS; i++) {
+					System.out.println("tmp_questions.size() : " + tmp_questions.size());
+					
+					//난수 생성
+					randomInt = rand.nextInt(tmp_questions.size());
+					System.out.println("randomInt : " + randomInt);
+					
+					//문제pool에서 선정된 문제를 최종 출제 문제 List에 저장
+					questions.add(tmp_questions.get(randomInt));
+					
+					//선정된 문제를 pool에서 삭제
+					tmp_questions.remove(randomInt);
+					
+					//문제 pool수가 선정 목표보다 적을 경우 loop 종료
+					if(tmp_questions.size()==0) {
+						break;
+					}
 				}
 			}
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println(e.getErrorCode());
@@ -367,10 +374,11 @@ public class QuestionsDAO {
 	 public boolean newQuestion(Question question) {
 
 		conn = DBManager.getConnection();
-		String sql = "insert into questions(date_created, creator_id, word, selection1, selection2, selection3, selection4, answer)"
-				+ " values(now(),?,?,?,?,?,?,?)";
+		String sql;
 
 		try {
+			sql = "insert into questions(date_created, creator_id, word, selection1, selection2, selection3, selection4, answer)"
+					+ " values(now(),?,?,?,?,?,?,?)";
 			// query문 작성
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, question.getCreator_id());
@@ -383,6 +391,7 @@ public class QuestionsDAO {
 			
 			// 문제등록
 			pstmt.executeUpdate();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println(e.getErrorCode());

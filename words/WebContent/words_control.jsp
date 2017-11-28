@@ -94,7 +94,7 @@
 			
 		if(questionDAO_result.size() == 0){
 			pageContext.forward(home);		
-			JOptionPane.showMessageDialog(null, "not enough questions for you");
+			//JOptionPane.showMessageDialog(null, "not enough questions for you");
 			System.out.println("not enough questions for you");
 			return;
 		}
