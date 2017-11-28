@@ -5,6 +5,12 @@
 	
 }
 
+body{
+	min-width: 500px;
+	max-width: 800px;
+	margin: auto;
+}
+
 header {
 	position: relative;
 	vertical-align: middle;
@@ -18,7 +24,8 @@ header>h1 {
 	text-align: center;
 	margin: auto;
 	vertical-align: middle;
-	line-height: 50px;
+	line-height: 80px;
+	font-size : 3em;
 }
 
 nav {
@@ -29,11 +36,11 @@ nav {
 	padding-top: 0px;
 	background: #444;
 	border-bottom: 1px solid #333;
-	height: 45px;
+	height: 65px;
 }
 
 nav.menu{
-	height: 40px;
+	height: 55px;
 }
 
 nav li a, nav span, nav li{
@@ -42,11 +49,11 @@ nav li a, nav span, nav li{
 
 nav li a {
 	text-decoration: none;
+	font-size: 2em;
 }
 
 nav li a:link {
 	color:orange
-	font-size: 14px;
 }
 
 nav li a:hover {
@@ -75,13 +82,13 @@ nav ul > li {
 	padding-right:10px;
 }
 
-nav form input{
-	font-size : 12px;
-	line-height: 10px;
+input{
+	font-size : 1.5em;
+	line-height: 1.7em;
 }
 
-nav form input[type="submit"]{
-	font-size : 11px;
+input[type="submit"]{
+	font-size : 1.5em;
 }
 
 nav span {
@@ -94,17 +101,18 @@ nav span {
 }
 #table_head {
 	text-align: center;
-	font-size: 2em;
+	font-size: 3em;
 }
 
 #question_table {
 	border: 1px solid orange;
-	width: 300px;
+	width: 450px;
 }
 
 td {
 	vertical-align: middle;
 	border: 1px solid orange;
+	font-size: 2.5em;
 }
 
 a.wrong_answer{

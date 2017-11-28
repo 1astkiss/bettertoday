@@ -28,7 +28,7 @@
 	<nav>
 		<div class="menu">
 			<ul>
-				<li><a href="#">Home &nbsp;&nbsp;</a></li>
+				<!-- <li><a href="#">Home &nbsp;&nbsp;</a></li> -->
 				
 				<!-- 
 				custom tag 'login'사용 

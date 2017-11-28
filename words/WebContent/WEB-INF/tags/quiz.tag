@@ -7,7 +7,7 @@
 	<c:when test="${member_id != null }">
 		
 		<!-- 퀴즈시작 페이지 링크 -->
-		<h2 style="text-align: center"><a href="words_control.jsp?action=quiz">퀴즈 시작</a></h2>
+		<h1 style="text-align: center"><a href="words_control.jsp?action=quiz">퀴즈 시작</a></h1>
 	</c:when>
 	
 	<c:otherwise>

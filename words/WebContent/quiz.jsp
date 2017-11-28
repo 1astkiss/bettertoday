@@ -339,7 +339,7 @@ form{
 	<div align="center">
 		<br>
 		<hr>
-		<h2 style="text-align: center">다음 문제에 <span id="time_info"></span>초내에 답하세요</h2>
+		<h1 style="text-align: center">다음 문제에 <span id="time_info"></span>초내에 답하세요</h1>
 		<hr>
 		<table id="question_table">
 			<tr>
@@ -373,7 +373,7 @@ form{
 
 		<table id='next_table'>
 			<tr id='next_quiz'>
-				<td>정답은 <span id="answer"></span>번 입니다!!!</td>
+				<td align='center' valign='middle' height='40'>정답은 <span id="answer"></span>번 입니다!!!</td>
 				</tr>
 			<tr>
 				<td>
