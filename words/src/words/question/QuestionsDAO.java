@@ -21,13 +21,32 @@ public class QuestionsDAO {
 	Statement stmt;
 	ResultSet rs = null;
 	Logger logger = LoggerFactory.getLogger(MemberDAO.class);
+	
+	//회원레벨과 동일한 문제수
 	int SameLevelQuestions = 20;
+
+	//회원레벨보다 한레벨 위 문제수
 	int OneLevelUpQuestions = 15;
+	
+	//회원레벨보다 2레벨 위 문제수
 	int TwoLevelUpQuestions = 10;
+	
+	//레벨에 따른 문제 총수
 	int TotalQuestionsByLevel = SameLevelQuestions + OneLevelUpQuestions+TwoLevelUpQuestions;
+	
+	//문제별 가중치 최소값
 	int MIN_WEIGHT = 0;
+	
+	//문제별 가중치 최대값
 	int MAX_WEIGHT = 100;
-	int NUM_OF_WRONG = 5;
+	
+	//과거 오답문제 선정 갯수
+	int NUM_OF_WRONG = 15;
+	
+	//과거 오답문제 선정 갯수
+	int NUM_OF_NEW = 45;
+	
+	//최종 출제 문제 갯수
 	int NUM_OF_QUESTIONS = 10;
 
 	
@@ -39,9 +58,25 @@ public class QuestionsDAO {
 	public LinkedList<Question> getQuestion(String member_id, int member_level) {
 		conn = DBManager.getConnection();
 		String sql;
+		
+		//최종출제의 대상이 되는 문제 pool을 저장해 두는 List
 		LinkedList<Question> tmp_questions = new LinkedList<Question>();
+		
+		// 문제 pool 추출을 위한 오답문제 pool을 저장해 두는 List
+		LinkedList<Question> tmp_wrong_questions = new LinkedList<Question>();
+		
+		// 문제 pool 추출을 위한 신규등록 문제 pool을 저장해 두는 List
+		LinkedList<Question> tmp_new_questions = new LinkedList<Question>();
+		
+		//최종선정된 문제들을 저장하는 List
 		LinkedList<Question> questions = new LinkedList<Question>();
+		
+		//난수 처리를 위한 변수들
+		Random rand = new Random();
+		int randomInt = 0;
+
 		try {
+			//회원레벨과 같은 레벨 문제를 random하게 추출
 			sql = "SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id "
 					+ "FROM questions_with_weight "
 					+ "WHERE weight >= ? AND weight < ? "
@@ -69,7 +104,10 @@ public class QuestionsDAO {
 				// Question객체를 LinkedList에 추가
 				tmp_questions.add(question);
 			}
+			System.out.println("tmp_questions.size() : " + tmp_questions.size());
+
 			
+			//회원레벨보다 1레벨 위 문제를 random하게 추출
 			sql = "SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id "
 					+ "FROM questions_with_weight "
 					+ "WHERE weight >= ? AND weight < ? "
@@ -97,7 +135,9 @@ public class QuestionsDAO {
 				// Question객체를 LinkedList에 추가
 				tmp_questions.add(question);
 			}
-			
+			System.out.println("tmp_questions.size() : " + tmp_questions.size());
+
+			//회원레벨보다 2레벨 위 문제를 random하게 추출
 			sql = "SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id "
 					+ "FROM questions_with_weight "
 					+ "WHERE weight >= ? AND weight < ? "
@@ -125,7 +165,9 @@ public class QuestionsDAO {
 				// Question객체를 LinkedList에 추가
 				tmp_questions.add(question);
 			}
-			
+			System.out.println("tmp_questions.size() : " + tmp_questions.size());
+
+			//회원레벨(동일, 1, 2레벨 위)에 따른 문제 추출 갯수가 출제 목표 수보다 적을 경우 레벨에 관계없이 random하게 추출
 			if(tmp_questions.size() < TotalQuestionsByLevel) {
 				sql = "SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id "
 						+ "FROM questions_with_weight "
@@ -155,7 +197,9 @@ public class QuestionsDAO {
 					tmp_questions.add(question);
 				}
 			}
-			
+			System.out.println("tmp_questions.size() : " + tmp_questions.size());
+
+			//최근에 틀린(1차시도 오답) 문제를 오답 출제수의 3배수만큼 추출한 후 그 중에서 random하게 추출
 			sql = "SELECT " + 
 					"        `mwh`.`question_id` AS `question_id`," + 
 					"        `q`.`word` AS `word`,\n" + 
@@ -171,7 +215,7 @@ public class QuestionsDAO {
 					"    WHERE " + 
 					"        (`mwh`.`count_tried` > 1) "
 					+ "AND `mwh`.`member_id` = ?"
-					+ "ORDER BY rand() limit 0,?";
+					+ "ORDER BY `mwh`.`date_created` limit 0,?";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, member_id);
@@ -193,19 +237,98 @@ public class QuestionsDAO {
 				question.setQuestion_id(rs.getInt("question_id"));
 				
 				// Question객체를 LinkedList에 추가
-				tmp_questions.add(question);
+				tmp_wrong_questions.add(question);
 			}
 			
-			Random rand = new Random();
-			int randomInt = 0;
 			
-			while(tmp_questions.size() > NUM_OF_QUESTIONS) {
+			//3배수로 추출된 오답 문제중 random하게 추출
+			for(int i = 0; i < NUM_OF_WRONG; i++) {
+				System.out.println("tmp_wrong_questions.size() : " + tmp_wrong_questions.size());
 				
-				randomInt = rand.nextInt(tmp_questions.size()) + 1;
-				tmp_questions.remove(randomInt);
+				//난수 생성
+				randomInt = rand.nextInt(tmp_wrong_questions.size());
+				System.out.println("randomInt : " + randomInt);
+				
+				//3배수 문제중 선정된 문제를 문제 pool에 등록
+				tmp_questions.add(tmp_wrong_questions.get(randomInt));
+				
+				//선정된 문제를 pool에서 삭제
+				tmp_wrong_questions.remove(randomInt);
+				
+				//3배수로 추출한 문제가 오답문제수보다 적을 경우 loop 종료
+				if(tmp_wrong_questions.size()==0) {
+					break;
+				}
+			}
+			
+			//최근에 출제된 문제를 3배수로 추출 
+			sql = "SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id "
+					+ "FROM questions_with_weight "
+					+ "ORDER BY date_created limit 0,?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, NUM_OF_NEW * 3);
+			System.out.println("pstmt at QuestionsDao : " + pstmt);
+			rs = pstmt.executeQuery();
+
+			// 위에서 조회한 문제별로 Question object를 생성하여 LinkedList에 추가
+			while (rs.next()) {
+				Question question = new Question();
+				
+				question.setWord(rs.getString("word"));
+				question.setSelection1(rs.getString("selection1"));
+				question.setSelection2(rs.getString("selection2"));
+				question.setSelection3(rs.getString("selection3"));
+				question.setSelection4(rs.getString("selection4"));
+				question.setAnswer(rs.getInt("answer"));
+				question.setWeight(rs.getDouble("weight"));
+				question.setQuestion_id(rs.getInt("question_id"));
+				
+				// Question객체를 LinkedList에 추가
+				tmp_new_questions.add(question);
 				
 			}
 
+			//3배수로 추출된 오답 문제중 random하게 추출
+			for(int i = 0; i < NUM_OF_NEW; i++) {
+				System.out.println("tmp_new_questions.size() : " + tmp_new_questions.size());
+				
+				//난수 생성
+				randomInt = rand.nextInt(tmp_new_questions.size());
+				System.out.println("randomInt : " + randomInt);
+				
+				//3배수 문제중 선정된 문제를 문제 pool에 등록
+				tmp_questions.add(tmp_new_questions.get(randomInt));
+				
+				//선정된 문제를 pool에서 삭제
+				tmp_new_questions.remove(randomInt);
+				
+				//3배수로 추출한 문제가 오답문제수보다 적을 경우 loop 종료
+				if(tmp_new_questions.size()==0) {
+					break;
+				}
+			}
+			
+			
+			//최종 문제를 random하게 선정
+			for(int i = 0; i < NUM_OF_QUESTIONS; i++) {
+				System.out.println("tmp_questions.size() : " + tmp_questions.size());
+				
+				//난수 생성
+				randomInt = rand.nextInt(tmp_questions.size());
+				System.out.println("randomInt : " + randomInt);
+				
+				//문제pool에서 선정된 문제를 최종 출제 문제 List에 저장
+				questions.add(tmp_questions.get(randomInt));
+				
+				//선정된 문제를 pool에서 삭제
+				tmp_questions.remove(randomInt);
+				
+				//문제 pool수가 선정 목표보다 적을 경우 loop 종료
+				if(tmp_questions.size()==0) {
+					break;
+				}
+			}
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.out.println(e.getErrorCode());

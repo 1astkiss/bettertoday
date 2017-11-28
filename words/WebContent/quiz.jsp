@@ -210,15 +210,18 @@
 			// 타이머 정지
 			clearInterval(intervalId2);
 			
+			// 문제시도 횟수 표시
+			$('#out_count').html(count_tried);
+			
 			// 문제시도 횟수 증가(0점 처리를 위해 시도횟수를 4로 세팅)
 			count_tried++;
 			
 			// 문제 종료 및 정답 표시
 			mark_answer(current_answer);
-		}	
-		
-		// 문제시도 횟수 표시
-		$('#out_count').html(count_tried);
+		}else{	
+			// 문제시도 횟수 표시
+			$('#out_count').html(count_tried);
+		}
 	};
 	
 	

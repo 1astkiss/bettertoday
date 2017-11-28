@@ -19,56 +19,56 @@ VIEW `questions_with_weight` AS
                     WHERE
                         ((`qcbl`.`question_id` = `qcbl2`.`question_id`)
                             AND (`qcbl2`.`member_level` = 1))),
-                0) * 0.09) * 2) + ((COALESCE((SELECT 
+                0) * 0.292) * 1) + ((COALESCE((SELECT 
                         `qcbl2`.`ratio_1st`
                     FROM
                         `question_correct_by_level` `qcbl2`
                     WHERE
                         ((`qcbl`.`question_id` = `qcbl2`.`question_id`)
                             AND (`qcbl2`.`member_level` = 2))),
-                0) * 0.08) * 2)) + ((COALESCE((SELECT 
+                0) * 0.228) * 1)) + ((COALESCE((SELECT 
                         `qcbl2`.`ratio_1st`
                     FROM
                         `question_correct_by_level` `qcbl2`
                     WHERE
                         ((`qcbl`.`question_id` = `qcbl2`.`question_id`)
                             AND (`qcbl2`.`member_level` = 3))),
-                0) * 0.07) * 2)) + ((COALESCE((SELECT 
+                0) * 0.172) * 1)) + ((COALESCE((SELECT 
                         `qcbl2`.`ratio_1st`
                     FROM
                         `question_correct_by_level` `qcbl2`
                     WHERE
                         ((`qcbl`.`question_id` = `qcbl2`.`question_id`)
                             AND (`qcbl2`.`member_level` = 4))),
-                0) * 0.06) * 2)) + ((COALESCE((SELECT 
+                0) * 0.124) * 1)) + ((COALESCE((SELECT 
                         `qcbl2`.`ratio_1st`
                     FROM
                         `question_correct_by_level` `qcbl2`
                     WHERE
                         ((`qcbl`.`question_id` = `qcbl2`.`question_id`)
                             AND (`qcbl2`.`member_level` = 5))),
-                0) * 0.05) * 2)) + ((COALESCE((SELECT 
+                0) * 0.084) * 1)) + ((COALESCE((SELECT 
                         `qcbl2`.`ratio_1st`
                     FROM
                         `question_correct_by_level` `qcbl2`
                     WHERE
                         ((`qcbl`.`question_id` = `qcbl2`.`question_id`)
                             AND (`qcbl2`.`member_level` = 6))),
-                0) * 0.04) * 2)) + ((COALESCE((SELECT 
+                0) * 0.052) * 1)) + ((COALESCE((SELECT 
                         `qcbl2`.`ratio_1st`
                     FROM
                         `question_correct_by_level` `qcbl2`
                     WHERE
                         ((`qcbl`.`question_id` = `qcbl2`.`question_id`)
                             AND (`qcbl2`.`member_level` = 7))),
-                0) * 0.03) * 2)) + ((COALESCE((SELECT 
+                0) * 0.028) * 1)) + ((COALESCE((SELECT 
                         `qcbl2`.`ratio_1st`
                     FROM
                         `question_correct_by_level` `qcbl2`
                     WHERE
                         ((`qcbl`.`question_id` = `qcbl2`.`question_id`)
                             AND (`qcbl2`.`member_level` = 8))),
-                0) * 0.02) * 2)) + ((COALESCE((SELECT 
+                0) * 0.012) * 1)) + ((COALESCE((SELECT 
                         `qcbl2`.`ratio_1st`
                     FROM
                         (`question_correct_by_level` `qcbl2`
@@ -76,7 +76,7 @@ VIEW `questions_with_weight` AS
                     WHERE
                         ((`qcbl`.`question_id` = `qcbl2`.`question_id`)
                             AND (`qcbl2`.`member_level` = 9))),
-                0) * 0.01) * 2))) AS `weight`
+                0) * 0.004) * 1))) AS `weight`
     FROM
         (`question_correct_by_level` `qcbl`
         JOIN `questions` `q`)
