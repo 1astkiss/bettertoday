@@ -339,7 +339,7 @@ form{
 	<div align="center">
 		<br>
 		<hr>
-		<h1 style="text-align: center">다음 문제에 <span id="time_info"></span>초내에 답하세요</h1>
+		<h1 style="text-align: center; margin: 5px">다음 문제에 <span id="time_info"></span>초내에 답하세요</h2>
 		<hr>
 		<table id="question_table">
 			<tr>
@@ -377,7 +377,7 @@ form{
 				</tr>
 			<tr>
 				<td>
-					<input type='button' value='다음문제' onclick='next_question()'>
+					<input class='quiz_control' type='button' value='다음문제' onclick='next_question()'>
 		
 					<form class='hide_element' method='post' action='words_control.jsp?action=quiz'>
 						<input type='hidden' name='history_array' value='' id='history_array2'>
@@ -386,7 +386,7 @@ form{
 		
 					<form method='post' action='words_control.jsp?action=home'>
 						<input type='hidden' name='history_array' value='' id='history_array'>
-						<input type='submit' value='퀴즈그만' id='quit_button'>
+						<input class='quiz_control' type='submit' value='퀴즈그만' id='quit_button'>
 					</form>
 				</td>
 			</tr>

@@ -49,7 +49,6 @@
 	</nav>
 	<div align="center">
 		<br>
-		<hr>
 		
 		<!-- 
 		custom tag 'quiz' 사용
@@ -57,7 +56,6 @@
 		. 회원이 로그인하지 않은 상태일 경우 : Welcome Message 출력
 		 -->
 		<words:quiz />
-		<hr>
 	</div>
 </body>
 </html>

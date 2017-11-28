@@ -2,11 +2,11 @@
 	/* 	border:1px solid black;
  */
  font-family: 'Malgun Gothic', sans-serif;
-	
+ 
 }
 
 body{
-	min-width: 500px;
+	min-width: 600px;
 	max-width: 800px;
 	margin: auto;
 }
@@ -24,8 +24,8 @@ header>h1 {
 	text-align: center;
 	margin: auto;
 	vertical-align: middle;
-	line-height: 80px;
-	font-size : 3em;
+	line-height: 60px;
+	font-size : 2.5em;
 }
 
 nav {
@@ -36,11 +36,11 @@ nav {
 	padding-top: 0px;
 	background: #444;
 	border-bottom: 1px solid #333;
-	height: 65px;
+	height: 60px;
 }
 
 nav.menu{
-	height: 55px;
+	height: 50px;
 }
 
 nav li a, nav span, nav li{
@@ -49,7 +49,7 @@ nav li a, nav span, nav li{
 
 nav li a {
 	text-decoration: none;
-	font-size: 2em;
+	font-size: 1.8em;
 }
 
 nav li a:link {
@@ -83,12 +83,8 @@ nav ul > li {
 }
 
 input{
-	font-size : 1.5em;
-	line-height: 1.7em;
-}
-
-input[type="submit"]{
-	font-size : 1.5em;
+	font-size : 1.4em;
+	line-height: 1.5em;
 }
 
 nav span {
@@ -101,7 +97,7 @@ nav span {
 }
 #table_head {
 	text-align: center;
-	font-size: 3em;
+	font-size: 2.5em;
 }
 
 #question_table {
@@ -112,7 +108,7 @@ nav span {
 td {
 	vertical-align: middle;
 	border: 1px solid orange;
-	font-size: 2.5em;
+	font-size: 2em;
 }
 
 a.wrong_answer{
@@ -130,4 +126,22 @@ a.right_answer{
 
 .hide_element{
 	display: none;
+}
+
+.quiz_control{
+	font-size : 1em;
+	line-height: 1.1em;
+}
+
+hr {
+	width: 60%;
+	size: 3px;
+	min-width:450px;
+}
+
+.info{
+	width:60%;
+	text-align: left;
+	list-style: square inside;
+	min-width:400px;
 }
