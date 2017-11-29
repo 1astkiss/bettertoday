@@ -244,11 +244,11 @@ public class QuestionsDAO {
 			if(tmp_wrong_questions.size() != 0) {
 				//3배수로 추출된 오답 문제중 random하게 추출
 				for(int i = 0; i < NUM_OF_WRONG; i++) {
-					System.out.println("tmp_wrong_questions.size() : " + tmp_wrong_questions.size());
+					//System.out.println("tmp_wrong_questions.size() : " + tmp_wrong_questions.size());
 					
 					//난수 생성
 					randomInt = rand.nextInt(tmp_wrong_questions.size());
-					System.out.println("randomInt : " + randomInt);
+					//System.out.println("randomInt : " + randomInt);
 					
 					//3배수 문제중 선정된 문제를 문제 pool에 등록
 					tmp_questions.add(tmp_wrong_questions.get(randomInt));
@@ -294,11 +294,11 @@ public class QuestionsDAO {
 			if(tmp_new_questions.size() != 0) {
 				//3배수로 추출된 오답 문제중 random하게 추출
 				for(int i = 0; i < NUM_OF_NEW; i++) {
-					System.out.println("tmp_new_questions.size() : " + tmp_new_questions.size());
+					//System.out.println("tmp_new_questions.size() : " + tmp_new_questions.size());
 					
 					//난수 생성
 					randomInt = rand.nextInt(tmp_new_questions.size());
-					System.out.println("randomInt : " + randomInt);
+					//System.out.println("randomInt : " + randomInt);
 					
 					//3배수 문제중 선정된 문제를 문제 pool에 등록
 					tmp_questions.add(tmp_new_questions.get(randomInt));
@@ -318,11 +318,11 @@ public class QuestionsDAO {
 			if(tmp_questions.size() != 0) {
 				//최종 문제를 random하게 선정
 				for(int i = 0; i < NUM_OF_QUESTIONS; i++) {
-					System.out.println("tmp_questions.size() : " + tmp_questions.size());
+					//System.out.println("tmp_questions.size() : " + tmp_questions.size());
 					
 					//난수 생성
 					randomInt = rand.nextInt(tmp_questions.size());
-					System.out.println("randomInt : " + randomInt);
+					//System.out.println("randomInt : " + randomInt);
 					
 					//문제pool에서 선정된 문제를 최종 출제 문제 List에 저장
 					questions.add(tmp_questions.get(randomInt));

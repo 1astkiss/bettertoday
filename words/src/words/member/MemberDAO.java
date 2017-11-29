@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -67,6 +68,7 @@ public class MemberDAO {
 		
 		String sql;
 		System.out.println("member_id : " + member_id);
+		int new_member_level = 0;
 		
 		try {
 			//회원 기본 정보 가져오기
@@ -79,7 +81,23 @@ public class MemberDAO {
 			result.setMember_id(member_id);
 			result.setPasswd(rs.getString("passwd"));
 			result.setCan_make_question(rs.getInt("can_make_question"));
-			//문제풀이 이력이 없는 가입자의 경우 기본 레벨 세팅
+			
+			int member_level_from_member_table = rs.getInt("member_level");
+			int member_level_from_wmws_table = chkMemberLevel(member_id);
+			System.out.println("member_level_from_wmws_table : " + member_level_from_wmws_table);
+			
+			if(member_level_from_wmws_table == 0) {
+				new_member_level = member_level_from_member_table;
+			}else if(member_level_from_wmws_table == member_level_from_member_table){
+				new_member_level = member_level_from_member_table;
+			}else {
+				new_member_level = member_level_from_wmws_table;
+				setMemberLevel(member_id, member_level_from_wmws_table);
+			}
+			
+			result.setMember_level(new_member_level);
+			
+			/*//문제풀이 이력이 없는 가입자의 경우 기본 레벨 세팅
 			result.setMember_level(rs.getInt("member_level"));
 			
 			//문제풀이 이력이 있는 가입자의 경우 이력에 따른 레벨 세팅
@@ -89,6 +107,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs != null) {
+				System.out.println(new Date() + ": rs at MemberDAO not null");
 				rs.next();
 				
 				double[] avgArray = {rs.getDouble("avg_30"), rs.getDouble("avg_31_to_60") * 0.9, rs.getDouble("avg_61_to_90") * 0.8, rs.getDouble("avg_91_plus")* 0.7};
@@ -115,12 +134,17 @@ public class MemberDAO {
 				else member_level = 9;
 				
 				result.setMember_level(member_level);
-			}
+			}else {
+				System.out.println(new Date() + ": rs at MemberDAO null");
+			}*/
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			try {
+				if(rs != null) {
+					rs.close();
+				}
 				pstmt.close();
 				conn.close();
 			}catch(SQLException e) {
@@ -129,6 +153,101 @@ public class MemberDAO {
 		}
 		
 		return result;
+	}
+	
+	public int chkMemberLevel(String member_id) {
+		
+		conn = DBManager.getConnection();
+		String sql;
+		int member_level = 0;
+		System.out.println("member_id : " + member_id);
+		
+		try {
+			sql = "select avg_30, avg_31_to_60, avg_61_to_90, avg_91_plus from words_member_with_score where member_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs != null) {
+				rs.next();
+				double[] avgArray = {rs.getDouble("avg_30"), rs.getDouble("avg_31_to_60") * 0.9, rs.getDouble("avg_61_to_90") * 0.8, rs.getDouble("avg_91_plus")* 0.7};
+				double avgTotal = 0;
+				double avgFinal = 0;
+				int avgCount = 0;
+				for(int i = 0; i < avgArray.length; i++) {
+					if(avgArray[i] != 0) {
+						avgTotal += avgArray[i];
+						avgCount++;
+					}
+				}
+				
+				//avgCount가 0일 경우 0으로 나누게 되는 문제 해결
+				if (avgCount != 0) {
+					avgFinal = avgTotal / avgCount;
+				}
+				
+				System.out.println("avgFinal : " + avgFinal);
+				if(avgFinal < 20) member_level = 1;
+				else if(avgFinal < 30) member_level = 2;
+				else if(avgFinal < 40) member_level = 3;
+				else if(avgFinal < 50) member_level = 4;
+				else if(avgFinal < 60) member_level = 5;
+				else if(avgFinal < 70) member_level = 6;
+				else if(avgFinal < 80) member_level = 7;
+				else if(avgFinal < 90) member_level = 8;
+				else member_level = 9;
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				pstmt.close();
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return member_level;
+	}
+	
+	public boolean setMemberLevel(String member_id, int member_level) {
+		
+		conn = DBManager.getConnection();
+		String sql;
+		System.out.println("member_id : " + member_id);
+		int rows_updated = 0;
+		
+		try {
+			sql = "UPDATE words_member set member_level = ? where member_id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, member_level);
+			pstmt.setString(2, member_id);
+			rows_updated = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				pstmt.close();
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if (rows_updated == 0) {
+			return false;
+		}else {
+			return true;
+		}
 	}
 }
 	

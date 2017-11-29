@@ -9,6 +9,8 @@
 <!-- 문제DB에 Access하는 객체 -->
 <jsp:useBean id="questions_dao" class="words.question.QuestionsDAO" />
 
+<jsp:useBean id="mdao" class="words.member.MemberDAO" />
+
 <!-- (새로이 만들어진)문제 하나를 담아두는 객체 -->
 <jsp:useBean id="question" class="words.question.Question">
 	<!-- 새로운 문제출제 페이지에서 넘어온 데이타를 question 객체에 저장 -->
@@ -82,6 +84,18 @@
 				
 				// 저장이 완료된 이력정보 ArrayList를 비움
 				word_history.clear();
+				
+				// update된 이력정보를 바탕으로 신규 member_level 산정
+				int newMemberLevel = mdao.chkMemberLevel(member_id);
+				
+				//신규 member_level 산정에 실패한 경우
+				if(newMemberLevel == 0){
+					
+					//신규 member_level 산정에 성공한 경우	
+				}else if(mdao.setMemberLevel(member_id, newMemberLevel)){
+					//session객체의 member_level update
+					session.setAttribute("member_level", newMemberLevel);
+				}
 			}
 			
 		}
@@ -117,6 +131,18 @@
 			
 				// 저장이 완료된 이력정보 ArrayList를 비움
 				word_history.clear();
+				
+				// update된 이력정보를 바탕으로 신규 member_level 산정
+				int newMemberLevel = mdao.chkMemberLevel(member_id);
+				
+				//신규 member_level 산정에 실패한 경우
+				if(newMemberLevel == 0){
+					
+					//신규 member_level 산정에 성공한 경우	
+				}else if(mdao.setMemberLevel(member_id, newMemberLevel)){
+					//session객체의 member_level update
+					session.setAttribute("member_level", newMemberLevel);
+				}
 			}
 			
 		}

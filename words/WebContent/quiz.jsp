@@ -233,6 +233,23 @@
 	****************************************/
 	var count_down = function(){
 		
+		var time_remain = TIME_LIMIT;
+		$('#timer').html(time_remain);
+		
+		// 1초마다 남은 시간을 감소시킴
+		intervalId2 = setInterval(function(){
+			$('#timer').html(--time_remain);
+			
+			if(time_remain == 0){
+				time_remain = TIME_LIMIT;
+				increase_count_tried(); //제한시간이 경과하면 시도횟수 1증가
+				$('#timer').html(time_remain);
+			}
+		}, 1000);
+		
+	};
+	/* var count_down = function(){
+		
 		// intervalId2가 작동시작하는데 5초가 걸리므로 처음 5초간 처리를 위한 코드
 		count_down_sub();
 		
@@ -243,7 +260,7 @@
 			increase_count_tried(); //제한시간이 경과하면 시도횟수 1증가
 
 		}, TIME_LIMIT * 1000);
-	};
+	}; */
 	
 	/***************************************
 	
@@ -263,7 +280,6 @@
 		
 		// 제한시간이 지나면 위에서 설정한 interval을 해제
 		setTimeout(function(){
-			
 			clearInterval(intervalId1); //intervaId1을 해제
 			time_remain = TIME_LIMIT; //남은시간 초기화  
 			$('#timer').html(time_remain); //남은시간 표시
