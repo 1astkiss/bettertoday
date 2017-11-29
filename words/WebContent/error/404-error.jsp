@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div align="center">
-		<h2>words: 404-error 발생![web.xml 지정]</h2>
+		<h2>words: 404-error 발생!</h2>
 		<hr>
 
 		<table>
@@ -24,6 +24,8 @@
 				</td>
 			</tr>
 		</table>
+		
+		<h3><a href="words_control.jsp?action=home">시작화면으로 가기 </a></h3>
 	</div>
 </body>
 </html>

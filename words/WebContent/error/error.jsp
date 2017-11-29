@@ -14,7 +14,7 @@
 
 		<table>
 			<tr width="100%" bgcolor="orange">
-				<td>관리자에게 문의해주세요<br> 빠른 시일내에 복구하겠습니다.
+				<td>관리자(bettertoday@gmail.com)에게 문의해주세요<br> 빠른 시일내에 해결하겠습니다.
 				</td>
 			</tr>
 
@@ -27,6 +27,8 @@
 				</td>
 			</tr>
 		</table>
+		
+		<h3><a href="words_control.jsp?action=home">시작화면으로 가기 </a></h3>
 	</div>
 </body>
 </html>

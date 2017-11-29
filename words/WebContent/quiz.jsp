@@ -353,9 +353,8 @@ form{
 	</header>
 
 	<div align="center">
-		<br>
 		<hr>
-		<h1 style="text-align: center; margin: 5px">다음 문제에 <span id="time_info"></span>초내에 답하세요</h2>
+		<h1 style="text-align: center; margin: 0px;">다음 문제에 <span id="time_info"></span>초내에 답하세요</h2>
 		<hr>
 		<table id="question_table">
 			<tr>
@@ -383,9 +382,9 @@ form{
 			</tr>
 		</table>
 		
-		<h1>Out Count : <span id='out_count'>0</span></h1>
+		<h1 style="margin:0.2em;">Out Count : <span id='out_count'>0</span></h1>
 				
-		<H1 id='timer'></H1>
+		<H1 id='timer' style="margin:0.2em;"></H1>
 
 		<table id='next_table'>
 			<tr id='next_quiz'>
