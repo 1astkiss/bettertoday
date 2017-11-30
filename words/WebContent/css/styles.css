@@ -6,7 +6,8 @@
 }
 
 body{
-	min-width: 600px;
+	width: 100%
+	min-width: 400px;
 	max-width: 800px;
 	margin: auto;
 }
@@ -25,7 +26,7 @@ header>h1 {
 	margin: auto;
 	vertical-align: middle;
 	line-height: 60px;
-	font-size : 2.5em;
+	font-size : 2.0em;
 }
 
 nav {
@@ -36,20 +37,21 @@ nav {
 	padding-top: 0px;
 	background: #444;
 	border-bottom: 1px solid #333;
-	height: 60px;
+	height: 53px;
 }
 
 nav.menu{
-	height: 50px;
+	height: 40px;
 }
 
 nav li a, nav span, nav li{
 	color:orange;
+	
 }
 
 nav li a {
 	text-decoration: none;
-	font-size: 1.8em;
+	font-size: 1.2em;
 }
 
 nav li a:link {
@@ -60,10 +62,11 @@ nav li a:hover {
 	color: #fff;
 }
 
+
 nav ul {
 	position: relative;
 	margin: 0px;
-	padding-left : 10px;
+	padding-left : 5px;
 }
 
 nav ul li {
@@ -74,7 +77,7 @@ nav ul li {
 }
 
 nav ul > li {
-	padding-top: 10px;
+	padding-top: 15px;
 }
 
 .nav_menu_right{
@@ -83,8 +86,19 @@ nav ul > li {
 }
 
 input{
-	font-size : 1.4em;
-	line-height: 1.5em;
+	font-size : 1.0em;
+	line-height: 1.1em;
+}
+
+input[type="submit, button"]{
+	font-size : 0.6em;
+	line-height : 0.9em;
+	height:1.9em;
+	margin-top: -0.3em;
+}
+
+label{
+	font-size : 0.8em
 }
 
 nav span {
@@ -102,14 +116,19 @@ nav span {
 
 #question_table {
 	border: 1px solid orange;
-	width: 450px;
+	width: 350px;
 }
 
 td {
 	vertical-align: middle;
 	border: 1px solid orange;
 	padding: 5px;
-	font-size: 1.8em;
+	font-size: 1.6em;
+}
+
+td a, td a:visited {
+	color: #666;
+	text-decoration: none;
 }
 
 a.wrong_answer{
@@ -135,19 +154,47 @@ a.right_answer{
 }
 
 hr {
-	width: 60%;
+	width: 90%;
 	size: 10px;
-	min-width:450px;
 	margin: 1em;
 }
 
 .info{
-	width:60%;
-	text-align: left;
-	list-style: square inside;
-	min-width:400px;
+	width:85%;
+	text-align: center;
+	list-style: none inside;
 }
 
 textarea{
-	font-size: 0.7em;
+	font-size: 0.6em;
+}
+
+.ta_word{
+	height: 2.5em;
+	width: 15em;
+}
+
+.ta_selection{
+	height: 2.5em;
+	width: 14em;
+}
+
+@media screen and (max-width: 500px) {
+	input[type="text"]{
+		width : 75px;
+	}
+	
+	input[type="password"]{
+		width : 75px;
+	}
+}
+
+@media screen and (min-width: 501px) {
+	input[type="text"]{
+		width : 100px;
+	}
+	
+	input[type="password"]{
+		width : 100px;
+	}
 }

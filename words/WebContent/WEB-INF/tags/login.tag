@@ -19,7 +19,7 @@
 		<li class="nav_menu_right">
 			<form name="loginform" method="post" action="member_control.jsp">
 				<input type="hidden" name="action" value="logout"> 
-				<input type="submit" value="로그아웃">
+				<input type="submit" value="로그아웃" style="width:80px">
 			</form>
 		</li>
 		
@@ -35,9 +35,9 @@
 		<li class="nav_menu_right">
 			<form name="loginform" method="post" action="member_control.jsp">
 				<input type="hidden" name="action" value="login">
-				<input type="text" name="member_id" placeholder="ID" size="12">
-				<input type="password" name="passwd" placeholder="password" size="12">
-				<input type="submit" value="로그인">
+				<input type="text" name="member_id" placeholder="ID" >
+				<input type="password" name="passwd" placeholder="password" >
+				<input type="submit" value="로그인" style="width:60px">
 			</form>
 		</li>
 	</c:otherwise>

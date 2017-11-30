@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" 
+content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>words Error Page</title>
 </head>
 <jsp:useBean id="now" class="java.util.Date" />
@@ -28,7 +30,7 @@
 			</tr>
 		</table>
 		
-		<h3><a href="words_control.jsp?action=home">시작화면으로 가기 </a></h3>
+		<h3><a href="words_main.jsp">시작화면으로 가기 </a></h3>
 	</div>
 </body>
 </html>

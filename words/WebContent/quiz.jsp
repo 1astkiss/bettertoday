@@ -10,6 +10,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" 
+content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Quiz Page</title>
 <link rel="stylesheet" href="css/styles.css" type="text/css"
 	media="screen" />
@@ -354,7 +356,7 @@ form{
 
 	<div align="center">
 		<hr>
-		<h1 style="text-align: center; margin: 0px;">다음 문제에 <span id="time_info"></span>초내에 답하세요</h2>
+		<h2 style="text-align: center; margin: 0px;">다음 문제에 <span id="time_info"></span>초내에 답하세요</h2>
 		<hr>
 		<table id="question_table">
 			<tr>
@@ -388,7 +390,7 @@ form{
 
 		<table id='next_table'>
 			<tr id='next_quiz'>
-				<td align='center' valign='middle' height='40'>정답은 <span id="answer"></span>번 입니다!!!</td>
+				<td align='center' valign='middle' height='30'>정답은 <span id="answer"></span>번 입니다!!!</td>
 				</tr>
 			<tr>
 				<td>

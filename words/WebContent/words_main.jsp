@@ -11,10 +11,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" 
+content="width=device-width, initial-scale=1, maximum-scale=1, 
+minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
 <title>My words</title>
 <link rel="stylesheet" href="css/styles.css" type="text/css"
 	media="screen" />
-
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
@@ -22,7 +26,7 @@
 
 <body>
 	<header>
-		<h1>My Simple Words</h1>
+		<h1>SJ Words</h1>
 	</header>
 
 	<nav>
