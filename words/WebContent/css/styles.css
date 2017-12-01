@@ -23,9 +23,10 @@ header>h1 {
 	color: #ffffff;
 	background-color: orange;
 	text-align: center;
-	margin: auto;
+	margin: 0;
+	padding-top: 5px;
 	vertical-align: middle;
-	line-height: 60px;
+	line-height: 45px;
 	font-size : 2.0em;
 }
 
@@ -119,6 +120,12 @@ nav span {
 	width: 350px;
 }
 
+#new_member_table {
+	border: 1px solid orange;
+	width: 90%;
+	font-size: 0.6em;
+}
+
 td {
 	vertical-align: middle;
 	border: 1px solid orange;
@@ -179,6 +186,7 @@ textarea{
 	width: 14em;
 }
 
+
 @media screen and (max-width: 500px) {
 	input[type="text"]{
 		width : 75px;
@@ -187,6 +195,17 @@ textarea{
 	input[type="password"]{
 		width : 75px;
 	}
+	
+	#new_member_table {
+		border: 1px solid orange;
+		width: 90%;
+		font-size: 0.6em;
+	}
+	
+	#new_member_table input{
+		width: 190px;
+	}
+	
 }
 
 @media screen and (min-width: 501px) {
@@ -197,8 +216,21 @@ textarea{
 	input[type="password"]{
 		width : 100px;
 	}
+	
+	#new_member_table {
+		border: 1px solid orange;
+		width: 450px;
+		font-size: 0.8em;
+	}
+	
+	#new_member_table input{
+		width: 300px;
+	}
+	
 }
 
 span.tiny_font{
 	font-size: 0.2em;
 }
+
+

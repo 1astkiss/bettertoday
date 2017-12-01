@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:useBean id="member" class="words.member.Member" >
-	// 신규회원 가입페이지에서 넘어온 데이타를 member객체에 저장
+	<!-- 신규회원 가입페이지에서 넘어온 데이타를 member객체에 저장 -->
 	<jsp:setProperty name="member" property="*" />
 </jsp:useBean>
 
@@ -24,6 +24,7 @@
 			// 성공시 회원가입 성공 안내페이지로 이동
 			response.sendRedirect("add_member_success.jsp");
 		}else{
+			System.out.println("member add failed...");
 			out.println("<script>document.write()'같은 아이디가 있네요...'); history.go(-1);</script>");
 		}
 		

@@ -17,8 +17,6 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 	media="screen" />
 
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
-<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-
 <script>
 	window.onload = function() {
 		

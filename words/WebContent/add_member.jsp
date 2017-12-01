@@ -5,7 +5,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" 
-content="width=device-width, initial-scale=1, maximum-scale=1">
+content="width=device-width, initial-scale=1, maximum-scale=1, 
+minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
+<link rel="stylesheet" href="css/styles.css" type="text/css"
+	media="screen" />
 <title>Add a new member</title>
 <style>
 h2 {
@@ -21,19 +24,35 @@ tr:last-child {
 }
 
 </style>
+<script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+	$(function(){
+		$('#add_member_btn').click(function(){
+			var member_id = $('input[name="member_id"]').val();
+			
+			if(member_id.length < 8 || member_id.length > 12){
+				alert("아이디는 8자이상 12자 이하이어야 합니다");
+				event.preventDefault();
+			}
+		});
+	});
+</script>
 </head>
 <body>
+	<header>
+		<h1>W<span class="tiny_font">izard </span>O<span class="tiny_font">f</span>&nbsp; W<span class="tiny_font">ords</span></h1>
+	</header>
 	<H2>회원가입</h2>
 	<hr>
 	<form method="post" action="member_control.jsp?action=add">
-		<table>
+		<table id="new_member_table">
 			<tr>
 				<td>ID</td>
-				<td><input type="text" name="member_id" size="10" required></td>
+				<td><input type="text" name="member_id" size="13" required placeholder="8~12자(영어소문자, 숫자만)"></td>
 			</tr>
 			<tr>
 				<td>Password</td>
-				<td><input type="password" name="passwd" size="10" required></td>
+				<td><input type="password" name="passwd" size="13" required placeholder="6자 이상"></td>
 			</tr>
 			<tr>
 				<td>Name</td>
@@ -41,14 +60,14 @@ tr:last-child {
 			</tr>
 			<tr>
 				<td>e-mail</td>
-				<td><input type="email" name="email" size="10"></td>
+				<td><input type="email" name="email" size="10" placeholder="email" ></td>
 			</tr>
 			<tr>
 				<td>출생년도</td>
 				<td><input type="number" name="birth_year" min="1900" max="2030" step="1" value="2001" required></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="회원등록"></td>
+				<td colspan="2"><input id="add_member_btn" type="submit" value="회원등록"></td>
 			</tr>
 		</table>
 	</form>
