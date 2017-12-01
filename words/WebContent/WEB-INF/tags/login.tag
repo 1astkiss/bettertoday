@@ -29,7 +29,7 @@
 	
 	<c:otherwise>
 		<!-- 신규회원 가입 페이지 링크 -->
-		<li><a href="add_member.jsp">회원가입 &nbsp;&nbsp;</a></li>
+		<!-- <li><a href="add_member.jsp">회원가입 &nbsp;&nbsp;</a></li> -->
 		
 		<!--  로그인 폼 : 아이디, 패스워드입력 -->
 		<li class="nav_menu_right">

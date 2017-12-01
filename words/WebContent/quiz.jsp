@@ -31,9 +31,11 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	// 현재 load된 문제
 	var current_question;
+	var tmp_question;
 	
 	// 정답 여부를 확인하기 위해 현재 load된 문제의 정답(DB에서 가져온 값)을 보관
 	var current_answer;
+	var tmp_answer;
 	
 	// 회원별 문제풀이 이력을 저장했다가 words_control.jsp로 보내기 위해 임시보관하는 Array
 	var history_array = new Array();
@@ -49,8 +51,6 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	// 설정한 시간 제한 timer함수의 id
 	var intervalId1;
-	var intervalId2;
-	var intervalId3;
 	
 	// 회원별 문제풀이 이력 Array를 words_control.jsp로 보내기 위해 Json String으로 변환한 값
 	var json_string = "";
@@ -105,12 +105,56 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 			
 			// q_array에서 다음 문제를 꺼내서 load
 			current_question = q_array.shift();
+			
+			// 문제의 정답을 저장
 			current_answer = Number(current_question.answer);
+			
+			// 선택지를 임시 Array에 저장
+			var tmp_selection = [current_question.selection1, current_question.selection2, 
+				current_question.selection3, current_question.selection4];
+			
+			// random index 저장을 위한 변수 선언
+			var random_index1, random_index2, random_index3, random_index4;
+			
+			// 첫번째 random index 생성
+			random_index1 = Math.floor(Math.random() * 4);
+			
+			do{
+				// 두번째 random index 생성 (기존 번호와 중복시 다시 생성)
+				random_index2 = Math.floor(Math.random() * 4);
+			}while(random_index2 == random_index1);
+			
+			do{
+				// 세번째 random index 생성 (기존 번호와 중복시 다시 생성)
+				random_index3 = Math.floor(Math.random() * 4);
+			}while(random_index3 == random_index1 || random_index3 == random_index2);
+			
+			do{
+				// 네번째 random index 생성 (기존 번호와 중복시 다시 생성)
+				random_index4 = Math.floor(Math.random() * 4);
+			}while(random_index4 == random_index1 || random_index4 == random_index2
+					|| random_index4 == random_index3);
+			
+			// 생성된 radom index들을 array에 저장
+			var random_index = [random_index1, random_index2, random_index3, random_index4];
+			
+			// 변경된 답의 위치 저장
+			current_answer = random_index[current_answer - 1] + 1;
+			
+			// random하게 변경된 선택지를 저장할 array
+			var random_selection = [];
+			
+			// random하게 변경된 선택지를 저장
+			for(var i = 0; i < tmp_selection.length; i++){
+				random_selection[random_index[i]] = tmp_selection[i];
+			}
+			
+			// 현재 문제를 화면에 표시
 			$('#table_head').html(current_question.word);
-			$('#1').html(current_question.selection1);
-			$('#2').html(current_question.selection2);
-			$('#3').html(current_question.selection3);
-			$('#4').html(current_question.selection4);
+			$('#1').html(random_selection[0]);
+			$('#2').html(random_selection[1]);
+			$('#3').html(random_selection[2]);
+			$('#4').html(random_selection[3]);
 			$('#timer').html(TIME_LIMIT);
 			$('#time_info').html(TIME_LIMIT);
 			$('#next_table').addClass('hide_element');
@@ -205,15 +249,16 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 		
 		// 문제시도 횟수 증가
 		count_tried++;
+		$('#out_count').html(count_tried);
 		
 		// 문제시도 횟수가 최대 시도횟수에 도달한 경우
 		if(count_tried >= MAX_TRY){
 			
 			// 타이머 정지
-			clearInterval(intervalId2);
+			clearInterval(intervalId1);
 			
 			// 문제시도 횟수 표시
-			$('#out_count').html(count_tried);
+			//$('#out_count').html(count_tried);
 			
 			// 문제시도 횟수 증가(0점 처리를 위해 시도횟수를 4로 세팅)
 			count_tried++;
@@ -222,7 +267,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 			mark_answer(current_answer);
 		}else{	
 			// 문제시도 횟수 표시
-			$('#out_count').html(count_tried);
+			//$('#out_count').html(count_tried);
 		}
 	};
 	
@@ -230,7 +275,6 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 	/***************************************
 	
 	시간제한(타이머)을 표시하는 함수
-		
 
 	****************************************/
 	var count_down = function(){
@@ -239,7 +283,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 		$('#timer').html(time_remain);
 		
 		// 1초마다 남은 시간을 감소시킴
-		intervalId2 = setInterval(function(){
+		intervalId1 = setInterval(function(){
 			$('#timer').html(--time_remain);
 			
 			if(time_remain == 0){
@@ -250,44 +294,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 		}, 1000);
 		
 	};
-	/* var count_down = function(){
-		
-		// intervalId2가 작동시작하는데 5초가 걸리므로 처음 5초간 처리를 위한 코드
-		count_down_sub();
-		
-		// 5초마다 타이머를 작동시키고 해지하는 일을 반복
-		intervalId2 = setInterval(function(){
-			
-			count_down_sub(); //타이머 실행
-			increase_count_tried(); //제한시간이 경과하면 시도횟수 1증가
-
-		}, TIME_LIMIT * 1000);
-	}; */
 	
-	/***************************************
-	
-	시간제한(타이머)을 표시하는 sub함수
-		
-	****************************************/
-	var count_down_sub = function(){
-		// 남은 시간을 제한 시간으로 초기화
-		var time_remain = TIME_LIMIT;
-		
-		// 1초마다 남은 시간을 감소시킴
-		// 아래 intervlaId2는 5초후에 시작이 되므로 처음 5초 동안을  위한 처리
-		intervalId1 = setInterval(function(){
-			time_remain--;
-			$('#timer').html(time_remain);
-		}, 1000);
-		
-		// 제한시간이 지나면 위에서 설정한 interval을 해제
-		setTimeout(function(){
-			clearInterval(intervalId1); //intervaId1을 해제
-			time_remain = TIME_LIMIT; //남은시간 초기화  
-			$('#timer').html(time_remain); //남은시간 표시
-		}, (TIME_LIMIT) * 1000); //TIME_LIMIT을 msec으로 변환해서 적용
-		
-	}
 	
 	/***************************************
 	
@@ -298,15 +305,15 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 
 		//타이머 정지
 		clearInterval(intervalId1);
-		clearInterval(intervalId2);
 
-		// 문제 시도 횟수를 1 증가하고 화면에 표시
-		count_tried++;
-		$('#out_count').html(count_tried);
  		
  
 		//오답인 경우
 		if (current_answer != selected_answer) {
+			
+			// 문제 시도 횟수를 1 증가하고 화면에 표시
+			count_tried++;
+			$('#out_count').html(count_tried);
 			
 			// 시도횟수가 시도 가능횟수를 초과하면 문제를 종료하고 정답을 표시
 			if(count_tried >= MAX_TRY){
@@ -336,6 +343,10 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 				
 			}
 		} else { //정답을 선택한 경우 
+			// 문제 시도 횟수를 화면에 표시후 1 증가
+			$('#out_count').html(count_tried);
+			count_tried++;
+			
 			//정답을 표시하고 문제콘트롤을 활성화
 			mark_answer(selected_answer);
 		}

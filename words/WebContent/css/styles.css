@@ -198,3 +198,7 @@ textarea{
 		width : 100px;
 	}
 }
+
+span.tiny_font{
+	font-size: 0.2em;
+}
