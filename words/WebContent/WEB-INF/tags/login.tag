@@ -8,7 +8,7 @@
 <c:choose>
 	<c:when test="${member_id != null }">
 		<!--  틀린문제 복습페이지로 링크 -->
-		<li><a href="#"> 복습 &nbsp;&nbsp; </a></li>
+		<li><a href="words_control.jsp?action=missed"> 복습 &nbsp;&nbsp; </a></li>
 
 		<!-- 출제권한이 있는 회원인 경우 문제출제 페이지 링크 활성화 -->
 		<c:if test="${can_make_question == 1}">

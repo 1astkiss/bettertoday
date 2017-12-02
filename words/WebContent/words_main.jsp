@@ -26,7 +26,7 @@ minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
 
 <body>
 	<header>
-		<h1>W<span class="tiny_font">izard </span>O<span class="tiny_font">f</span>&nbsp; W<span class="tiny_font">ords</span></h1>
+		<h1>W<span class="tiny_font">izard </span>O<span class="tiny_font">f &nbsp;</span> W<span class="tiny_font">ords</span></h1>
 	</header>
 
 	<nav>

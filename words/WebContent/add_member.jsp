@@ -29,19 +29,37 @@ tr:last-child {
 	$(function(){
 		$('#add_member_btn').click(function(){
 			var member_id = $('input[name="member_id"]').val();
+			var password = $('input[name="passwd"]').val();
 			
 			if(member_id.length < 8 || member_id.length > 12){
 				alert("아이디는 8자이상 12자 이하이어야 합니다");
 				event.preventDefault();
+			}else if(!isAlphaOrNumber(member_id)){
+				alert("아이디는 영어소문자와 숫자만 가능합니다");
+				event.preventDefault();
+			}else if(password.length < 6 || password.length > 12){
+				alert("비밀번호는 6자이상 12자 이하이어야 합니다");
+				event.preventDefault();
 			}
 		});
+		
 	});
+	
+	function isAlphaOrNumber(str){
+		//var lowerAlphaOrNumber = ;
+		if(/^[a-z0-9]+$/.test(str)){
+			return true;
+		}else{
+			return false;
+		}
+	}
 </script>
 </head>
 <body>
 	<header>
 		<h1>W<span class="tiny_font">izard </span>O<span class="tiny_font">f</span>&nbsp; W<span class="tiny_font">ords</span></h1>
 	</header>
+	<hr>
 	<H2>회원가입</h2>
 	<hr>
 	<form method="post" action="member_control.jsp?action=add">
@@ -52,7 +70,7 @@ tr:last-child {
 			</tr>
 			<tr>
 				<td>Password</td>
-				<td><input type="password" name="passwd" size="13" required placeholder="6자 이상"></td>
+				<td><input type="password" name="passwd" size="13" required placeholder="6~12자"></td>
 			</tr>
 			<tr>
 				<td>Name</td>
@@ -67,9 +85,12 @@ tr:last-child {
 				<td><input type="number" name="birth_year" min="1900" max="2030" step="1" value="2001" required></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input id="add_member_btn" type="submit" value="회원등록"></td>
+				<td colspan="2"><input id="add_member_btn" type="submit" value="회원등록"></form>
+				<form id="cancel_add_member" method='post' action='words_main.jsp'>
+					<input type="submit" value="등록취소"></td>
+				</form>
 			</tr>
 		</table>
-	</form>
+	
 </body>
 </html>

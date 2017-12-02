@@ -5,9 +5,15 @@
  
 }
 
+div, h1, h2{
+	margin: 0;
+	padding: 0;
+}
+
 body{
-	width: 100%
-	min-width: 400px;
+/* 	position: relative;
+ */	width: 100%;
+	min-width: 350px;
 	max-width: 800px;
 	margin: auto;
 }
@@ -23,11 +29,14 @@ header>h1 {
 	color: #ffffff;
 	background-color: orange;
 	text-align: center;
-	margin: 0;
 	padding-top: 5px;
 	vertical-align: middle;
 	line-height: 45px;
 	font-size : 2.0em;
+}
+
+h2{
+	text-align: center;
 }
 
 nav {
@@ -112,7 +121,7 @@ nav span {
 }
 #table_head {
 	text-align: center;
-	font-size: 2.2em;
+	font-size: 1.8em;
 }
 
 #question_table {
@@ -130,7 +139,7 @@ td {
 	vertical-align: middle;
 	border: 1px solid orange;
 	padding: 5px;
-	font-size: 1.6em;
+	font-size: 1.5em;
 }
 
 td a, td a:visited {
@@ -161,9 +170,11 @@ a.right_answer{
 }
 
 hr {
+	text-align: center;
+	margin: 10px auto;
+ 	position: relative;
 	width: 90%;
-	size: 10px;
-	margin: 1em;
+	size: 5px;
 }
 
 .info{
@@ -203,8 +214,9 @@ textarea{
 	}
 	
 	#new_member_table input{
-		width: 190px;
-	}
+	display: inline;
+/* 		width: 190px;
+ */	}
 	
 }
 
@@ -223,14 +235,15 @@ textarea{
 		font-size: 0.8em;
 	}
 	
-	#new_member_table input{
-		width: 300px;
-	}
 	
 }
 
+#cancel_add_member{
+	display: inline;
+}
+
 span.tiny_font{
-	font-size: 0.2em;
+	font-size: 0.3em;
 }
 
 

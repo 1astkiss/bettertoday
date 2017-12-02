@@ -224,7 +224,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 		};
 		
 		// history객체를 array에 저장
-		history_array.push(history);
+		//history_array.push(history);
 		
 		// history가 저장된 Array객체를 words_control.jsp로 보내기 위해 String으로 변환
 		json_string =  JSON.stringify(history_array);
@@ -365,7 +365,7 @@ form{
 
 	<div align="center">
 		<hr>
-		<h2>다음 문제에 <span id="time_info"></span>초내에 답하세요</h2>
+		<h2>(복습모드) <span id="time_info"></span>초내에 답하세요</h2>
 		<hr>
 		<table id="question_table">
 			<tr>

@@ -363,6 +363,144 @@ public class QuestionsDAO {
 		return questions;
 	}
 
+	/**
+	 * 매개변수로 넘겨받은 회원아이디를 바탕으로 회원별 맞춤 문제를 선정하여 return
+	 * @param member_id
+	 * @return
+	 */
+	public LinkedList<Question> getQuestion(String member_id, int member_level, int missed_cnt) {
+		conn = DBManager.getConnection();
+		String sql;
+		
+		//최종출제의 대상이 되는 문제 pool을 저장해 두는 List
+		LinkedList<Question> tmp_questions = new LinkedList<Question>();
+		
+		// 문제 pool 추출을 위한 오답문제 pool을 저장해 두는 List
+		LinkedList<Question> tmp_wrong_questions = new LinkedList<Question>();
+		
+		// 문제 pool 추출을 위한 신규등록 문제 pool을 저장해 두는 List
+		LinkedList<Question> tmp_new_questions = new LinkedList<Question>();
+		
+		//최종선정된 문제들을 저장하는 List
+		LinkedList<Question> questions = new LinkedList<Question>();
+		
+		//난수 처리를 위한 변수들
+		Random rand = new Random();
+		int randomInt = 0;
+
+		try {
+			//최근에 틀린(1차시도 오답) 문제를 추출
+			sql = "SELECT " + 
+					"        `mwh`.`question_id` AS `question_id`," + 
+					"        `q`.`word` AS `word`,\n" + 
+					"        `q`.`selection1` AS `selection1`," + 
+					"        `q`.`selection2` AS `selection2`," + 
+					"        `q`.`selection3` AS `selection3`," + 
+					"        `q`.`selection4` AS `selection4`," + 
+					"        `q`.`answer` AS `answer`," + 
+					"        `q`.`weight` AS `weight`" + 
+					"    FROM " + 
+					"        (`member_word_history` `mwh` " + 
+					"        JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`))) " + 
+					"    WHERE " + 
+					"        (`mwh`.`count_tried` > 1) "
+					+ "AND `mwh`.`member_id` = ?"
+					+ "ORDER BY `mwh`.`date_created` limit 0,?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, member_id);
+			pstmt.setInt(2, missed_cnt);
+			System.out.println("pstmt at QuestionsDao : " + pstmt);
+			rs = pstmt.executeQuery();
+
+			// 위에서 조회한 문제별로 Question object를 생성하여 LinkedList에 추가
+			while (rs.next()) {
+				Question question = new Question();
+				
+				question.setWord(rs.getString("word"));
+				question.setSelection1(rs.getString("selection1"));
+				question.setSelection2(rs.getString("selection2"));
+				question.setSelection3(rs.getString("selection3"));
+				question.setSelection4(rs.getString("selection4"));
+				question.setAnswer(rs.getInt("answer"));
+				question.setWeight(rs.getDouble("weight"));
+				question.setQuestion_id(rs.getInt("question_id"));
+				
+				// Question객체를 LinkedList에 추가
+				tmp_wrong_questions.add(question);
+			}
+			
+			//tmp_wrong_questions.size()가 0일 경우 난수발생에서 에러가 발생하기때문...
+			if(tmp_wrong_questions.size() != 0) {
+				//3배수로 추출된 오답 문제중 random하게 추출
+				for(int i = 0; i < missed_cnt; i++) {
+					//System.out.println("tmp_wrong_questions.size() : " + tmp_wrong_questions.size());
+					
+					//난수 생성
+					randomInt = rand.nextInt(tmp_wrong_questions.size());
+					//System.out.println("randomInt : " + randomInt);
+					
+					//3배수 문제중 선정된 문제를 문제 pool에 등록
+					tmp_questions.add(tmp_wrong_questions.get(randomInt));
+					
+					//선정된 문제를 pool에서 삭제
+					tmp_wrong_questions.remove(randomInt);
+					
+					//3배수로 추출한 문제가 오답문제수보다 적을 경우 loop 종료
+					if(tmp_wrong_questions.size()==0) {
+						break;
+					}
+				}
+			}
+			
+			//tmp_questions.size()가 0일 경우 난수발생에서 에러가 발생하기때문...
+			if(tmp_questions.size() != 0) {
+				//최종 문제를 random하게 선정
+				for(int i = 0; i < missed_cnt; i++) {
+					//System.out.println("tmp_questions.size() : " + tmp_questions.size());
+					
+					//난수 생성
+					randomInt = rand.nextInt(tmp_questions.size());
+					//System.out.println("randomInt : " + randomInt);
+					
+					//문제pool에서 선정된 문제를 최종 출제 문제 List에 저장
+					questions.add(tmp_questions.get(randomInt));
+					
+					//선정된 문제를 pool에서 삭제
+					tmp_questions.remove(randomInt);
+					
+					//문제 pool수가 선정 목표보다 적을 경우 loop 종료
+					if(tmp_questions.size()==0) {
+						break;
+					}
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getErrorCode());
+		} finally {
+			try {
+				// 자원 정리
+				if (rs != null) {
+					rs.close();
+				}
+
+				if (pstmt != null) {
+					pstmt.close();
+				}
+
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println(e.getErrorCode());
+			}
+		}
+
+		// LinkedList 객체를 return
+		return questions;
+	}
 	
 	
 	/**
