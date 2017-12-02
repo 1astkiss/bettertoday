@@ -10,8 +10,8 @@
 		<hr>
 		<h2 style="text-align: center"><a href="words_control.jsp?action=quiz">퀴즈 시작</a></h2>
 		<hr>
-		<p class="info">퀴즈시작을 누르면 시작되며 한 문제당 3번의 기회가 주어집니다.</p>
-		<p class="info">한번의 기회당 5초의 시간이 주어지며, 5초이내에 답하지 않으면 한번의 기회가 사라집니다.</p>
+		<p class="info">퀴즈시작을 누르면 시작되며, <br>한 문제당 3번의 기회가 주어집니다.</p>
+		<p class="info">한번의 기회당 5초의 시간이 주어지며, <br> 5초이내에 답하지 않으면<br>한번의 기회가 사라집니다.</p>
 		<p class="info">기회를 적게 사용할 수록 점수가 높습니다.</p>
 	</c:when>
 	
