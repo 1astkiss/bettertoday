@@ -364,7 +364,7 @@ public class QuestionsDAO {
 	}
 
 	/**
-	 * 매개변수로 넘겨받은 회원아이디를 바탕으로 회원별 맞춤 문제를 선정하여 return
+	 * 매개변수로 넘겨받은 회원아이디를 바탕으로 회원별 최근 틀린 문제를 선정하여 return
 	 * @param member_id
 	 * @return
 	 */
@@ -377,9 +377,6 @@ public class QuestionsDAO {
 		
 		// 문제 pool 추출을 위한 오답문제 pool을 저장해 두는 List
 		LinkedList<Question> tmp_wrong_questions = new LinkedList<Question>();
-		
-		// 문제 pool 추출을 위한 신규등록 문제 pool을 저장해 두는 List
-		LinkedList<Question> tmp_new_questions = new LinkedList<Question>();
 		
 		//최종선정된 문제들을 저장하는 List
 		LinkedList<Question> questions = new LinkedList<Question>();

@@ -11,9 +11,6 @@ minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
 	media="screen" />
 <title>Add a new member</title>
 <style>
-h2 {
-	text-align : center;
-}
 
 table {
 	margin: auto;

@@ -55,6 +55,42 @@ public class MemberDAO {
 		return true;
 	}
 	
+	/** 
+	 * 회원정보 변경
+	 * @param member
+	 * @return
+	 */
+	public boolean modifyMember(Member member) {
+		
+		conn = DBManager.getConnection();
+		String sql = "update words_member "
+				+ "set passwd=?, nickname=?, email=?, birth_year=? "
+				+ "where member_id=?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member.getPasswd());
+			pstmt.setString(2, member.getNickname());
+			pstmt.setString(3, member.getEmail());
+			pstmt.setInt(4, member.getBirth_year());
+			pstmt.setString(5, member.getMember_id());
+			System.out.println("sql for modifyMember : " + pstmt);
+			pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			logger.info("Error Code : {}", e.getErrorCode());
+			return false;
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return true;
+	}
+	
 	
 	/**
 	 * 회원 로그인
@@ -72,7 +108,7 @@ public class MemberDAO {
 		
 		try {
 			//회원 기본 정보 가져오기
-			sql = "select member_id, passwd, can_make_question, member_level from words_member where member_id=?";
+			sql = "select member_id, passwd, can_make_question, member_level, nickname, email, birth_year from words_member where member_id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member_id);
 			rs = pstmt.executeQuery();
@@ -81,6 +117,9 @@ public class MemberDAO {
 			result.setMember_id(member_id);
 			result.setPasswd(rs.getString("passwd"));
 			result.setCan_make_question(rs.getInt("can_make_question"));
+			result.setNickname(rs.getString("nickname"));
+			result.setEmail(rs.getString("email"));
+			result.setBirth_year(rs.getInt("birth_year"));
 			
 			int member_level_from_member_table = rs.getInt("member_level");
 			int member_level_from_wmws_table = chkMemberLevel(member_id);
@@ -96,47 +135,6 @@ public class MemberDAO {
 			}
 			
 			result.setMember_level(new_member_level);
-			
-			/*//문제풀이 이력이 없는 가입자의 경우 기본 레벨 세팅
-			result.setMember_level(rs.getInt("member_level"));
-			
-			//문제풀이 이력이 있는 가입자의 경우 이력에 따른 레벨 세팅
-			sql = "select avg_30, avg_31_to_60, avg_61_to_90, avg_91_plus from words_member_with_score where member_id=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, member_id);
-			rs = pstmt.executeQuery();
-			
-			if(rs != null) {
-				System.out.println(new Date() + ": rs at MemberDAO not null");
-				rs.next();
-				
-				double[] avgArray = {rs.getDouble("avg_30"), rs.getDouble("avg_31_to_60") * 0.9, rs.getDouble("avg_61_to_90") * 0.8, rs.getDouble("avg_91_plus")* 0.7};
-				double avgTotal = 0;
-				int avgCount = 0;
-				for(int i = 0; i < avgArray.length; i++) {
-					if(avgArray[i] != 0) {
-						avgTotal += avgArray[i];
-						avgCount++;
-					}
-				}
-				
-				double avgFinal = avgTotal / avgCount;
-				int member_level = 0;
-				
-				if(avgFinal < 20) member_level = 1;
-				else if(avgFinal < 30) member_level = 2;
-				else if(avgFinal < 40) member_level = 3;
-				else if(avgFinal < 50) member_level = 4;
-				else if(avgFinal < 60) member_level = 5;
-				else if(avgFinal < 70) member_level = 6;
-				else if(avgFinal < 80) member_level = 7;
-				else if(avgFinal < 90) member_level = 8;
-				else member_level = 9;
-				
-				result.setMember_level(member_level);
-			}else {
-				System.out.println(new Date() + ": rs at MemberDAO null");
-			}*/
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -155,6 +153,11 @@ public class MemberDAO {
 		return result;
 	}
 	
+	/**
+	 * 과거 문제풀이 이력에 따른 실시간 회원 레벨 산정
+	 * @param member_id
+	 * @return
+	 */
 	public int chkMemberLevel(String member_id) {
 		
 		conn = DBManager.getConnection();
@@ -215,6 +218,12 @@ public class MemberDAO {
 		return member_level;
 	}
 	
+	/**
+	 * 신규 산정된 회원레벨을 회원 DB에 update
+	 * @param member_id
+	 * @param member_level
+	 * @return
+	 */
 	public boolean setMemberLevel(String member_id, int member_level) {
 		
 		conn = DBManager.getConnection();

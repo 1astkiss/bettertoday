@@ -214,9 +214,13 @@ textarea{
 	}
 	
 	#new_member_table input{
-	display: inline;
-/* 		width: 190px;
- */	}
+		display: inline;
+		width: 190px;
+	}
+	
+	#new_member_table input[type="submit"]{
+		width: 75px;
+	}
 	
 }
 
@@ -235,6 +239,14 @@ textarea{
 		font-size: 0.8em;
 	}
 	
+	#new_member_table input{
+		display: inline;
+		width: 300px;
+	}
+	
+	#new_member_table input[type="submit"]{
+		width: 100px;
+	}
 	
 }
 

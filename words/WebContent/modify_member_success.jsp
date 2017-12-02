@@ -18,9 +18,9 @@ minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
 	<hr>
 	<H2>회원가입 완료</h2>
 	<hr>
-	<form method="post" action="words_main.jsp">
+	<form method="post" action="member_control.jsp?action=logout">
 		<div align="center">
-			<p>회원 가입이 완료되었습니다.<br>확인을 누르시면 시작페이지로 이동합니다...</p>
+			<p>회원정보 변경이 완료되었습니다.<br>다시 로그인 하시기 바랍니다...</p>
 			<input type="submit" value="확인"><br>
 		</div>
 	</form>

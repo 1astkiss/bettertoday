@@ -24,7 +24,7 @@
 		</li>
 		
 		<!--  회원정보 링크 -->
-		<li class="nav_menu_right"><a href="#">회원정보 </a></li>
+		<li class="nav_menu_right"><a href="manage_member_info.jsp">회원정보 </a></li>
 	</c:when>
 	
 	<c:otherwise>

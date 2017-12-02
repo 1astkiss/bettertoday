@@ -16,6 +16,21 @@
 
 	switch(action){
 	
+	// 회원정보 관리
+	case "modify":
+		System.out.println("id: " + member.getMember_id());
+		if(mdao.modifyMember(member)){
+			
+			// 성공시 회원가입 성공 안내페이지로 이동
+			response.sendRedirect("modify_member_success.jsp");
+		}else{
+			System.out.println("member modify failed...");
+			out.println("<script>document.write()'정보변경이 실패하였습니다...'); history.go(-1);</script>");
+		}
+		
+		break;
+		
+	
 	// 신규회원 등록
 	case "add":
 		
@@ -43,6 +58,10 @@
 			session.setAttribute("member_id", memberInfoFromDB.getMember_id());
 			session.setAttribute("can_make_question", memberInfoFromDB.getCan_make_question());
 			session.setAttribute("member_level", memberInfoFromDB.getMember_level());
+			session.setAttribute("password", memberInfoFromDB.getPasswd());
+			session.setAttribute("nickname", memberInfoFromDB.getNickname());
+			session.setAttribute("email", memberInfoFromDB.getEmail());
+			session.setAttribute("birth_year", memberInfoFromDB.getBirth_year());
 			System.out.println("member_level : " + memberInfoFromDB.getMember_level());
 			
 			// 시작페이지로 이동
