@@ -9,10 +9,19 @@
 			<param name="ConversionPattern" value="[%d{HH:mm:ss}] [%c{1}] [%p] %m %n" />
 		</layout>
 	</appender>
+	
+	<appender name="dailyout" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="file" value="/tmp/dailyout.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyMMdd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%t> [%d{yyyy-MM-dd HH:mm:ss}] [%c{1}] [%L] [%p] %m %n" />
+		</layout>
+	</appender>
 
 	<!-- file에 log message 출력 -->
 	<appender name="rolling" class="org.apache.log4j.RollingFileAppender">
-		<param name="file" value="D:/Documents/GitHub/tmp/rolling.log.html" />
+		<param name="file" value="/tmp/rolling.log.html" />
 		
 		<!-- 새로운 log 내용을 기존 파일에 이어서 기록 -->
 		<param name="Append" value="true" />
@@ -25,6 +34,12 @@
 		<layout class="org.apache.log4j.HTMLLayout" />
 	</appender>
 	
+	<!-- INFO 이상 로그에 대하여 위에서 정의한 dailyout(파일출력) appender 적용 -->
+	<logger name="words">
+		<level value="INFO" />
+		<appender-ref ref="dailyout" />
+	</logger>
+	
 	<!-- WARN 이상 로그에 대하여 위에서 정의한 stdout(화면출력), rolling(파일출력) appender 적용 -->
 	<logger name="org.apache.jsp.words">
 		<level value="WARN" />
@@ -36,6 +51,7 @@
 	<root>
 		<level value="INFO" />
 		<appender-ref ref="stdout" />
+		<appender-ref ref="dailyout" />
 	</root> 
 	
 </log4j:configuration>	

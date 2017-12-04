@@ -49,7 +49,6 @@
 		// jason string을 jason array 객체로 변환
 		JSONArray history_json = new JSONArray(history_string);
 	
-		// System.out.println("history_json.length() : " + history_json.length());
 	
 		// jason array에 담긴 이력정보를 하나씩 꺼내어 List객체에 저장
 		for(int i=0; i < history_json.length(); i++){
@@ -62,13 +61,11 @@
 			mwh.setCount_tried(e.getInt("count_tried"));
 			mwh.setWeight(e.getDouble("weight"));
 			mwh.setScore(e.getDouble("score"));
-			System.out.println("score : " + e.getDouble("score"));
+			
 			// 회원이력저장 ArrayList에 MemberWordHistory객체를 추가 
 			word_history.add(mwh);
 		}
 	}
-	
-	// System.out.println("word_history.size() : " + word_history.size());
 	
 	// 컨트롤러에 요청하는 action의 구분에 따른 처리
 	switch(action){

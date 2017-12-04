@@ -18,7 +18,7 @@ public class MemberDAO {
 	ResultSet rs;
 	Member result = new Member();
 	
-	Logger logger = LoggerFactory.getLogger(MemberDAO.class);
+	Logger log = LoggerFactory.getLogger(MemberDAO.class);
 	
 	/** 
 	 * 신규회원등록
@@ -41,7 +41,7 @@ public class MemberDAO {
 			pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
-			logger.info("Error Code : {}", e.getErrorCode());
+			log.info("Error Code : {}", e.getErrorCode());
 			return false;
 		}finally {
 			try {
@@ -52,6 +52,8 @@ public class MemberDAO {
 			}
 		}
 		
+		log.info("member : {} created", member.getNickname());
+
 		return true;
 	}
 	
@@ -73,11 +75,10 @@ public class MemberDAO {
 			pstmt.setString(3, member.getEmail());
 			pstmt.setInt(4, member.getBirth_year());
 			pstmt.setString(5, member.getMember_id());
-			System.out.println("sql for modifyMember : " + pstmt);
 			pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
-			logger.info("Error Code : {}", e.getErrorCode());
+			log.info("Error Code : {}", e.getErrorCode());
 			return false;
 		}finally {
 			try {
@@ -103,7 +104,6 @@ public class MemberDAO {
 		conn = DBManager.getConnection();
 		
 		String sql;
-		System.out.println("member_id : " + member_id);
 		int new_member_level = 0;
 		
 		try {
@@ -123,7 +123,6 @@ public class MemberDAO {
 			
 			int member_level_from_member_table = rs.getInt("member_level");
 			int member_level_from_wmws_table = chkMemberLevel(member_id);
-			System.out.println("member_level_from_wmws_table : " + member_level_from_wmws_table);
 			
 			if(member_level_from_wmws_table == 0) {
 				new_member_level = member_level_from_member_table;
@@ -150,6 +149,8 @@ public class MemberDAO {
 			}
 		}
 		
+		log.info("member_id : {} logged in", member_id);
+
 		return result;
 	}
 	
@@ -163,7 +164,6 @@ public class MemberDAO {
 		conn = DBManager.getConnection();
 		String sql;
 		int member_level = 0;
-		System.out.println("member_id : " + member_id);
 		
 		try {
 			sql = "select avg_30, avg_31_to_60, avg_61_to_90, avg_91_plus from words_member_with_score where member_id=?";
@@ -189,7 +189,6 @@ public class MemberDAO {
 					avgFinal = avgTotal / avgCount;
 				}
 				
-				System.out.println("avgFinal : " + avgFinal);
 				if(avgFinal < 20) member_level = 1;
 				else if(avgFinal < 30) member_level = 2;
 				else if(avgFinal < 40) member_level = 3;
@@ -228,7 +227,6 @@ public class MemberDAO {
 		
 		conn = DBManager.getConnection();
 		String sql;
-		System.out.println("member_id : " + member_id);
 		int rows_updated = 0;
 		
 		try {

@@ -4691,15 +4691,16 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-<security-constraint>
-  	<web-resource-collection>
-  		<web-resource-name>jspbook auth</web-resource-name>
-  		<url-pattern>/ch03/*</url-pattern>
-  	</web-resource-collection>
-  	<auth-constraint>
-  		<role-name>webadmin</role-name>
-  	</auth-constraint>
-  </security-constraint>
+	<!-- <security-constraint>
+	  	<web-resource-collection>
+	  		<web-resource-name>jspbook auth</web-resource-name>
+	  		<url-pattern>/ch03/*</url-pattern>
+	  	</web-resource-collection>
+	  	<auth-constraint>
+	  		<role-name>webadmin</role-name>
+	  	</auth-constraint>
+	  </security-constraint> -->
+	  
   <login-config>
   	<auth-method>BASIC</auth-method>
   	<realm-name>WebAdminRealm</realm-name>

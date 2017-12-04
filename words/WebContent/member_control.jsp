@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="words.member.Member, java.util.concurrent.TimeUnit" %>
+    pageEncoding="UTF-8" import="words.member.Member, java.util.concurrent.TimeUnit, org.slf4j.*" %>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -13,18 +13,18 @@
 <%
 	// 요청 action 값
 	String action = request.getParameter("action");
+	Logger log = LoggerFactory.getLogger(this.getClass());
 
 	switch(action){
 	
 	// 회원정보 관리
 	case "modify":
-		System.out.println("id: " + member.getMember_id());
 		if(mdao.modifyMember(member)){
 			
 			// 성공시 회원가입 성공 안내페이지로 이동
 			response.sendRedirect("modify_member_success.jsp");
 		}else{
-			System.out.println("member modify failed...");
+			log.error("member modify for {} failed...", member.getMember_id());
 			out.println("<script>document.write()'정보변경이 실패하였습니다...'); history.go(-1);</script>");
 		}
 		
@@ -39,7 +39,7 @@
 			// 성공시 회원가입 성공 안내페이지로 이동
 			response.sendRedirect("add_member_success.jsp");
 		}else{
-			System.out.println("member add failed...");
+			log.error("member add failed for {}...", member.getNickname());
 			out.println("<script>document.write()'같은 아이디가 있네요...'); history.go(-1);</script>");
 		}
 		
@@ -62,7 +62,6 @@
 			session.setAttribute("nickname", memberInfoFromDB.getNickname());
 			session.setAttribute("email", memberInfoFromDB.getEmail());
 			session.setAttribute("birth_year", memberInfoFromDB.getBirth_year());
-			System.out.println("member_level : " + memberInfoFromDB.getMember_level());
 			
 			// 시작페이지로 이동
 			pageContext.forward("words_main.jsp?");
