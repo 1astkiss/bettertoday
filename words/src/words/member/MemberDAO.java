@@ -161,9 +161,55 @@ public class MemberDAO {
 	 */
 	public int chkMemberLevel(String member_id) {
 		
+		double avgFinal = chkMemberAverage(member_id);
+
+		int member_level = 0;
+		
+		if(avgFinal < 20) member_level = 1;
+		else if(avgFinal < 30) member_level = 2;
+		else if(avgFinal < 40) member_level = 3;
+		else if(avgFinal < 50) member_level = 4;
+		else if(avgFinal < 60) member_level = 5;
+		else if(avgFinal < 70) member_level = 6;
+		else if(avgFinal < 80) member_level = 7;
+		else if(avgFinal < 90) member_level = 8;
+		else member_level = 9;
+		
+		return member_level;
+	}
+	
+	/**
+	 * 과거 문제풀이 이력에 따른 실시간 회원 레벨 산정
+	 * @param member_id
+	 * @return
+	 */
+	public int chkMemberLevel(double avgFinal) {
+		
+		int member_level = 0;
+				
+		if(avgFinal < 20) member_level = 1;
+		else if(avgFinal < 30) member_level = 2;
+		else if(avgFinal < 40) member_level = 3;
+		else if(avgFinal < 50) member_level = 4;
+		else if(avgFinal < 60) member_level = 5;
+		else if(avgFinal < 70) member_level = 6;
+		else if(avgFinal < 80) member_level = 7;
+		else if(avgFinal < 90) member_level = 8;
+		else member_level = 9;
+			
+		return member_level;
+	}
+	
+	/**
+	 * 과거 문제풀이 이력에 따른 실시간 회원 평점 산정
+	 * @param member_id
+	 * @return
+	 */
+	public double chkMemberAverage(String member_id) {
+		
 		conn = DBManager.getConnection();
 		String sql;
-		int member_level = 0;
+		double avgFinal = 0;
 		
 		try {
 			sql = "select avg_30, avg_31_to_60, avg_61_to_90, avg_91_plus from words_member_with_score where member_id=?";
@@ -174,7 +220,6 @@ public class MemberDAO {
 			if(rs.next()) {
 				double[] avgArray = {rs.getDouble("avg_30"), rs.getDouble("avg_31_to_60") * 0.9, rs.getDouble("avg_61_to_90") * 0.8, rs.getDouble("avg_91_plus")* 0.7};
 				double avgTotal = 0;
-				double avgFinal = 0;
 				int avgCount = 0;
 				for(int i = 0; i < avgArray.length; i++) {
 					if(avgArray[i] != 0) {
@@ -188,15 +233,6 @@ public class MemberDAO {
 					avgFinal = avgTotal / avgCount;
 				}
 				
-				if(avgFinal < 20) member_level = 1;
-				else if(avgFinal < 30) member_level = 2;
-				else if(avgFinal < 40) member_level = 3;
-				else if(avgFinal < 50) member_level = 4;
-				else if(avgFinal < 60) member_level = 5;
-				else if(avgFinal < 70) member_level = 6;
-				else if(avgFinal < 80) member_level = 7;
-				else if(avgFinal < 90) member_level = 8;
-				else member_level = 9;
 			}
 			
 		}catch(SQLException e) {
@@ -213,7 +249,7 @@ public class MemberDAO {
 			}
 		}
 		
-		return member_level;
+		return avgFinal;
 	}
 	
 	/**

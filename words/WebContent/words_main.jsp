@@ -7,6 +7,17 @@
 <!--  custom tag을 사용하기 위한 처리 -->
 <%@ taglib tagdir="/WEB-INF/tags" prefix="words"%>
 
+<jsp:useBean id="mdao" class="words.member.MemberDAO" />
+
+<%
+	String member_id = (String)session.getAttribute("member_id");
+	String member_average = String.format("%.2f", mdao.chkMemberAverage(member_id));
+	int member_level = mdao.chkMemberLevel(member_id);
+	System.out.println("member_average : " + member_average);
+	session.setAttribute("member_average", member_average);
+	session.setAttribute("member_level", member_level);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +59,6 @@ minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
 				. 로그아웃 버튼
 				-->
 				<words:login />
-			</ul>
 		</div>
 	</nav>
 	<div align="center">

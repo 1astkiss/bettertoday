@@ -24,7 +24,9 @@
 		</li>
 		
 		<!--  회원정보 링크 -->
-		<li class="nav_menu_right"><a href="manage_member_info.jsp">회원정보 </a></li>
+		<li class="nav_menu_right"><a href="manage_member_info.jsp">회원정보 </a></li></ul>
+		<br><br>
+		<h5 align="center"> Hi ${member_id}, you are level${member_level} and your score is ${member_average}</h5>
 	</c:when>
 	
 	<c:otherwise>
@@ -39,6 +41,6 @@
 				<input type="password" name="passwd" placeholder="password" >
 				<input type="submit" value="로그인" style="width:60px">
 			</form>
-		</li>
+		</li></ul>
 	</c:otherwise>
 </c:choose>

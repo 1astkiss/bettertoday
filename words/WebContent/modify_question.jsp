@@ -129,7 +129,7 @@ $(function(){
 					<td colspan="2" align="center">
 						<input type="submit" value="Modify">
 						<input type="hidden" name="question_id" value="${question.question_id}">
-						<input type="button" value="Cancel" onclick="document.location.href='words_control.jsp?action=home'" ></td>
+						<input type="button" value="Cancel" onclick="document.location.href='javascript:history.back()'" ></td>
 				</tr>
 			</table>
 		</form>

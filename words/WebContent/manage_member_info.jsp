@@ -1,5 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="utf-8" %>
+	
+<jsp:useBean id="mdao" class="words.member.MemberDAO" />
+	
+<%
+	/* String member_id = (String)session.getAttribute("member_id");
+	double member_average = mdao.chkMemberAverage(member_id);
+	int member_level = mdao.chkMemberLevel(member_id);
+	System.out.println("member_average : " + member_average);
+	session.setAttribute("member_average", member_average);
+	session.setAttribute("member_level", member_level); */
+
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,7 +39,7 @@ tr:last-child {
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 <script>
 	$(function(){
-		$('#add_member_btn').click(function(){
+		$('#modify_member_btn').click(function(){
 			var current_password = $('input[name="passwd"]').val();
 			var new_password1 = $('input[name="new_password1"]').val();
 			var new_password2 = $('input[name="new_password2"]').val();
@@ -50,6 +62,9 @@ tr:last-child {
 			}
 		});
 		
+		/* var member_avg = Number($('#member_average').val());
+		member_avg = member_avg.toFixed(2);
+		$('#member_average').val(member_avg); */
 	});
 </script>
 </head>
@@ -66,6 +81,14 @@ tr:last-child {
 				<td>ID</td>
 				<td><input type="text" size="13" placeholder="8~12자(영어소문자, 숫자만)" value='${member_id}' disabled>
 				<input type="hidden" name="member_id" value='${member_id}' ></td>
+			</tr>
+			<tr>
+				<td>Level</td>
+				<td><input type="text" size="13" value='${member_level}' disabled>
+			</tr>
+			<tr>
+				<td>Average</td>
+				<td><input type="text" size="13" value='${member_average}' disabled id="member_average">
 			</tr>
 			<tr>
 				<td>Password</td>
@@ -91,7 +114,7 @@ tr:last-child {
 				<td><input type="number" name="birth_year" min="1900" max="2030" step="1" required value='${birth_year}'></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input id="add_member_btn" type="submit" value="정보변경"></form>
+				<td colspan="2"><input id="modify_member_btn" type="submit" value="정보변경"></form>
 				<form id="cancel_add_member" method='post' action='words_main.jsp'>
 					<input type="submit" value="변경취소"></td>
 				</form>
