@@ -7,7 +7,7 @@
 <meta name="viewport" 
 content="width=device-width, initial-scale=1, maximum-scale=1, 
 minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
-<link rel="stylesheet" href="../css/styles.css" type="text/css"
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css" type="text/css"
 	media="screen" />
 <title>words: 404-error</title>
 </head>
@@ -22,12 +22,9 @@ minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
 
 		<p>요청하신 파일을 찾을 수 없습니다. <br> URL주소를 다시한번 확인해 주세요...<br>${now}</p>
 		
-					<p>
-						요청 실패 URI: ${pageContext.errorData.requestURI }<br> 상태코드:
-						${pageContext.errorData.statusCode }<br>
-				</td>
-			</tr>
-		</table>
+		<p>
+			요청 실패 URI: ${pageContext.errorData.requestURI }<br> 상태코드:
+			${pageContext.errorData.statusCode }<br>
 		
 		<h3><a href="../words_main.jsp">시작화면으로 가기 </a></h3>
 	</div>

@@ -88,6 +88,5 @@ tr:last-child {
 				</form>
 			</tr>
 		</table>
-	
 </body>
 </html>
