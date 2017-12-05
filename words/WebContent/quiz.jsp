@@ -42,6 +42,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 	// 현재 load된 문제
 	var current_question;
 	var tmp_question;
+	var question_level = 0;
 	
 	// 정답 여부를 확인하기 위해 현재 load된 문제의 정답(DB에서 가져온 값)을 보관
 	var current_answer;
@@ -159,8 +160,10 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 				random_selection[random_index[i]] = tmp_selection[i];
 			}
 			
+			question_level = chkQuestionLevel(current_question.weight);
+			
 			// 현재 문제를 화면에 표시
-			$('#q_level').html(chkQuestionLevel(current_question.weight));
+			$('#q_level').html(question_level);
 			$('#table_head').html(current_question.word);
 			$('#1').html(random_selection[0]);
 			$('#2').html(random_selection[1]);
@@ -230,7 +233,13 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 		$("#answer").html(current_answer);
 			
 		var score;
+		var member_level = '${member_level}';
 		
+		// 문제의 level이 회원 level보다 낮을 경우 weight를 조정 
+		if(question_level < member_level){
+			current_question.weight = member_level * 10 + 9;
+		}
+			
 		switch(count_tried) {
 		case 1:
 			score = current_question.weight;
@@ -248,7 +257,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 		// 문제별 history 객체 생성
 		var history={
 				'member_id': '${member_id}',
-				'member_level': '${member_level}',
+				'member_level': member_level,
 				'question_id': current_question.question_id,
 				'count_tried': count_tried,
 				'weight': current_question.weight,

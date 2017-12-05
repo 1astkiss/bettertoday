@@ -191,8 +191,9 @@
 		// 점수 재계산이 필요한 경우에만 재계산해서 session에 저장
 		if(renew_score.equals("yes")){
 			// session에서 member_id를 가져와서 점수와 레벨 확인후 session에 저장
-			String member_average = String.format("%.2f", mdao.chkMemberAverage(member_id));
-			member_level = mdao.chkMemberLevel(member_id);
+			double member_avg_dbl = mdao.chkMemberAverage(member_id);
+			String member_average = String.format("%.2f", member_avg_dbl);
+			member_level = mdao.chkMemberLevel(member_avg_dbl);
 			session.setAttribute("member_average", member_average);
 			session.setAttribute("member_level", member_level);
 		}
