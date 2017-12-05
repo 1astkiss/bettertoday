@@ -160,6 +160,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 			}
 			
 			// 현재 문제를 화면에 표시
+			$('#q_level').html(chkQuestionLevel(current_question.weight));
 			$('#table_head').html(current_question.word);
 			$('#1').html(random_selection[0]);
 			$('#2').html(random_selection[1]);
@@ -174,13 +175,32 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 		}
 	};
 	
+	/***************************************
+	문제별 가중치를 입력하면 문제 level을 정해주는 함수
+	
+	****************************************/
+	var chkQuestionLevel = function(weight) {
+	
+		var q_level = 0;
+				
+		if(weight < 20) q_level = 1;
+		else if(weight < 30) q_level = 2;
+		else if(weight < 40) q_level = 3;
+		else if(weight < 50) q_level = 4;
+		else if(weight < 60) q_level = 5;
+		else if(weight < 70) q_level = 6;
+		else if(weight < 80) q_level = 7;
+		else if(weight < 90) q_level = 8;
+		else q_level = 9;
+			
+		return q_level;
+	}
+	
 	
 	/***************************************
-	
 	다음의 경우 정답을 보여주고 문제 컨트롤을 활성화하는 함수
 	1. 사용자가 정답을 click한 경우
 	2. 최대 시도횟수에 도달한 경우
-	
 	****************************************/
 	var mark_answer = function(answer){
 
@@ -248,6 +268,8 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 		// 문제풀이가 끝났으므로 타이머를 감춤
 		$('#timer').addClass('hide_element');
 		
+		// 다음문제 버튼으로 focus 이동
+		$('more_question_button').focus();
 	};
 	
 	/***************************************
@@ -382,7 +404,8 @@ form{
 		<hr>
 		<table id="question_table">
 			<tr>
-				<td id="table_head" colspan="2">'${question.word}'</td>
+				<td id="" align="center">L<span id="q_level"></span></td>
+				<td id="table_head" >'${question.word}'</td>
 			</tr>
 			<tr>
 				<td class="select 1" id="cc"><a
