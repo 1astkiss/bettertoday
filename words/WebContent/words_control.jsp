@@ -71,6 +71,20 @@
 	switch(action){
 	
 	// 최근에 틀린문제 복습을 요청한 경우
+	case "modify":
+		System.out.println("modify");
+		
+		// 문제DB를 update
+		if (questions_dao.modifyQuestion(question)) {
+			// 수정이 성공하면 성공 페이지로 이동
+			pageContext.forward("modify_question_success.jsp");
+		} else {
+			throw new Exception("문제 수정 오류!!");
+		}
+		
+		break;
+		
+	// 최근에 틀린문제 복습을 요청한 경우
 	case "missed":
 		
 		// 새로운 문제를 가져오기 전에 기존의 문제들을 비움

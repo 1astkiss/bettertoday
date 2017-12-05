@@ -112,28 +112,30 @@ public class MemberDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member_id);
 			rs = pstmt.executeQuery();
-			rs.next();
 			
-			result.setMember_id(member_id);
-			result.setPasswd(rs.getString("passwd"));
-			result.setCan_make_question(rs.getInt("can_make_question"));
-			result.setNickname(rs.getString("nickname"));
-			result.setEmail(rs.getString("email"));
-			result.setBirth_year(rs.getInt("birth_year"));
+			if(rs.next()) {
 			
-			int member_level_from_member_table = rs.getInt("member_level");
-			int member_level_from_wmws_table = chkMemberLevel(member_id);
-			
-			if(member_level_from_wmws_table == 0) {
-				new_member_level = member_level_from_member_table;
-			}else if(member_level_from_wmws_table == member_level_from_member_table){
-				new_member_level = member_level_from_member_table;
-			}else {
-				new_member_level = member_level_from_wmws_table;
-				setMemberLevel(member_id, member_level_from_wmws_table);
+				result.setMember_id(member_id);
+				result.setPasswd(rs.getString("passwd"));
+				result.setCan_make_question(rs.getInt("can_make_question"));
+				result.setNickname(rs.getString("nickname"));
+				result.setEmail(rs.getString("email"));
+				result.setBirth_year(rs.getInt("birth_year"));
+				
+				int member_level_from_member_table = rs.getInt("member_level");
+				int member_level_from_wmws_table = chkMemberLevel(member_id);
+				
+				if(member_level_from_wmws_table == 0) {
+					new_member_level = member_level_from_member_table;
+				}else if(member_level_from_wmws_table == member_level_from_member_table){
+					new_member_level = member_level_from_member_table;
+				}else {
+					new_member_level = member_level_from_wmws_table;
+					setMemberLevel(member_id, member_level_from_wmws_table);
+				}
+				
+				result.setMember_level(new_member_level);
 			}
-			
-			result.setMember_level(new_member_level);
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -171,8 +173,7 @@ public class MemberDAO {
 			pstmt.setString(1, member_id);
 			rs = pstmt.executeQuery();
 			
-			if(rs != null) {
-				rs.next();
+			if(rs.next()) {
 				double[] avgArray = {rs.getDouble("avg_30"), rs.getDouble("avg_31_to_60") * 0.9, rs.getDouble("avg_61_to_90") * 0.8, rs.getDouble("avg_91_plus")* 0.7};
 				double avgTotal = 0;
 				double avgFinal = 0;

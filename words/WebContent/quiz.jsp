@@ -26,31 +26,13 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 		// 퀴즈를 시작할때 첫번째 문제 load
 		next_question();
 		
+		// 문제수정 버튼을 누르면 현재 문제를 JSON string으로 바꾸어 저장하고 문제수정화면으로 이동
 		$('#modify_q_btn').click(function(){
-			alert("modify q button");
-				event.preventDefault();
 				
-		// history가 저장된 Array객체를 words_control.jsp로 보내기 위해 String으로 변환
-		var q_json_string =  JSON.stringify(current_question);
-		
-		// json String을 request객체에 담아 보내기 위해 입력폼에 저장
-		$('#modify_question').attr('value',q_json_string);
-			/* var 
+			// Question객체를 words_control.jsp로 보내기 위해 String으로 변환
+			var q_json_string =  JSON.stringify(current_question);
+			$('#modify_question').attr('value', q_json_string);
 			
-			if(current_password != "${password}"){
-				alert("비밀번호가 틀립니다.");
-				event.preventDefault();
-			}else if(new_password1.length < 6 || new_password1.length > 12){
-				alert("비밀번호는 6자이상 12자 이하이어야 합니다");
-				event.preventDefault();
-			}else if(new_password1 == current_password){
-				alert("새 비밀번호가 기존과 같습니다");
-			}else if(new_password1 != new_password2){
-				alert("새로운 비밀번호를 다시 확인하세요...");
-				event.preventDefault();
-			}else{
-				$('input[name="passwd"]').val(new_password1);
-			} */
 		});
 	};
 
@@ -395,6 +377,7 @@ form{
 
 	<div align="center">
 		<hr>
+		<!-- 문제 수정 권한이 있는 사용자의 경우 문제수정 버튼 활성화 -->
 		<h2>다음 문제에 <span id="time_info"></span>초내에 답하세요 <words:modify_question/></h2>
 		<hr>
 		<table id="question_table">

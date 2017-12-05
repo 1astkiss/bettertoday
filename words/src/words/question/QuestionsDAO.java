@@ -489,7 +489,6 @@ public class QuestionsDAO {
 		return questions;
 	}
 	
-	
 	/**
 	 * 신규 문제 등록
 	 * 
@@ -515,6 +514,56 @@ public class QuestionsDAO {
 			pstmt.setInt(7, question.getAnswer());
 			
 			// 문제등록
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getErrorCode());
+			return false;
+		} finally {
+			try {
+				// 자원 정리
+				if (pstmt != null) {
+					pstmt.close();
+				}
+
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return true;
+	}
+	
+	
+	/**
+	 * 문제 수정
+	 * 
+	 * @param question
+	 * @return
+	 */
+	 public boolean modifyQuestion(Question question) {
+
+		conn = DBManager.getConnection();
+		String sql;
+
+		try {
+			sql = "update questions set word=?, selection1=?, selection2=?, selection3=?, selection4=?, answer=?"
+					+ " where question_id=?";
+			// query문 작성
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, question.getWord());
+			pstmt.setString(2, question.getSelection1());
+			pstmt.setString(3, question.getSelection2());
+			pstmt.setString(4, question.getSelection3());
+			pstmt.setString(5, question.getSelection4());
+			pstmt.setInt(6, question.getAnswer());
+			pstmt.setInt(7, question.getQuestion_id());
+			
+			// 문제수정
 			pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
