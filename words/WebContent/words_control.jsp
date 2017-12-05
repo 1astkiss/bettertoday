@@ -33,6 +33,11 @@
 	
 	// 컨트롤러페이지를 요청하는 페이지에서 넘겨주는 action 값
 	String action = request.getParameter("action");
+
+	// 컨트롤러페이지를 요청하는 페이지에서 넘겨주는 renew_score 값
+	String renew_score = request.getParameter("renew_score");
+	
+	renew_score = renew_score == null ? "" : renew_score;
 	
 	// 로그인 성공후 session에 저장해둔 회원 아이디와 회원 레벨을 가져와서 저장
 	// getAttribute()의 리턴값이 객체이므로 toString()메소드를 사용
@@ -183,6 +188,14 @@
 			
 		}
 		
+		// 점수 재계산이 필요한 경우에만 재계산해서 session에 저장
+		if(renew_score.equals("yes")){
+			// session에서 member_id를 가져와서 점수와 레벨 확인후 session에 저장
+			String member_average = String.format("%.2f", mdao.chkMemberAverage(member_id));
+			member_level = mdao.chkMemberLevel(member_id);
+			session.setAttribute("member_average", member_average);
+			session.setAttribute("member_level", member_level);
+		}
 		// 시작페이지로 이동
 		pageContext.forward(home);
 		break;

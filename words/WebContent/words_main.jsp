@@ -10,12 +10,7 @@
 <jsp:useBean id="mdao" class="words.member.MemberDAO" />
 
 <%
-	String member_id = (String)session.getAttribute("member_id");
-	String member_average = String.format("%.2f", mdao.chkMemberAverage(member_id));
-	int member_level = mdao.chkMemberLevel(member_id);
-	System.out.println("member_average : " + member_average);
-	session.setAttribute("member_average", member_average);
-	session.setAttribute("member_level", member_level);
+	
 %>
 
 <!DOCTYPE html>

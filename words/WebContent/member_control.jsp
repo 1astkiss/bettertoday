@@ -64,7 +64,7 @@
 			session.setAttribute("birth_year", memberInfoFromDB.getBirth_year());
 			
 			// 시작페이지로 이동
-			pageContext.forward("words_main.jsp?");
+			pageContext.forward("words_control.jsp?action=home&renew_score=yes");
 		}else{
 			out.println("<script>alert('아이디나 비밀번호가 틀렸습니다.'); history.go(-1);</script>");
 		}

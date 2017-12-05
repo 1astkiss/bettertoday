@@ -423,7 +423,7 @@ form{
 						<input type='submit' value='퀴즈더' id='more_question_button'>
 					</form>
 		
-					<form method='post' action='words_control.jsp?action=home'>
+					<form method='post' action='words_control.jsp?action=home&renew_score=yes'>
 						<input type='hidden' name='history_array' value='' id='history_array'>
 						<input class='quiz_control' type='submit' value='퀴즈그만' id='quit_button'>
 					</form>
