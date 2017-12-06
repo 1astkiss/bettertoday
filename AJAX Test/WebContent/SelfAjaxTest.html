@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script> 
+<title>Insert title here</title>
+<script>
+$(function(){
+	
+	var request = new XMLHttpRequest();
+	request.open('get', 'data.jsp?name=c', false);
+	
+	request.send();
+	$('body').append(request.responseText);
+});
+</script>
+</head>
+<body>
+<h1 id="text">This is Self Data</h1>
+</body>
+</html>
