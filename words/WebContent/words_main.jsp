@@ -7,8 +7,6 @@
 <!--  custom tag을 사용하기 위한 처리 -->
 <%@ taglib tagdir="/WEB-INF/tags" prefix="words"%>
 
-<jsp:useBean id="mdao" class="words.member.MemberDAO" />
-
 <%
 	
 %>
@@ -24,7 +22,7 @@ minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
 	media="screen" />
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
-<title>My words</title>
+<title>Wizard Of Words</title>
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 

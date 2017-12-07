@@ -75,9 +75,6 @@
 	case "logout":
 		//세션에 저장된 값 초기화
 		session.invalidate();
-//		session.removeAttribute("member_id");
-//		session.removeAttribute("can_make_question");
-//		session.removeAttribute("member_level");
 		
 		// 시작화면으로 이동
 		response.sendRedirect("words_main.jsp");

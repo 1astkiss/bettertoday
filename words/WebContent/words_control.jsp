@@ -75,7 +75,7 @@
 	// 컨트롤러에 요청하는 action의 구분에 따른 처리
 	switch(action){
 	
-	// 최근에 틀린문제 복습을 요청한 경우
+	// 문제 수정을 요청한 경우
 	case "modify":
 		System.out.println("modify");
 		

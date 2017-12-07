@@ -24,7 +24,7 @@ minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
 
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
-<title>My words</title>
+<title>My words</title> 
 <style>
 
 html, body {
@@ -37,47 +37,52 @@ html, body {
 
 </style>
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+function getDistanceFromLatLon(lat1,lon1,lat2,lon2) {
+	  var R = 6371*1000; // Radius of the earth in km
+	  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+	  var dLon = deg2rad(lon2-lon1); 
+	  var a = 
+	    Math.sin(dLat/2) * Math.sin(dLat/2) +
+	    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+	    Math.sin(dLon/2) * Math.sin(dLon/2)
+	    ; 
+	  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	  var d = R * c; // Distance in km
+	  return d;
+	}
 
+	function deg2rad(deg) {
+	  return deg * (Math.PI/180)
+	}
+	
+var distance = getDistanceFromLatLon(1.0000,1.0000,1.00009,1.00000);
+
+alert("distance : " + distance);
+</script>
 </head>
 
 <body>
 	<header>
 		<h1>W<span class="tiny_font">izard </span>O<span class="tiny_font">f &nbsp;</span> S<span class="tiny_font">hout</span></h1>
 	</header>
-
-	<nav>
-		<div class="menu">
-			<ul>
-				<!-- <li><a href="#">Home &nbsp;&nbsp;</a></li> -->
-				
-				<!-- 
-				custom tag 'login'사용 
-				
-				회원이 로그인하지 않은 상태일 경우
-				. 아이디와 패스워드 입력폼 출력
-				. 신규회원 가입 링크 제공
-				
-				회원이 로그인한 상태일 경우
-				. 복습 링크 제공
-				. 문제출제 권한이 있는 회원의 경우 문제출제 링크 제공
-				. 회원정보 링크 제공
-				. 로그아웃 버튼
-				-->
-				<shout:login />
-		</div>
-	</nav>
 	
-	<shout:body />
-	
-	<div align="center">
+	<div>
 		<br>
-		
-		<!-- 
-		custom tag 'quiz' 사용
-		. 회원이 로그인한 상태인 경우 : 퀴즈시작 링크 제공
-		. 회원이 로그인하지 않은 상태일 경우 : Welcome Message 출력
-		 -->
-		<%-- <shout:quiz /> --%>
+		<form>
+		<table>
+			<tr>
+				<td colspan="2">검색조건</td>
+			</tr>
+			<tr>
+				<td>거리</td>
+				<td><input type="number" name="distance" placeholder="거리" min="10" max="3000" step="10">m</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="조회"></td>
+			</tr>
+		</table>
+		</form>		
 	</div>
 </body>
 </html>

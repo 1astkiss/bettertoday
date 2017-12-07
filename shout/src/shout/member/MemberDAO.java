@@ -25,7 +25,7 @@ public class MemberDAO {
 	public boolean addMember(Member member) {
 		
 		conn = DBManager.getConnection();
-		String sql = "insert into shout_member(member_id, password, membertype, birth_year, sex, mobile, email, date_created) "
+		String sql = "insert into shout_member(member_id, password, member_type, birth_year, sex, mobile, email, date_created) "
 				+ "values(?,?,?,?,?,?,?,now())";
 		
 		try {
@@ -55,6 +55,52 @@ public class MemberDAO {
 
 		return true;
 	}
+	
+	/**
+	 * 회원 로그인
+	 * @param member_id
+	 * @param passwd
+	 * @return
+	 */
+	public Member login(String member_id) {
+		
+		conn = DBManager.getConnection();
+		
+		String sql;
+		
+		try {
+			//회원 기본 정보 가져오기
+			sql = "select member_id, password, member_type from shout_member where member_id=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+			
+				result.setMember_id(member_id);
+				result.setPassword(rs.getString("password"));
+				result.setMember_type(rs.getInt("member_type"));
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) {
+					rs.close();
+				}
+				pstmt.close();
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		log.info("member_id : {} logged in", member_id);
+
+		return result;
+	}
+	
 	
 	/** 
 	 * 회원정보 변경
@@ -92,68 +138,6 @@ public class MemberDAO {
 	}
 	
 	
-	*//**
-	 * 회원 로그인
-	 * @param member_id
-	 * @param passwd
-	 * @return
-	 *//*
-	public Member login(String member_id) {
-		
-		conn = DBManager.getConnection();
-		
-		String sql;
-		int new_member_level = 0;
-		
-		try {
-			//회원 기본 정보 가져오기
-			sql = "select member_id, passwd, can_make_question, member_level, nickname, email, birth_year from words_member where member_id=?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, member_id);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-			
-				result.setMember_id(member_id);
-				result.setPasswd(rs.getString("passwd"));
-				result.setCan_make_question(rs.getInt("can_make_question"));
-				result.setNickname(rs.getString("nickname"));
-				result.setEmail(rs.getString("email"));
-				result.setBirth_year(rs.getInt("birth_year"));
-				
-				int member_level_from_member_table = rs.getInt("member_level");
-				int member_level_from_wmws_table = chkMemberLevel(member_id);
-				
-				if(member_level_from_wmws_table == 0) {
-					new_member_level = member_level_from_member_table;
-				}else if(member_level_from_wmws_table == member_level_from_member_table){
-					new_member_level = member_level_from_member_table;
-				}else {
-					new_member_level = member_level_from_wmws_table;
-					setMemberLevel(member_id, member_level_from_wmws_table);
-				}
-				
-				result.setMember_level(new_member_level);
-			}
-			
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if(rs != null) {
-					rs.close();
-				}
-				pstmt.close();
-				conn.close();
-			}catch(SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		log.info("member_id : {} logged in", member_id);
-
-		return result;
-	}
 	
 	*//**
 	 * 과거 문제풀이 이력에 따른 실시간 회원 레벨 산정

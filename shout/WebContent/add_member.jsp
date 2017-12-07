@@ -67,7 +67,7 @@ tr:last-child {
 			</tr>
 			<tr>
 				<td>Password</td>
-				<td><input type="password" name="passwd" size="13" required placeholder="6~12자"></td>
+				<td><input type="password" name="password" size="13" required placeholder="6~12자"></td>
 			</tr>
 			<tr>
 				<td>Name</td>
@@ -88,18 +88,18 @@ tr:last-child {
 			<tr>
 				<td>성별</td>
 				<td>
-					<input type="radio" name="sex" value="m" required>
+					<input type="radio" name="sex" value="1" required>
 						<label for="radio1">남자&nbsp; </label>
-					<input type="radio" name="sex" value="f">
+					<input type="radio" name="sex" value="2">
 						<label for="radio2">여자&nbsp;</label> 
 					</td>
 			</tr>
 			<tr>
 				<td>회원타입</td>
 				<td>
-					<input type="radio" name="member_type" value="individual">
+					<input type="radio" name="member_type" value="1">
 						<label for="radio2">개인&nbsp;</label>
-					<input type="radio" name="member_type" value="biz" required>
+					<input type="radio" name="member_type" value="2" required>
 						<label for="radio1">사업자&nbsp; </label>
 				</td>
 			</tr>

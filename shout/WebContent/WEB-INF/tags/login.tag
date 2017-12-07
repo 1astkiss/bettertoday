@@ -11,8 +11,8 @@
 		<li><a href="words_control.jsp?action=missed"> 복습 &nbsp;&nbsp; </a></li>
 
 		<!-- 출제권한이 있는 회원인 경우 문제출제 페이지 링크 활성화 -->
-		<c:if test="${can_make_question == 1}">
-			<li><a href="add_question.jsp"> 문제출제 &nbsp;&nbsp; </a></li>
+		<c:if test="${member_type == 2}">
+			<li><a href="send_shout.jsp"> 메시지발송 &nbsp;&nbsp; </a></li>
 		</c:if>
 
 		<!--  로그아웃 링크 -->
@@ -27,6 +27,7 @@
 		<li class="nav_menu_right"><a href="manage_member_info.jsp">회원정보 </a></li></ul>
 		<br><br>
 		<h5 align="center"> Hi ${member_id}, you are level${member_level} and your score is ${member_average}</h5>
+		
 	</c:when>
 	
 	<c:otherwise>
@@ -38,7 +39,7 @@
 			<form name="loginform" method="post" action="member_control.jsp">
 				<input type="hidden" name="action" value="login">
 				<input type="text" name="member_id" placeholder="ID" >
-				<input type="password" name="passwd" placeholder="password" >
+				<input type="password" name="password" placeholder="password" >
 				<input type="submit" value="로그인" style="width:60px">
 			</form>
 		</li></ul>
