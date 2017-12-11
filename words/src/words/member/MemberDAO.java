@@ -209,31 +209,131 @@ public class MemberDAO {
 		
 		conn = DBManager.getConnection();
 		String sql;
+		
+		//최종 평균값
 		double avgFinal = 0;
 		
+		//평균계산에 사용하는 과거 이력 갯수
+		int HISTORY_CNT = 100;
+		
+		//구간별 이력갯수
+		int score_cnt = 0;
+		
+		//구간별 점수의 합
+		double score_total = 0;
+		
+		//평균계산에 사용할 점수 갯수
+		int score_cnt_total = 0;
+		
+		//평균계산에 사용할 점수의 합
+		double sumTotal = 0;
+		
 		try {
-			sql = "select avg_30, avg_31_to_60, avg_61_to_90, avg_91_plus from words_member_with_score where member_id=?";
+			//30일이내 점수 이력 조회
+			sql = "select score "
+					+ "from member_word_history "
+					+ "where (date_created >= (now() - interval 30 day)) "
+					+ "and (member_id = ?) "
+					+ "order by date_created desc limit 0,?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member_id);
+			pstmt.setInt(2, HISTORY_CNT);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()) {
-				double[] avgArray = {rs.getDouble("avg_30"), rs.getDouble("avg_31_to_60") * 0.9, rs.getDouble("avg_61_to_90") * 0.8, rs.getDouble("avg_91_plus")* 0.7};
-				double avgTotal = 0;
-				int avgCount = 0;
-				for(int i = 0; i < avgArray.length; i++) {
-					if(avgArray[i] != 0) {
-						avgTotal += avgArray[i];
-						avgCount++;
-					}
-				}
-				
-				//avgCount가 0일 경우 0으로 나누게 되는 문제 해결
-				if (avgCount != 0) {
-					avgFinal = avgTotal / avgCount;
-				}
-				
+			while(rs.next()) {
+				score_total += rs.getDouble("score");
+				score_cnt++;
 			}
+			
+			if(score_cnt != 0) {
+				sumTotal += score_total;
+				score_cnt_total += score_cnt;
+			}
+			
+			//이력이 100건이 안될 경우 31~60일 이력 조회
+			if(score_cnt_total < HISTORY_CNT) {
+				score_total = 0;
+				score_cnt = 0;
+						
+				sql = "select score "
+						+ "from member_word_history "
+						+ "where ((date_created <= (now() - interval 31 day)) "
+						+ "and (date_created >= (now() - interval 60 day))) "
+						+ "and (member_id = ?) "
+						+ "order by date_created desc limit 0,?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, member_id);
+				pstmt.setInt(2, HISTORY_CNT - score_cnt_total);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					score_total += rs.getDouble("score");
+					score_cnt++;
+				}
+				
+				if(score_cnt != 0) {
+					//31~60일 이력점수 합의 90%를 반영
+					sumTotal += (score_total * 0.9);
+					score_cnt_total += score_cnt;
+				}
+			}
+			
+			//이력이 100건이 안될 경우 61~90일 이력 조회
+			if(score_cnt_total < HISTORY_CNT) {
+				score_total = 0;
+				score_cnt = 0;
+				
+				sql = "select score "
+						+ "from member_word_history "
+						+ "where ((date_created <= (now() - interval 61 day)) "
+						+ "and (date_created >= (now() - interval 90 day))) "
+						+ "and (member_id = ?) "
+						+ "order by date_created desc limit 0,?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, member_id);
+				pstmt.setInt(2, HISTORY_CNT - score_cnt_total);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					score_total += rs.getDouble("score");
+					score_cnt++;
+				}
+				
+				if(score_cnt != 0) {
+					//31~60일 이력점수 합의 80%를 반영
+					sumTotal += (score_total * 0.8);
+					score_cnt_total += score_cnt;
+				}
+			}
+			
+			//이력이 100건이 안될 경우 91일 이전 이력 조회
+			if(score_cnt_total < HISTORY_CNT) {
+				score_total = 0;
+				score_cnt = 0;
+				
+				sql = "select score "
+						+ "from member_word_history "
+						+ "where (date_created <= (now() - interval 91 day)) "
+						+ "and (member_id = ?) "
+						+ "order by date_created desc limit 0,?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, member_id);
+				pstmt.setInt(2, HISTORY_CNT - score_cnt_total);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					score_total += rs.getDouble("score");
+					score_cnt++;
+				}
+				
+				if(score_cnt != 0) {
+					//91일 이전 이력점수 합의 70%를 반영
+					sumTotal = (score_total * 0.7);
+					score_cnt_total += score_cnt;
+				}
+			}
+			
+			avgFinal = sumTotal / score_cnt_total;
 			
 		}catch(SQLException e) {
 			e.printStackTrace();

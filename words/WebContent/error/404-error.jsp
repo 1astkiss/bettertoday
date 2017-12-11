@@ -26,7 +26,7 @@ minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
 			요청 실패 URI: ${pageContext.errorData.requestURI }<br> 상태코드:
 			${pageContext.errorData.statusCode }<br>
 		
-		<h3><a href="../words_main.jsp">시작화면으로 가기 </a></h3>
+		<h3><a href="/words/words_main.jsp">시작화면으로 가기 </a></h3>
 	</div>
 </body>
 </html>

@@ -28,7 +28,7 @@ minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
 			${pageContext.errorData.statusCode }<br> 예외유형:
 			${pageContext.errorData.throwable }<br>
 		
-		<h3><a href="../words_main.jsp">시작화면으로 가기 </a></h3>
+		<h3><a href="/words/words_main.jsp">시작화면으로 가기 </a></h3>
 	</div>
 </body>
 </html>
