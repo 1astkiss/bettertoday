@@ -18,6 +18,44 @@ public class MemberDAO {
 	
 	Logger log = LoggerFactory.getLogger(MemberDAO.class);
 	
+	/**
+	 * 아이디 중복 체크
+	 * @param member_id
+	 * @return
+	 */
+	public boolean chkIdUnique(String member_id) {
+		boolean idUnique;
+		
+		conn = DBManager.getConnection();
+		String sql = "select member_id from words_member where member_id = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,  member_id);
+			rs = pstmt.executeQuery();
+			
+			if(rs == null) {
+				idUnique = true;
+			}else {
+				idUnique = false;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+			log.info("Error Code : {}", e.getErrorCode());
+			return false;
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return idUnique;
+	}
+	
+	
 	/** 
 	 * 신규회원등록
 	 * @param member

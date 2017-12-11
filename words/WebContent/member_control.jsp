@@ -34,13 +34,17 @@
 	// 신규회원 등록
 	case "add":
 		
-		// 신규회원 정보를 담은 Member객체를 DB에 추가
-		if(mdao.addMember(member)){
-			// 성공시 회원가입 성공 안내페이지로 이동
-			response.sendRedirect("add_member_success.jsp");
+		if(mdao.chkIdUnique(member.getMember_id())){
+			// 신규회원 정보를 담은 Member객체를 DB에 추가
+			if(mdao.addMember(member)){
+				// 성공시 회원가입 성공 안내페이지로 이동
+				response.sendRedirect("add_member_success.jsp");
+			}else{
+				log.error("member add failed for {}...", member.getNickname());
+			}
 		}else{
-			log.error("member add failed for {}...", member.getNickname());
-			out.println("<script>document.write()'같은 아이디가 있네요...'); history.go(-1);</script>");
+			log.error("id duplcation for {}...", member.getMember_id());
+			out.println("<script>alert('아이디가 이미 사용중입니다.'); history.go(-1);</script>");
 		}
 		
 		break;
