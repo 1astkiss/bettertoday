@@ -372,7 +372,7 @@ form{
 				<td id="table_head" colspan="2">'${question.word}'</td>
 			</tr>
 			<tr>
-				<td class="select 1" id="cc"><a
+				<td class="select 1"><a
 					href="javascript:check_answer(1)">( 1 )</a></td>
 				<td id="1">${question.selection1 }</td>
 			</tr>

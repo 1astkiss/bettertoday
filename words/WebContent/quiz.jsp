@@ -18,8 +18,14 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Quiz Page</title>
 <link rel="stylesheet" href="css/styles.css" type="text/css"
 	media="screen" />
-
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+<style>
+
+$('.1'){
+	background-color: red;
+}
+
+</style>
 <script>
 	window.onload = function() {
 		
@@ -33,6 +39,10 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 			var q_json_string =  JSON.stringify(current_question);
 			$('#modify_question').attr('value', q_json_string);
 			
+		});
+		
+		$('#s1').click(function(){
+			$('[class="select 1"]').click();
 		});
 	};
 
@@ -165,10 +175,10 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 			// 현재 문제를 화면에 표시
 			$('#q_level').html(question_level);
 			$('#table_head').html(current_question.word);
-			$('#1').html(random_selection[0]);
-			$('#2').html(random_selection[1]);
-			$('#3').html(random_selection[2]);
-			$('#4').html(random_selection[3]);
+			$('#s1').html(random_selection[0]);
+			$('#s2').html(random_selection[1]);
+			$('#s3').html(random_selection[2]);
+			$('#s4').html(random_selection[3]);
 			$('#timer').html(TIME_LIMIT);
 			$('#time_info').html(TIME_LIMIT);
 			$('#next_table').addClass('hide_element');
@@ -417,24 +427,24 @@ form{
 				<td id="table_head" >'${question.word}'</td>
 			</tr>
 			<tr>
-				<td class="select 1" id="cc"><a
+				<td class="select 1"><a
 					href="javascript:check_answer(1)">( 1 )</a></td>
-				<td id="1">${question.selection1 }</td>
+				<td id="s1">${question.selection1 }</td>
 			</tr>
 			<tr>
 				<td class="select 2"><a href="javascript:check_answer(2)">(
 						2 )</a></td>
-				<td id="2">${question.selection2 }</td>
+				<td id="s2">${question.selection2 }</td>
 			</tr>
 			<tr>
 				<td class="select 3"><a href="javascript:check_answer(3)">(
 						3 )</a></td>
-				<td id="3">${question.selection3 }</td>
+				<td id="s3">${question.selection3 }</td>
 			</tr>
 			<tr>
 				<td class="select 4"><a href="javascript:check_answer(4)">(
 						4 )</a></td>
-				<td id="4">${question.selection4 }</td>
+				<td id="s4">${question.selection4 }</td>
 			</tr>
 		</table>
 		

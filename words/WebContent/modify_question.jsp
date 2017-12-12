@@ -98,7 +98,7 @@ $(function(){
 							placeholder="new word here...." required>${question.word}</textarea></td>
 				</tr>
 				<tr>
-					<td class="select 1" id="cc">( 1 )</td>
+					<td class="select 1">( 1 )</td>
 					<td><textarea name="selection1" class="ta_selection"
 							placeholder="first selection here..." required>${question.selection1}</textarea>
 					</td>
