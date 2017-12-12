@@ -23,8 +23,8 @@ public class MemberDAO {
 	 * @param member_id
 	 * @return
 	 */
-	public boolean chkIdUnique(String member_id) {
-		boolean idUnique;
+	public boolean chkIdExist(String member_id) {
+		boolean idExist;
 		
 		conn = DBManager.getConnection();
 		String sql = "select member_id from words_member where member_id = ?";
@@ -35,9 +35,9 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs == null) {
-				idUnique = true;
+				idExist = false;
 			}else {
-				idUnique = false;
+				idExist = true;
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -52,7 +52,7 @@ public class MemberDAO {
 			}
 		}
 		
-		return idUnique;
+		return idExist;
 	}
 	
 	

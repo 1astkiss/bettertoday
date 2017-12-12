@@ -34,7 +34,10 @@
 	// 신규회원 등록
 	case "add":
 		
-		if(mdao.chkIdUnique(member.getMember_id())){
+		if(mdao.chkIdExist(member.getMember_id())){
+			log.error("id duplcation for {}...", member.getMember_id());
+			out.println("<script>alert('아이디가 이미 사용중입니다.'); history.go(-1);</script>");
+		}else{
 			// 신규회원 정보를 담은 Member객체를 DB에 추가
 			if(mdao.addMember(member)){
 				// 성공시 회원가입 성공 안내페이지로 이동
@@ -42,9 +45,6 @@
 			}else{
 				log.error("member add failed for {}...", member.getNickname());
 			}
-		}else{
-			log.error("id duplcation for {}...", member.getMember_id());
-			out.println("<script>alert('아이디가 이미 사용중입니다.'); history.go(-1);</script>");
 		}
 		
 		break;
@@ -52,25 +52,32 @@
 	// 로그인
 	case "login":
 		Member memberInfoFromDB = new Member();
+		System.out.println("member.getMember_id() : " + member.getMember_id());
 		
-		// 로그인 폼에 입력한 아이디를 매개변수로 보내어 회원정보 객체를 가져옴
-		memberInfoFromDB = mdao.login(member.getMember_id());
-		
-		// DB에서 가져온 회원정보의 password와 로그인 폼에 입력한 password가 일치할 경우 로그인 처리
-		if(memberInfoFromDB.getPasswd().equals(member.getPasswd())){
-			// session에 회원정보 (아이디, 문제출제권한여부, 회원레벨) 저장			
-			session.setAttribute("member_id", memberInfoFromDB.getMember_id());
-			session.setAttribute("can_make_question", memberInfoFromDB.getCan_make_question());
-			session.setAttribute("member_level", memberInfoFromDB.getMember_level());
-			session.setAttribute("password", memberInfoFromDB.getPasswd());
-			session.setAttribute("nickname", memberInfoFromDB.getNickname());
-			session.setAttribute("email", memberInfoFromDB.getEmail());
-			session.setAttribute("birth_year", memberInfoFromDB.getBirth_year());
+		//아이디가 존재하는지 확인
+		if(mdao.chkIdExist(member.getMember_id())){
 			
-			// 시작페이지로 이동
-			pageContext.forward("words_control.jsp?action=home&renew_score=yes");
+			// 로그인 폼에 입력한 아이디를 매개변수로 보내어 회원정보 객체를 가져옴
+			memberInfoFromDB = mdao.login(member.getMember_id());
+			
+			// DB에서 가져온 회원정보의 password와 로그인 폼에 입력한 password가 일치할 경우 로그인 처리
+			if(memberInfoFromDB.getPasswd().equals(member.getPasswd())){
+				// session에 회원정보 (아이디, 문제출제권한여부, 회원레벨) 저장			
+				session.setAttribute("member_id", memberInfoFromDB.getMember_id());
+				session.setAttribute("can_make_question", memberInfoFromDB.getCan_make_question());
+				session.setAttribute("member_level", memberInfoFromDB.getMember_level());
+				session.setAttribute("password", memberInfoFromDB.getPasswd());
+				session.setAttribute("nickname", memberInfoFromDB.getNickname());
+				session.setAttribute("email", memberInfoFromDB.getEmail());
+				session.setAttribute("birth_year", memberInfoFromDB.getBirth_year());
+				
+				// 시작페이지로 이동
+				pageContext.forward("words_control.jsp?action=home&renew_score=yes");
+			}else{
+				out.println("<script>alert('아이디나 비밀번호가 틀렸습니다.'); history.go(-1);</script>");
+			}
 		}else{
-			out.println("<script>alert('아이디나 비밀번호가 틀렸습니다.'); history.go(-1);</script>");
+			out.println("<script>alert('아이디가 존재하지 않습니다.'); history.go(-1);</script>");
 		}
 		
 		break;

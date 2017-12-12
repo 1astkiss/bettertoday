@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isErrorPage="true"%>
+	
+<!--  custom tag을 사용하기 위한 처리 -->
+<%@ taglib tagdir="/WEB-INF/tags" prefix="words"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,12 +25,7 @@ minimum-scale=1, user-scalable=no, target-densitydpi=medium-dpi">
 		<h2>words 오류발생!!</h2>
 		<hr>
 
-		<p>관리자(bettertoday@gmail.com)에게 문의주세요<br> 빠른 시일내에 해결하겠습니다.
-			<br><br>${now} </p>
-		<p>
-			요청 실패 URI: ${pageContext.errorData.requestURI }<br> 상태코드:
-			${pageContext.errorData.statusCode }<br> 예외유형:
-			${pageContext.errorData.throwable }<br>
+		<words:npe />
 		
 		<h3><a href="/words/words_main.jsp">시작화면으로 가기 </a></h3>
 	</div>
