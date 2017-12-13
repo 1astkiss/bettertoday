@@ -30,6 +30,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 	// 현재 load된 문제
 	var current_question;
 	var tmp_question;
+	var question_level = 0;
 	
 	// 정답 여부를 확인하기 위해 현재 load된 문제의 정답(DB에서 가져온 값)을 보관
 	var current_answer;
@@ -147,12 +148,33 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 				random_selection[random_index[i]] = tmp_selection[i];
 			}
 			
+			question_level = chkQuestionLevel(current_question.weight);
+
 			// 현재 문제를 화면에 표시
+			$('#q_level').html(question_level);
 			$('#table_head').html(current_question.word);
-			$('#1').html(random_selection[0]);
-			$('#2').html(random_selection[1]);
-			$('#3').html(random_selection[2]);
-			$('#4').html(random_selection[3]);
+			$('#s1').html(random_selection[0]);
+			$('#s2').html(random_selection[1]);
+			$('#s3').html(random_selection[2]);
+			$('#s4').html(random_selection[3]);
+			
+			// 선택지를 눌러도 작동하도록 설정
+			$('#s1, .c1').one('click', function(){
+				check_answer(1);
+			});
+			
+			$('#s2, .c2').one('click', function(){
+				check_answer(2);
+			});
+			
+			$('#s3, .c3').one('click', function(){
+				check_answer(3);
+			});
+			
+			$('#s4, .c4').one('click', function(){
+				check_answer(4);
+			});
+			
 			$('#timer').html(TIME_LIMIT);
 			$('#time_info').html(TIME_LIMIT);
 			$('#next_table').addClass('hide_element');
@@ -161,6 +183,27 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 			count_down();
 		}
 	};
+	
+	/***************************************
+	문제별 가중치를 입력하면 문제 level을 정해주는 함수
+	
+	****************************************/
+	var chkQuestionLevel = function(weight) {
+	
+		var q_level = 0;
+				
+		if(weight < 20) q_level = 1;
+		else if(weight < 30) q_level = 2;
+		else if(weight < 40) q_level = 3;
+		else if(weight < 50) q_level = 4;
+		else if(weight < 60) q_level = 5;
+		else if(weight < 70) q_level = 6;
+		else if(weight < 80) q_level = 7;
+		else if(weight < 90) q_level = 8;
+		else q_level = 9;
+			
+		return q_level;
+	}
 	
 	
 	/***************************************
@@ -172,23 +215,29 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 	****************************************/
 	var mark_answer = function(answer){
 
+		// 선택지를 눌러도 작동하도록 설정한 것을 초기화(초기화하지 않으면 지난번에 눌리지 않은 이벤트에 누적되게 됨)
+		$('#s1, .c1').off('click');
+		$('#s2, .c2').off('click');
+		$('#s3, .c3').off('click');
+		$('#s4, .c4').off('click');
+		
 		// 선택번호를 제외한 모든 선택번호 비활성화 
 		switch (answer) {
 		case 1:
-			$('.2>a, .3>a, .4>a').addClass('wrong_answer');
-			$(".1>a").addClass("right_answer");
+			$('.c2>a, .c3>a, .c4>a').addClass('wrong_answer');
+			$(".c1>a").addClass("right_answer");
 			break;
 		case 2:
-			$('.1>a, .3>a, .4>a').addClass('wrong_answer');
-			$(".2>a").addClass("right_answer");
+			$('.c1>a, .c3>a, .c4>a').addClass('wrong_answer');
+			$(".c2>a").addClass("right_answer");
 			break;
 		case 3:
-			$('.1>a, .2>a, .4>a').addClass('wrong_answer');
-			$(".3>a").addClass("right_answer");
+			$('.c1>a, .c2>a, .c4>a').addClass('wrong_answer');
+			$(".c3>a").addClass("right_answer");
 			break;
 		case 4:
-			$('.1>a, .2>a, .3>a').addClass('wrong_answer');
-			$(".4>a").addClass("right_answer");
+			$('.c1>a, .c2>a, .c3>a').addClass('wrong_answer');
+			$(".c4>a").addClass("right_answer");
 			break;
 		};
 		
@@ -197,42 +246,6 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 		$('#next_table').removeClass('hide_element');
 		$("#answer").html(current_answer);
 			
-		var score;
-		
-		switch(count_tried) {
-		case 1:
-			score = current_question.weight;
-			break;
-		case 2:
-			score = current_question.weight * 0.5;
-			break;
-		case 3:
-			score = current_question.weight * 0.5 * 0.5;
-			break;
-		default:
-			score = 0;
-		}
-		
-		// 문제별 history 객체 생성
-		var history={
-				'member_id': '${member_id}',
-				'member_level': '${member_level}',
-				'question_id': current_question.question_id,
-				'count_tried': count_tried,
-				'weight': current_question.weight,
-				'score': score,
-		};
-		
-		// history객체를 array에 저장
-		//history_array.push(history);
-		
-		// history가 저장된 Array객체를 words_control.jsp로 보내기 위해 String으로 변환
-		json_string =  JSON.stringify(history_array);
-		
-		// json String을 request객체에 담아 보내기 위해 입력폼에 저장
-		$('#history_array').attr('value',json_string);
-		$('#history_array2').attr('value',json_string);
-		
 		// 문제풀이가 끝났으므로 타이머를 감춤
 		$('#timer').addClass('hide_element');
 		
@@ -255,17 +268,12 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 			// 타이머 정지
 			clearInterval(intervalId1);
 			
-			// 문제시도 횟수 표시
-			//$('#out_count').html(count_tried);
-			
 			// 문제시도 횟수 증가(0점 처리를 위해 시도횟수를 4로 세팅)
 			count_tried++;
 			
 			// 문제 종료 및 정답 표시
 			mark_answer(current_answer);
 		}else{	
-			// 문제시도 횟수 표시
-			//$('#out_count').html(count_tried);
 		}
 	};
 	
@@ -323,16 +331,16 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 				//선택한 답이 오답인 경우 선택한 답을 다시 선택하지 못하도록 처리
 				switch (selected_answer) {
 				case 1:
-					$(".1>a").addClass("wrong_answer");
+					$(".c1>a").addClass("wrong_answer");
 					break;
 				case 2:
-					$(".2>a").addClass("wrong_answer");
+					$(".c2>a").addClass("wrong_answer");
 					break;
 				case 3:
-					$(".3>a").addClass("wrong_answer");
+					$(".c3>a").addClass("wrong_answer");
 					break;
 				case 4:
-					$(".4>a").addClass("wrong_answer");
+					$(".c4>a").addClass("wrong_answer");
 					break;
 				};
 				
@@ -369,27 +377,24 @@ form{
 		<hr>
 		<table id="question_table">
 			<tr>
-				<td id="table_head" colspan="2">'${question.word}'</td>
+				<td id="" align="center">L<span id="q_level"></span></td>
+				<td id="table_head">'${question.word}'</td>
 			</tr>
 			<tr>
-				<td class="select 1"><a
-					href="javascript:check_answer(1)">( 1 )</a></td>
-				<td id="1">${question.selection1 }</td>
+				<td class="select c1"><a>1</a></td>
+				<td id="s1" class="selectword">${question.selection1 }</td>
 			</tr>
 			<tr>
-				<td class="select 2"><a href="javascript:check_answer(2)">(
-						2 )</a></td>
-				<td id="2">${question.selection2 }</td>
+				<td class="select c2"><a>2</a></td>
+				<td id="s2" class="selectword">${question.selection2 }</td>
 			</tr>
 			<tr>
-				<td class="select 3"><a href="javascript:check_answer(3)">(
-						3 )</a></td>
-				<td id="3">${question.selection3 }</td>
+				<td class="select c3"><a>3</a></td>
+				<td id="s3" class="selectword">${question.selection3 }</td>
 			</tr>
 			<tr>
-				<td class="select 4"><a href="javascript:check_answer(4)">(
-						4 )</a></td>
-				<td id="4">${question.selection4 }</td>
+				<td class="select c4"><a>4</a></td>
+				<td id="s4" class="selectword">${question.selection4 }</td>
 			</tr>
 		</table>
 		
@@ -406,12 +411,10 @@ form{
 					<input class='quiz_control' type='button' value='다음문제' onclick='next_question()'>
 		
 					<form class='hide_element' method='post' action='words_control.jsp?action=quiz'>
-						<input type='hidden' name='history_array' value='' id='history_array2'>
 						<input type='submit' value='퀴즈더' id='more_question_button'>
 					</form>
 		
 					<form method='post' action='words_control.jsp?action=home'>
-						<input type='hidden' name='history_array' value='' id='history_array'>
 						<input class='quiz_control' type='submit' value='퀴즈그만' id='quit_button'>
 					</form>
 				</td>

@@ -16,16 +16,14 @@
 <meta name="viewport" 
 content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Quiz Page</title>
+<style>
+form{
+	display: inline;
+}
+</style>
 <link rel="stylesheet" href="css/styles.css" type="text/css"
 	media="screen" />
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
-<style>
-
-$('.1'){
-	background-color: red;
-}
-
-</style>
 <script>
 	window.onload = function() {
 		
@@ -41,9 +39,7 @@ $('.1'){
 			
 		});
 		
-		$('#s1').click(function(){
-			$('[class="select 1"]').click();
-		});
+		
 	};
 
 	// words_control.jsp에서 보내온 Question객체 LinkedList를 담아두기 위한 Array
@@ -111,7 +107,6 @@ $('.1'){
 		// 감추었던 타이머를 화면에 표시
 		$('#timer').removeClass('hide_element');
 
-		
 		// 문제가 하나도 안 남아 있으면 새로운 문제를 가져옴
 		if (q_array.length <= 0) {
 			
@@ -179,6 +174,24 @@ $('.1'){
 			$('#s2').html(random_selection[1]);
 			$('#s3').html(random_selection[2]);
 			$('#s4').html(random_selection[3]);
+			
+			// 선택지를 눌러도 작동하도록 설정
+			$('#s1, #c1').one('click', function(){
+				check_answer(1);
+			});
+			
+			$('#s2, #c2').one('click', function(){
+				check_answer(2);
+			});
+			
+			$('#s3, #c3').one('click', function(){
+				check_answer(3);
+			});
+			
+			$('#s4, #c4').one('click', function(){
+				check_answer(4);
+			});
+			
 			$('#timer').html(TIME_LIMIT);
 			$('#time_info').html(TIME_LIMIT);
 			$('#next_table').addClass('hide_element');
@@ -216,24 +229,30 @@ $('.1'){
 	2. 최대 시도횟수에 도달한 경우
 	****************************************/
 	var mark_answer = function(answer){
-
+		
+		// 선택지를 눌러도 작동하도록 설정한 것을 초기화(초기화하지 않으면 지난번에 눌리지 않은 이벤트에 누적되게 됨)
+		$('#s1, #c1').off('click');
+		$('#s2, #c2').off('click');
+		$('#s3, #c3').off('click');
+		$('#s4, #c4').off('click');
+		
 		// 선택번호를 제외한 모든 선택번호 비활성화 
 		switch (answer) {
 		case 1:
-			$('.2>a, .3>a, .4>a').addClass('wrong_answer');
-			$(".1>a").addClass("right_answer");
+			$('#c2>a, #c3>a, #c4>a').addClass('wrong_answer');
+			$("#c1>a").addClass("right_answer");
 			break;
 		case 2:
-			$('.1>a, .3>a, .4>a').addClass('wrong_answer');
-			$(".2>a").addClass("right_answer");
+			$('#c1>a, #c3>a, #c4>a').addClass('wrong_answer');
+			$("#c2>a").addClass("right_answer");
 			break;
 		case 3:
-			$('.1>a, .2>a, .4>a').addClass('wrong_answer');
-			$(".3>a").addClass("right_answer");
+			$('#c1>a, #c2>a, #c4>a').addClass('wrong_answer');
+			$("#c3>a").addClass("right_answer");
 			break;
 		case 4:
-			$('.1>a, .2>a, .3>a').addClass('wrong_answer');
-			$(".4>a").addClass("right_answer");
+			$('#c1>a, #c2>a, #c3>a').addClass('wrong_answer');
+			$("#c4>a").addClass("right_answer");
 			break;
 		};
 		
@@ -287,8 +306,6 @@ $('.1'){
 		// 문제풀이가 끝났으므로 타이머를 감춤
 		$('#timer').addClass('hide_element');
 		
-		// 다음문제 버튼으로 focus 이동
-		$('more_question_button').focus();
 	};
 	
 	/***************************************
@@ -308,17 +325,12 @@ $('.1'){
 			// 타이머 정지
 			clearInterval(intervalId1);
 			
-			// 문제시도 횟수 표시
-			//$('#out_count').html(count_tried);
-			
 			// 문제시도 횟수 증가(0점 처리를 위해 시도횟수를 4로 세팅)
 			count_tried++;
-			
+
 			// 문제 종료 및 정답 표시
 			mark_answer(current_answer);
 		}else{	
-			// 문제시도 횟수 표시
-			//$('#out_count').html(count_tried);
 		}
 	};
 	
@@ -376,16 +388,16 @@ $('.1'){
 				//선택한 답이 오답인 경우 선택한 답을 다시 선택하지 못하도록 처리
 				switch (selected_answer) {
 				case 1:
-					$(".1>a").addClass("wrong_answer");
+					$("#c1>a").addClass("wrong_answer");
 					break;
 				case 2:
-					$(".2>a").addClass("wrong_answer");
+					$("#c2>a").addClass("wrong_answer");
 					break;
 				case 3:
-					$(".3>a").addClass("wrong_answer");
+					$("#c3>a").addClass("wrong_answer");
 					break;
 				case 4:
-					$(".4>a").addClass("wrong_answer");
+					$("#c4>a").addClass("wrong_answer");
 					break;
 				};
 				
@@ -405,11 +417,6 @@ $('.1'){
 	
 </script>
 
-<style>
-form{
-	display: inline;
-}
-</style>
 
 <body>
 	<header>
@@ -427,24 +434,20 @@ form{
 				<td id="table_head" >'${question.word}'</td>
 			</tr>
 			<tr>
-				<td class="select 1"><a
-					href="javascript:check_answer(1)">( 1 )</a></td>
-				<td id="s1">${question.selection1 }</td>
+				<td id="c1" class="select"><a>1</a></td>
+				<td id="s1" class="selectword">${question.selection1 }</td>
 			</tr>
 			<tr>
-				<td class="select 2"><a href="javascript:check_answer(2)">(
-						2 )</a></td>
-				<td id="s2">${question.selection2 }</td>
+				<td id="c2" class="select"><a>2</a></td>
+				<td id="s2" class="selectword">${question.selection2 }</td>
 			</tr>
 			<tr>
-				<td class="select 3"><a href="javascript:check_answer(3)">(
-						3 )</a></td>
-				<td id="s3">${question.selection3 }</td>
+				<td id="c3" class="select"><a>3</a></td>
+				<td id="s3" class="selectword">${question.selection3 }</td>
 			</tr>
 			<tr>
-				<td class="select 4"><a href="javascript:check_answer(4)">(
-						4 )</a></td>
-				<td id="s4">${question.selection4 }</td>
+				<td id="c4" class="select"><a>4</a></td>
+				<td id="s4" class="selectword">${question.selection4 }</td>
 			</tr>
 		</table>
 		

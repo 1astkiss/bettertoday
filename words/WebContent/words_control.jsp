@@ -47,6 +47,12 @@
 	// quiz.jsp에서 념겨준 문제이력 데이타(json string)를 저장
 	String history_string = request.getParameter("history_array");
 	
+	/* String history_string = null;
+	
+	if(request.getParameter("history_array") != null){
+		history_string = request.getParameter("history_array");
+	} */
+	
 	// history_string이 null인 경우는 문제 화면 이외의 화면에서 접근한 경우임. 
 	// 문제화면에서의 접근인 경우 문제풀이 이력 정보를  저장함
 	if(history_string != null){
@@ -95,6 +101,7 @@
 		// 새로운 문제를 가져오기 전에 기존의 문제들을 비움
 		questionDAO_result.clear();
 		
+		// 요청할 문제의 수
 		int missed_cnt = 20;
 		
 		// 문제를 가져와서 ArrayList<Qeustion>에 저장

@@ -98,23 +98,23 @@ $(function(){
 							placeholder="new word here...." required>${question.word}</textarea></td>
 				</tr>
 				<tr>
-					<td class="select 1">( 1 )</td>
+					<td class="select c1">( 1 )</td>
 					<td><textarea name="selection1" class="ta_selection"
 							placeholder="first selection here..." required>${question.selection1}</textarea>
 					</td>
 				</tr>
 				<tr>
-					<td class="select 2">( 2 )</td>
+					<td class="select c2">( 2 )</td>
 					<td><textarea name="selection2" class="ta_selection"
 							placeholder="second selection here..." required>${question.selection2}</textarea></td>
 				</tr>
 				<tr>
-					<td class="select 3">( 3 )</td>
+					<td class="select c3">( 3 )</td>
 					<td><textarea name="selection3" class="ta_selection"
 							placeholder="third selection here..." required>${question.selection3}</textarea></td>
 				</tr>
 				<tr>
-					<td class="select 4">( 4 )</td>
+					<td class="select c4">( 4 )</td>
 					<td><textarea name="selection4" class="ta_selection"
 							placeholder="fourth selection here..." required>${question.selection4}</textarea></td>
 				</tr>
