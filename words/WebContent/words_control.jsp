@@ -47,12 +47,6 @@
 	// quiz.jsp에서 념겨준 문제이력 데이타(json string)를 저장
 	String history_string = request.getParameter("history_array");
 	
-	/* String history_string = null;
-	
-	if(request.getParameter("history_array") != null){
-		history_string = request.getParameter("history_array");
-	} */
-	
 	// history_string이 null인 경우는 문제 화면 이외의 화면에서 접근한 경우임. 
 	// 문제화면에서의 접근인 경우 문제풀이 이력 정보를  저장함
 	if(history_string != null){
@@ -160,6 +154,7 @@
 			System.out.println("not enough questions for you");
 			return;
 		}
+		
 		// DB에서 가져온 문제들을 request 객체에 담음 (quiz.jsp로 보내기 위해)
 		request.setAttribute("questions", questionDAO_result);
 		
