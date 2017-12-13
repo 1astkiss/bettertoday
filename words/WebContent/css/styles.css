@@ -127,8 +127,8 @@ nav span {
 
 
 #table_head {
-	text-align: center;
-	font-size: 1.8em;
+	text-align: left;
+	font-size: 1.3em;
 }
 
 #question_table {
@@ -146,7 +146,7 @@ td {
 	vertical-align: middle;
 	border: 1px solid orange;
 	padding: 5px;
-	font-size: 1.5em;
+	font-size: 1.2em;
 }
 
 td a, td a:visited {
