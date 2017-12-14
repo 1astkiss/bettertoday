@@ -1,0 +1,45 @@
+CREATE TRIGGER member_word_history_AFTER_INSERT AFTER INSERT ON member_word_history FOR EACH ROW
+BEGIN
+	update questions 
+	set weight = (100 - (
+            (COALESCE((SELECT ratio_1st
+                        FROM question_correct_by_level qcbl
+                        WHERE (`question_id` = new.question_id)
+                            AND (member_level = 1)), 50) * 0.292) + 
+            (COALESCE((SELECT ratio_1st
+                        FROM question_correct_by_level
+                        WHERE (`question_id` = new.question_id)
+                            AND (member_level = 2)), 50) * 0.228) + 
+            (COALESCE((SELECT ratio_1st
+                        FROM question_correct_by_level
+                        WHERE (`question_id` = new.question_id)
+                            AND (member_level = 3)), 50) * 0.172) + 
+            (COALESCE((SELECT ratio_1st
+                        FROM question_correct_by_level
+                        WHERE (`question_id` = new.question_id)
+                            AND (member_level = 4)), 50) * 0.124) + 
+            (COALESCE((SELECT ratio_1st
+                        FROM question_correct_by_level
+                        WHERE (`question_id` = new.question_id)
+                            AND (member_level = 5)), 50) * 0.084) + 
+            (COALESCE((SELECT ratio_1st
+                        FROM question_correct_by_level
+                        WHERE (`question_id` = new.question_id)
+                            AND (member_level = 6)), 50) * 0.052) + 
+            (COALESCE((SELECT ratio_1st
+                        FROM question_correct_by_level
+                        WHERE (`question_id` = new.question_id)
+                            AND (member_level = 7)), 50) * 0.028) + 
+            (COALESCE((SELECT ratio_1st
+                        FROM question_correct_by_level
+                        WHERE (`question_id` = new.question_id)
+                            AND (member_level = 8)), 50) * 0.012) + 
+            (COALESCE((SELECT ratio_1st
+                        FROM question_correct_by_level
+                        WHERE (`question_id` = new.question_id)
+                            AND (member_level = 9)), 50) * 0.004)
+		)
+	)
+		
+	where question_id = new.question_id;
+END;
