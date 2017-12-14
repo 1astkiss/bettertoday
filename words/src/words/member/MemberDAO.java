@@ -125,6 +125,8 @@ public class MemberDAO {
 			}
 		}
 		
+		log.info("Member info for ({}) modified.", member.getMember_id());
+
 		return true;
 	}
 	

@@ -52,8 +52,8 @@
 	// 로그인
 	case "login":
 		Member memberInfoFromDB = new Member();
-		System.out.println("member.getMember_id() : " + member.getMember_id());
-		
+		log.info("ID {} logged in", member.getMember_id());
+
 		//아이디가 존재하는지 확인
 		if(mdao.chkIdExist(member.getMember_id())){
 			

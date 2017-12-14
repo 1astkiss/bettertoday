@@ -20,7 +20,7 @@ public class QuestionsDAO {
 	PreparedStatement pstmt;
 	Statement stmt;
 	ResultSet rs = null;
-	Logger logger = LoggerFactory.getLogger(MemberDAO.class);
+	Logger log = LoggerFactory.getLogger(MemberDAO.class);
 	
 	//회원레벨과 동일한 문제수
 	int SameLevelQuestions = 20;
@@ -43,7 +43,7 @@ public class QuestionsDAO {
 	//과거 오답문제 선정 갯수
 	int NUM_OF_WRONG = 15;
 	
-	//과거 오답문제 선정 갯수
+	//신규문제 선정 갯수
 	int NUM_OF_NEW = 45;
 	
 	//최종 출제 문제 갯수
@@ -78,14 +78,13 @@ public class QuestionsDAO {
 		try {
 			//회원레벨과 같은 레벨 문제를 random하게 추출
 			sql = "SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id "
-					+ "FROM questions_with_weight "
+					+ "FROM questions "
 					+ "WHERE weight >= ? AND weight < ? "
 					+ "ORDER BY rand() limit 0,?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, member_level * 10);
 			pstmt.setInt(2, (member_level + 1) * 10);
 			pstmt.setInt(3, SameLevelQuestions);
-			System.out.println("pstmt at QuestionsDao : " + pstmt);
 			rs = pstmt.executeQuery();
 
 			// 위에서 조회한 문제별로 Question object를 생성하여 LinkedList에 추가
@@ -104,19 +103,17 @@ public class QuestionsDAO {
 				// Question객체를 LinkedList에 추가
 				tmp_questions.add(question);
 			}
-			System.out.println("tmp_questions.size() : " + tmp_questions.size());
 
 			
 			//회원레벨보다 1레벨 위 문제를 random하게 추출
 			sql = "SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id "
-					+ "FROM questions_with_weight "
+					+ "FROM questions "
 					+ "WHERE weight >= ? AND weight < ? "
 					+ "ORDER BY rand() limit 0,?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, (member_level + 1) * 10);
 			pstmt.setInt(2, (member_level + 2) * 10);
 			pstmt.setInt(3, OneLevelUpQuestions);
-			System.out.println("pstmt at QuestionsDao : " + pstmt);
 			rs = pstmt.executeQuery();
 
 			// 위에서 조회한 문제별로 Question object를 생성하여 LinkedList에 추가
@@ -135,18 +132,16 @@ public class QuestionsDAO {
 				// Question객체를 LinkedList에 추가
 				tmp_questions.add(question);
 			}
-			System.out.println("tmp_questions.size() : " + tmp_questions.size());
 
 			//회원레벨보다 2레벨 위 문제를 random하게 추출
 			sql = "SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id "
-					+ "FROM questions_with_weight "
+					+ "FROM questions "
 					+ "WHERE weight >= ? AND weight < ? "
 					+ "ORDER BY rand() limit 0,?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, (member_level + 2) * 10);
 			pstmt.setInt(2, (member_level + 3) * 10);
 			pstmt.setInt(3, TwoLevelUpQuestions);
-			System.out.println("pstmt at QuestionsDao : " + pstmt);
 			rs = pstmt.executeQuery();
 
 			// 위에서 조회한 문제별로 Question object를 생성하여 LinkedList에 추가
@@ -165,19 +160,17 @@ public class QuestionsDAO {
 				// Question객체를 LinkedList에 추가
 				tmp_questions.add(question);
 			}
-			System.out.println("tmp_questions.size() : " + tmp_questions.size());
 
 			//회원레벨(동일, 1, 2레벨 위)에 따른 문제 추출 갯수가 출제 목표 수보다 적을 경우 레벨에 관계없이 random하게 추출
 			if(tmp_questions.size() < TotalQuestionsByLevel) {
 				sql = "SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id "
-						+ "FROM questions_with_weight "
+						+ "FROM questions "
 						+ "WHERE weight >= ? AND weight < ? "
 						+ "ORDER BY rand() limit 0,?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, MIN_WEIGHT);
 				pstmt.setInt(2, MAX_WEIGHT);
 				pstmt.setInt(3, TotalQuestionsByLevel - tmp_questions.size());
-				System.out.println("pstmt at QuestionsDao : " + pstmt);
 				rs = pstmt.executeQuery();
 
 				// 위에서 조회한 문제별로 Question object를 생성하여 LinkedList에 추가
@@ -197,7 +190,6 @@ public class QuestionsDAO {
 					tmp_questions.add(question);
 				}
 			}
-			System.out.println("tmp_questions.size() : " + tmp_questions.size());
 
 			//최근에 틀린(1차시도 오답) 문제를 오답 출제수의 3배수만큼 추출한 후 그 중에서 random하게 추출
 			sql = "SELECT " + 
@@ -211,7 +203,7 @@ public class QuestionsDAO {
 					"        `q`.`weight` AS `weight`" + 
 					"    FROM " + 
 					"        (`member_word_history` `mwh` " + 
-					"        JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`))) " + 
+					"        JOIN `questions` `q` ON ((`mwh`.`question_id` = `q`.`question_id`))) " + 
 					"    WHERE " + 
 					"        (`mwh`.`count_tried` > 1) "
 					+ "AND `mwh`.`member_id` = ?"
@@ -220,7 +212,6 @@ public class QuestionsDAO {
 			
 			pstmt.setString(1, member_id);
 			pstmt.setInt(2, NUM_OF_WRONG * 3);
-			System.out.println("pstmt at QuestionsDao : " + pstmt);
 			rs = pstmt.executeQuery();
 
 			// 위에서 조회한 문제별로 Question object를 생성하여 LinkedList에 추가
@@ -267,7 +258,6 @@ public class QuestionsDAO {
 					+ "ORDER BY date_created limit 0,?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, NUM_OF_NEW * 3);
-			System.out.println("pstmt at QuestionsDao : " + pstmt);
 			rs = pstmt.executeQuery();
 
 			// 위에서 조회한 문제별로 Question object를 생성하여 LinkedList에 추가
@@ -353,6 +343,8 @@ public class QuestionsDAO {
 			}
 		}
 
+		log.info("{} questions selected for quiz", questions.size());
+		
 		// LinkedList 객체를 return
 		return questions;
 	}
@@ -392,7 +384,7 @@ public class QuestionsDAO {
 					"        `q`.`weight` AS `weight`" + 
 					"    FROM " + 
 					"        (`member_word_history` `mwh` " + 
-					"        JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`))) " + 
+					"        JOIN `questions` `q` ON ((`mwh`.`question_id` = `q`.`question_id`))) " + 
 					"    WHERE " + 
 					"        (`mwh`.`count_tried` > 1) "
 					+ "AND `mwh`.`member_id` = ?"
@@ -401,7 +393,6 @@ public class QuestionsDAO {
 			
 			pstmt.setString(1, member_id);
 			pstmt.setInt(2, missed_cnt);
-			System.out.println("pstmt at QuestionsDao : " + pstmt);
 			rs = pstmt.executeQuery();
 
 			// 위에서 조회한 문제별로 Question object를 생성하여 LinkedList에 추가
@@ -485,6 +476,8 @@ public class QuestionsDAO {
 			}
 		}
 
+		log.info("{} missed questions selected to study again", questions.size());
+
 		// LinkedList 객체를 return
 		return questions;
 	}
@@ -535,6 +528,8 @@ public class QuestionsDAO {
 			}
 		}
 
+		log.info("A new question for ({}) was added", question.getWord());
+
 		return true;
 	}
 	
@@ -584,6 +579,8 @@ public class QuestionsDAO {
 				e.printStackTrace();
 			}
 		}
+
+		log.info("Question id : {} was modified", question.getQuestion_id());
 
 		return true;
 	}
