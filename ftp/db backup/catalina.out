@@ -10586,3 +10586,1227 @@ tmp_questions.size() : 45
 pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@126b3d3: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
         `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'level002'ORDER BY `mwh`.`date_created` limit 0,45
 pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@3863bd: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions ORDER BY date_created limit 0,135
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@17c66c7: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 20 AND weight < 30 ORDER BY rand() limit 0,20
+tmp_questions.size() : 6
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@13c2970: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 30 AND weight < 40 ORDER BY rand() limit 0,15
+tmp_questions.size() : 16
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@1ac294a: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 40 AND weight < 50 ORDER BY rand() limit 0,10
+tmp_questions.size() : 26
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@29c70e: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 0 AND weight < 100 ORDER BY rand() limit 0,19
+tmp_questions.size() : 45
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@a9c192: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
+        `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'level002'ORDER BY `mwh`.`date_created` limit 0,45
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@fe141e: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions ORDER BY date_created limit 0,135
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@c8ca04: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 20 AND weight < 30 ORDER BY rand() limit 0,20
+tmp_questions.size() : 5
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@1fb8ee: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 30 AND weight < 40 ORDER BY rand() limit 0,15
+tmp_questions.size() : 16
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@1004ae0: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 40 AND weight < 50 ORDER BY rand() limit 0,10
+tmp_questions.size() : 26
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@14b3019: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 0 AND weight < 100 ORDER BY rand() limit 0,19
+tmp_questions.size() : 45
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@11d4ade: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
+        `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'level002'ORDER BY `mwh`.`date_created` limit 0,45
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@264b1b: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions ORDER BY date_created limit 0,135
+member.getMember_id() : wisesia
+[19:28:37] [MemberDAO] [INFO] member_id : wisesia logged in 
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@135fd40: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 60 AND weight < 70 ORDER BY rand() limit 0,20
+tmp_questions.size() : 20
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@1b791c6: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 70 AND weight < 80 ORDER BY rand() limit 0,15
+tmp_questions.size() : 28
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@611e25: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 80 AND weight < 90 ORDER BY rand() limit 0,10
+tmp_questions.size() : 28
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@267d9c: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 0 AND weight < 100 ORDER BY rand() limit 0,17
+tmp_questions.size() : 45
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@d740e5: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
+        `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'wisesia'ORDER BY `mwh`.`date_created` limit 0,45
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@1f5c298: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions ORDER BY date_created limit 0,135
+member.getMember_id() : bettertoday
+[11:02:41] [MemberDAO] [INFO] member_id : bettertoday logged in 
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@ebf242: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 60 AND weight < 70 ORDER BY rand() limit 0,20
+tmp_questions.size() : 20
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@d473c7: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 70 AND weight < 80 ORDER BY rand() limit 0,15
+tmp_questions.size() : 28
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@1d6f879: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 80 AND weight < 90 ORDER BY rand() limit 0,10
+tmp_questions.size() : 28
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@1fbbc14: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 0 AND weight < 100 ORDER BY rand() limit 0,17
+tmp_questions.size() : 45
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@f7324b: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
+        `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'bettertoday'ORDER BY `mwh`.`date_created` limit 0,45
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@1302899: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions ORDER BY date_created limit 0,135
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@112646e: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
+        `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'bettertoday'ORDER BY `mwh`.`date_created` limit 0,20
+not enough questions for you
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@1a2ed4: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
+        `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'bettertoday'ORDER BY `mwh`.`date_created` limit 0,20
+not enough questions for you
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@12be215: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
+        `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'bettertoday'ORDER BY `mwh`.`date_created` limit 0,20
+not enough questions for you
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@154301d: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
+        `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'bettertoday'ORDER BY `mwh`.`date_created` limit 0,20
+not enough questions for you
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@ced5b8: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
+        `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'bettertoday'ORDER BY `mwh`.`date_created` limit 0,20
+not enough questions for you
+member.getMember_id() : level001
+[11:03:46] [MemberDAO] [INFO] member_id : level001 logged in 
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@1cd4b72: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
+        `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'level001'ORDER BY `mwh`.`date_created` limit 0,20
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@12c5aa7: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
+        `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'level001'ORDER BY `mwh`.`date_created` limit 0,20
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@99675a: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 10 AND weight < 20 ORDER BY rand() limit 0,20
+tmp_questions.size() : 6
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@4cac8c: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 20 AND weight < 30 ORDER BY rand() limit 0,15
+tmp_questions.size() : 11
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@631115: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 30 AND weight < 40 ORDER BY rand() limit 0,10
+tmp_questions.size() : 21
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@1fb5696: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 0 AND weight < 100 ORDER BY rand() limit 0,24
+tmp_questions.size() : 45
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@cd44c4: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
+        `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'level001'ORDER BY `mwh`.`date_created` limit 0,45
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@16eb49d: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions ORDER BY date_created limit 0,135
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@af419c: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
+        `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'level001'ORDER BY `mwh`.`date_created` limit 0,20
+14-Dec-2017 14:30:48.786 심각 [http-nio-8895-exec-432] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [/words] threw exception [An exception occurred processing JSP page /words_control.jsp at line 44
+
+41: 	
+42: 	// 로그인 성공후 session에 저장해둔 회원 아이디와 회원 레벨을 가져와서 저장
+43: 	// getAttribute()의 리턴값이 객체이므로 toString()메소드를 사용
+44: 	String member_id = session.getAttribute("member_id").toString();
+45: 	int member_level= Integer.parseInt(session.getAttribute("member_level").toString());
+46: 	
+47: 	// quiz.jsp에서 념겨준 문제이력 데이타(json string)를 저장
+
+
+Stacktrace:] with root cause
+ java.lang.NullPointerException
+	at org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:195)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at words.util.EncFilter.doFilter(EncFilter.java:41)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+14-Dec-2017 17:45:27.312 정보 [http-nio-8895-exec-435] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+14-Dec-2017 17:45:30.684 정보 [http-nio-8895-exec-434] org.apache.catalina.core.ApplicationContext.log HTMLManager: stop: Stopping web application '/words'
+[17:45:30] [LogFilter] [INFO] LogFilter stop 
+[17:45:30] [ServletContextListener] [INFO] LogContextListener stop 
+14-Dec-2017 17:45:30.708 경고 [http-nio-8895-exec-434] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:64)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ java.lang.Thread.run(Thread.java:745)
+14-Dec-2017 17:45:30.711 정보 [http-nio-8895-exec-434] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+14-Dec-2017 17:45:32.347 정보 [http-nio-8895-exec-435] org.apache.catalina.core.ApplicationContext.log HTMLManager: undeploy: Undeploying web application at '/words'
+14-Dec-2017 17:45:32.347 정보 [http-nio-8895-exec-435] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [StandardEngine[bettertoday].StandardHost[bettertoday.cafe24.com].StandardContext[/words]] after stop() had already been called. The second call will be ignored.
+14-Dec-2017 17:45:32.854 정보 [http-nio-8895-exec-435] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/words]
+14-Dec-2017 17:45:32.860 정보 [http-nio-8895-exec-435] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+14-Dec-2017 17:45:35.707 정보 [Abandoned connection cleanup thread] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:1029)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.checkContextClassLoaders(AbandonedConnectionCleanupThread.java:90)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:63)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+14-Dec-2017 17:45:42.742 정보 [http-nio-8895-exec-436] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /home/hosting_users/bettertoday/tomcat/webapps/words v0.12.war
+14-Dec-2017 17:45:43.062 심각 [http-nio-8895-exec-436] org.apache.catalina.core.NamingContextListener.addResource Failed to bind object: javax.naming.NamingException: Name is not valid
+[17:45:43] [ServletContextListener] [INFO] this.getClass() at listener : class words.util.ServletContextListener 
+[17:45:43] [ServletContextListener] [INFO] LogContextListener start 
+[17:45:43] [LogFilter] [INFO] this.getClass() at filter : class words.util.LogFilter 
+[17:45:43] [LogFilter] [INFO] LogFilter start 
+14-Dec-2017 17:45:43.146 정보 [http-nio-8895-exec-436] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /home/hosting_users/bettertoday/tomcat/webapps/words v0.12.war has finished in 404 ms
+14-Dec-2017 17:45:43.146 정보 [http-nio-8895-exec-436] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+14-Dec-2017 17:46:20.590 정보 [http-nio-8895-exec-436] org.apache.catalina.core.ApplicationContext.log HTMLManager: stop: Stopping web application '/words v0.12'
+[17:46:20] [LogFilter] [INFO] LogFilter stop 
+[17:46:20] [ServletContextListener] [INFO] LogContextListener stop 
+14-Dec-2017 17:46:20.601 경고 [http-nio-8895-exec-436] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words v0.12] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.io.UnixFileSystem.getLastModifiedTime(Native Method)
+ java.io.File.lastModified(File.java:943)
+ org.apache.catalina.webresources.FileResource.getLastModified(FileResource.java:76)
+ org.apache.catalina.webresources.CachedResource.validateResource(CachedResource.java:111)
+ org.apache.catalina.webresources.Cache.getResource(Cache.java:69)
+ org.apache.catalina.webresources.StandardRoot.getResource(StandardRoot.java:216)
+ org.apache.catalina.webresources.StandardRoot.getClassLoaderResource(StandardRoot.java:225)
+ org.apache.catalina.loader.WebappClassLoaderBase.findResourceInternal(WebappClassLoaderBase.java:2639)
+ org.apache.catalina.loader.WebappClassLoaderBase.findResource(WebappClassLoaderBase.java:938)
+ org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:1048)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.checkContextClassLoaders(AbandonedConnectionCleanupThread.java:90)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:63)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ java.lang.Thread.run(Thread.java:745)
+14-Dec-2017 17:46:20.602 정보 [http-nio-8895-exec-436] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+14-Dec-2017 17:46:25.602 정보 [Abandoned connection cleanup thread] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:1029)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.checkContextClassLoaders(AbandonedConnectionCleanupThread.java:90)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:63)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+14-Dec-2017 17:46:29.331 정보 [http-nio-8895-exec-437] org.apache.catalina.core.ApplicationContext.log HTMLManager: undeploy: Undeploying web application at '/words v0.12'
+14-Dec-2017 17:46:29.332 정보 [http-nio-8895-exec-437] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [StandardEngine[bettertoday].StandardHost[bettertoday.cafe24.com].StandardContext[/words v0.12]] after stop() had already been called. The second call will be ignored.
+14-Dec-2017 17:46:29.834 정보 [http-nio-8895-exec-437] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/words v0.12]
+14-Dec-2017 17:46:29.838 정보 [http-nio-8895-exec-437] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+14-Dec-2017 17:46:56.644 정보 [http-nio-8895-exec-438] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /home/hosting_users/bettertoday/tomcat/webapps/words.war
+14-Dec-2017 17:46:56.893 심각 [http-nio-8895-exec-438] org.apache.catalina.core.NamingContextListener.addResource Failed to bind object: javax.naming.NamingException: Name is not valid
+[17:46:56] [ServletContextListener] [INFO] this.getClass() at listener : class words.util.ServletContextListener 
+[17:46:56] [ServletContextListener] [INFO] LogContextListener start 
+[17:46:56] [LogFilter] [INFO] this.getClass() at filter : class words.util.LogFilter 
+[17:46:56] [LogFilter] [INFO] LogFilter start 
+14-Dec-2017 17:46:56.961 정보 [http-nio-8895-exec-438] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /home/hosting_users/bettertoday/tomcat/webapps/words.war has finished in 317 ms
+14-Dec-2017 17:46:56.961 정보 [http-nio-8895-exec-438] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+14-Dec-2017 17:46:58.484 정보 [http-nio-8895-exec-439] org.apache.catalina.core.ApplicationContext.log HTMLManager: stop: Stopping web application '/words'
+[17:46:58] [LogFilter] [INFO] LogFilter stop 
+[17:46:58] [ServletContextListener] [INFO] LogContextListener stop 
+14-Dec-2017 17:46:58.506 경고 [http-nio-8895-exec-439] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:64)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ java.lang.Thread.run(Thread.java:745)
+14-Dec-2017 17:46:58.509 정보 [http-nio-8895-exec-439] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+14-Dec-2017 17:47:03.506 정보 [Abandoned connection cleanup thread] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:1029)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.checkContextClassLoaders(AbandonedConnectionCleanupThread.java:90)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:63)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+14-Dec-2017 18:12:40.815 정보 [http-nio-8895-exec-442] org.apache.catalina.core.ApplicationContext.log HTMLManager: undeploy: Undeploying web application at '/words'
+14-Dec-2017 18:12:40.816 정보 [http-nio-8895-exec-442] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [StandardEngine[bettertoday].StandardHost[bettertoday.cafe24.com].StandardContext[/words]] after stop() had already been called. The second call will be ignored.
+14-Dec-2017 18:12:41.321 정보 [http-nio-8895-exec-442] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/words]
+14-Dec-2017 18:12:41.326 정보 [http-nio-8895-exec-442] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+14-Dec-2017 18:13:34.437 정보 [http-nio-8895-exec-443] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /home/hosting_users/bettertoday/tomcat/webapps/words.war
+14-Dec-2017 18:13:34.755 심각 [http-nio-8895-exec-443] org.apache.catalina.core.NamingContextListener.addResource Failed to bind object: javax.naming.NamingException: Name is not valid
+[18:13:34] [ServletContextListener] [INFO] this.getClass() at listener : class words.util.ServletContextListener 
+[18:13:34] [ServletContextListener] [INFO] LogContextListener start 
+[18:13:34] [LogFilter] [INFO] this.getClass() at filter : class words.util.LogFilter 
+[18:13:34] [LogFilter] [INFO] LogFilter start 
+14-Dec-2017 18:13:34.851 정보 [http-nio-8895-exec-443] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /home/hosting_users/bettertoday/tomcat/webapps/words.war has finished in 414 ms
+14-Dec-2017 18:13:34.851 정보 [http-nio-8895-exec-443] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+14-Dec-2017 18:13:49.247 정보 [Finalizer] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load [java.io.InterruptedIOException]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load [java.io.InterruptedIOException]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1347)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1206)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at org.apache.log4j.helpers.OnlyOnceErrorHandler.error(OnlyOnceErrorHandler.java:79)
+	at org.apache.log4j.helpers.OnlyOnceErrorHandler.error(OnlyOnceErrorHandler.java:70)
+	at org.apache.log4j.helpers.QuietWriter.flush(QuietWriter.java:61)
+	at org.apache.log4j.WriterAppender.writeFooter(WriterAppender.java:361)
+	at org.apache.log4j.WriterAppender.close(WriterAppender.java:206)
+	at org.apache.log4j.AppenderSkeleton.finalize(AppenderSkeleton.java:144)
+	at java.lang.System$2.invokeFinalize(System.java:1270)
+	at java.lang.ref.Finalizer.runFinalizer(Finalizer.java:98)
+	at java.lang.ref.Finalizer.access$100(Finalizer.java:34)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:210)
+
+14-Dec-2017 18:13:49.254 정보 [Finalizer] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load [java.io.InterruptedIOException]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load [java.io.InterruptedIOException]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1347)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1206)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at org.apache.log4j.helpers.OnlyOnceErrorHandler.error(OnlyOnceErrorHandler.java:79)
+	at org.apache.log4j.helpers.OnlyOnceErrorHandler.error(OnlyOnceErrorHandler.java:70)
+	at org.apache.log4j.helpers.QuietWriter.flush(QuietWriter.java:61)
+	at org.apache.log4j.WriterAppender.writeFooter(WriterAppender.java:361)
+	at org.apache.log4j.WriterAppender.close(WriterAppender.java:206)
+	at org.apache.log4j.AppenderSkeleton.finalize(AppenderSkeleton.java:144)
+	at java.lang.System$2.invokeFinalize(System.java:1270)
+	at java.lang.ref.Finalizer.runFinalizer(Finalizer.java:98)
+	at java.lang.ref.Finalizer.access$100(Finalizer.java:34)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:210)
+
+14-Dec-2017 18:13:49.255 정보 [Finalizer] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load [java.io.InterruptedIOException]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load [java.io.InterruptedIOException]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1347)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1206)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at org.apache.log4j.helpers.OnlyOnceErrorHandler.error(OnlyOnceErrorHandler.java:79)
+	at org.apache.log4j.helpers.OnlyOnceErrorHandler.error(OnlyOnceErrorHandler.java:70)
+	at org.apache.log4j.helpers.QuietWriter.flush(QuietWriter.java:61)
+	at org.apache.log4j.WriterAppender.writeFooter(WriterAppender.java:361)
+	at org.apache.log4j.WriterAppender.close(WriterAppender.java:206)
+	at org.apache.log4j.AppenderSkeleton.finalize(AppenderSkeleton.java:144)
+	at java.lang.System$2.invokeFinalize(System.java:1270)
+	at java.lang.ref.Finalizer.runFinalizer(Finalizer.java:98)
+	at java.lang.ref.Finalizer.access$100(Finalizer.java:34)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:210)
+
+14-Dec-2017 18:13:49.256 정보 [Finalizer] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load [java.io.InterruptedIOException]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load [java.io.InterruptedIOException]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1347)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1206)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at org.apache.log4j.helpers.OnlyOnceErrorHandler.error(OnlyOnceErrorHandler.java:79)
+	at org.apache.log4j.helpers.OnlyOnceErrorHandler.error(OnlyOnceErrorHandler.java:70)
+	at org.apache.log4j.helpers.QuietWriter.flush(QuietWriter.java:61)
+	at org.apache.log4j.WriterAppender.writeFooter(WriterAppender.java:361)
+	at org.apache.log4j.WriterAppender.close(WriterAppender.java:206)
+	at org.apache.log4j.AppenderSkeleton.finalize(AppenderSkeleton.java:144)
+	at java.lang.System$2.invokeFinalize(System.java:1270)
+	at java.lang.ref.Finalizer.runFinalizer(Finalizer.java:98)
+	at java.lang.ref.Finalizer.access$100(Finalizer.java:34)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:210)
+
+member.getMember_id() : bettertoday
+[18:13:55] [MemberDAO] [INFO] member_id : bettertoday logged in 
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@72957a: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 60 AND weight < 70 ORDER BY rand() limit 0,20
+tmp_questions.size() : 20
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@4d19ec: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 70 AND weight < 80 ORDER BY rand() limit 0,15
+tmp_questions.size() : 28
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@14f9f41: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 80 AND weight < 90 ORDER BY rand() limit 0,10
+tmp_questions.size() : 28
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@92c26: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions_with_weight WHERE weight >= 0 AND weight < 100 ORDER BY rand() limit 0,17
+tmp_questions.size() : 45
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@6bc98: SELECT         `mwh`.`question_id` AS `question_id`,        `q`.`word` AS `word`,
+        `q`.`selection1` AS `selection1`,        `q`.`selection2` AS `selection2`,        `q`.`selection3` AS `selection3`,        `q`.`selection4` AS `selection4`,        `q`.`answer` AS `answer`,        `q`.`weight` AS `weight`    FROM         (`member_word_history` `mwh`         JOIN `questions_with_weight` `q` ON ((`mwh`.`question_id` = `q`.`question_id`)))     WHERE         (`mwh`.`count_tried` > 1) AND `mwh`.`member_id` = 'bettertoday'ORDER BY `mwh`.`date_created` limit 0,45
+pstmt at QuestionsDao : com.mysql.jdbc.JDBC4PreparedStatement@aa514d: SELECT word, selection1, selection2, selection3, selection4, answer, weight, question_id FROM questions ORDER BY date_created limit 0,135
+15-Dec-2017 14:48:32.534 정보 [http-nio-8895-exec-448] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 14:48:37.240 정보 [http-nio-8895-exec-448] org.apache.catalina.core.ApplicationContext.log HTMLManager: stop: Stopping web application '/words'
+[14:48:37] [LogFilter] [INFO] LogFilter stop 
+[14:48:37] [ServletContextListener] [INFO] LogContextListener stop 
+15-Dec-2017 14:48:37.267 경고 [http-nio-8895-exec-448] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+15-Dec-2017 14:48:37.270 정보 [http-nio-8895-exec-448] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 14:48:37.271 정보 [Abandoned connection cleanup thread] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:1029)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.checkContextClassLoaders(AbandonedConnectionCleanupThread.java:90)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:63)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+15-Dec-2017 14:48:41.087 정보 [http-nio-8895-exec-447] org.apache.catalina.core.ApplicationContext.log HTMLManager: undeploy: Undeploying web application at '/words'
+15-Dec-2017 14:48:41.087 정보 [http-nio-8895-exec-447] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [StandardEngine[bettertoday].StandardHost[bettertoday.cafe24.com].StandardContext[/words]] after stop() had already been called. The second call will be ignored.
+15-Dec-2017 14:48:41.594 정보 [http-nio-8895-exec-447] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/words]
+15-Dec-2017 14:48:41.599 정보 [http-nio-8895-exec-447] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 14:53:33.587 정보 [http-nio-8895-exec-451] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /home/hosting_users/bettertoday/tomcat/webapps/words.war
+15-Dec-2017 14:53:33.853 심각 [http-nio-8895-exec-451] org.apache.catalina.core.NamingContextListener.addResource Failed to bind object: javax.naming.NamingException: Name is not valid
+[14:53:33] [ServletContextListener] [INFO] this.getClass() at listener : class words.util.ServletContextListener 
+[14:53:33] [ServletContextListener] [INFO] LogContextListener start 
+[14:53:33] [LogFilter] [INFO] this.getClass() at filter : class words.util.LogFilter 
+[14:53:33] [LogFilter] [INFO] LogFilter start 
+15-Dec-2017 14:53:33.953 정보 [http-nio-8895-exec-451] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /home/hosting_users/bettertoday/tomcat/webapps/words.war has finished in 366 ms
+15-Dec-2017 14:53:33.953 정보 [http-nio-8895-exec-451] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+[14:53:54] [member_005fcontrol_jsp] [INFO] ID bettertoday logged in 
+[14:53:54] [MemberDAO] [INFO] member_id : bettertoday logged in 
+[14:53:57] [MemberDAO] [INFO] 10 questions selected for quiz 
+[14:58:14] [MemberDAO] [INFO] 10 questions selected for quiz 
+[14:58:49] [MemberDAO] [INFO] 10 questions selected for quiz 
+[14:59:25] [MemberDAO] [INFO] 10 questions selected for quiz 
+[15:00:53] [MemberDAO] [INFO] 10 questions selected for quiz 
+15-Dec-2017 15:24:28.597 정보 [http-nio-8895-exec-459] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 15:24:32.272 정보 [http-nio-8895-exec-458] org.apache.catalina.core.ApplicationContext.log HTMLManager: stop: Stopping web application '/words'
+[15:24:32] [LogFilter] [INFO] LogFilter stop 
+[15:24:32] [ServletContextListener] [INFO] LogContextListener stop 
+15-Dec-2017 15:24:32.300 경고 [http-nio-8895-exec-458] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:64)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 15:24:32.304 정보 [http-nio-8895-exec-458] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 15:24:33.595 정보 [http-nio-8895-exec-459] org.apache.catalina.core.ApplicationContext.log HTMLManager: undeploy: Undeploying web application at '/words'
+15-Dec-2017 15:24:33.595 정보 [http-nio-8895-exec-459] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [StandardEngine[bettertoday].StandardHost[bettertoday.cafe24.com].StandardContext[/words]] after stop() had already been called. The second call will be ignored.
+15-Dec-2017 15:24:34.105 정보 [http-nio-8895-exec-459] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/words]
+15-Dec-2017 15:24:34.108 정보 [http-nio-8895-exec-459] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 15:24:37.300 정보 [Abandoned connection cleanup thread] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:1029)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.checkContextClassLoaders(AbandonedConnectionCleanupThread.java:90)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:63)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+15-Dec-2017 15:24:42.138 정보 [http-nio-8895-exec-460] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /home/hosting_users/bettertoday/tomcat/webapps/words.war
+15-Dec-2017 15:24:42.393 심각 [http-nio-8895-exec-460] org.apache.catalina.core.NamingContextListener.addResource Failed to bind object: javax.naming.NamingException: Name is not valid
+[15:24:42] [ServletContextListener] [INFO] this.getClass() at listener : class words.util.ServletContextListener 
+[15:24:42] [ServletContextListener] [INFO] LogContextListener start 
+[15:24:42] [LogFilter] [INFO] this.getClass() at filter : class words.util.LogFilter 
+[15:24:42] [LogFilter] [INFO] LogFilter start 
+15-Dec-2017 15:24:42.509 정보 [http-nio-8895-exec-460] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /home/hosting_users/bettertoday/tomcat/webapps/words.war has finished in 371 ms
+15-Dec-2017 15:24:42.509 정보 [http-nio-8895-exec-460] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+[15:24:53] [member_005fcontrol_jsp] [INFO] ID bettertoday logged in 
+[15:24:53] [MemberDAO] [INFO] member_id : bettertoday logged in 
+[15:24:54] [MemberDAO] [INFO] 10 questions selected for quiz 
+[15:25:01] [MemberDAO] [INFO] 10 questions selected for quiz 
+[15:25:37] [MemberDAO] [INFO] 10 questions selected for quiz 
+15-Dec-2017 16:58:07.466 정보 [http-nio-8895-exec-464] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 16:58:09.568 정보 [http-nio-8895-exec-463] org.apache.catalina.core.ApplicationContext.log HTMLManager: stop: Stopping web application '/words'
+[16:58:09] [LogFilter] [INFO] LogFilter stop 
+[16:58:09] [ServletContextListener] [INFO] LogContextListener stop 
+15-Dec-2017 16:58:09.609 경고 [http-nio-8895-exec-463] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:64)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 16:58:09.612 정보 [http-nio-8895-exec-463] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 16:58:14.608 정보 [Abandoned connection cleanup thread] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:1029)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.checkContextClassLoaders(AbandonedConnectionCleanupThread.java:90)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:63)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+15-Dec-2017 16:58:17.749 정보 [http-nio-8895-exec-464] org.apache.catalina.core.ApplicationContext.log HTMLManager: undeploy: Undeploying web application at '/words'
+15-Dec-2017 16:58:17.750 정보 [http-nio-8895-exec-464] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [StandardEngine[bettertoday].StandardHost[bettertoday.cafe24.com].StandardContext[/words]] after stop() had already been called. The second call will be ignored.
+15-Dec-2017 16:58:18.259 정보 [http-nio-8895-exec-464] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/words]
+15-Dec-2017 16:58:18.264 정보 [http-nio-8895-exec-464] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 17:05:28.645 정보 [http-nio-8895-exec-467] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /home/hosting_users/bettertoday/tomcat/webapps/words.war
+15-Dec-2017 17:05:28.941 심각 [http-nio-8895-exec-467] org.apache.catalina.core.NamingContextListener.addResource Failed to bind object: javax.naming.NamingException: Name is not valid
+[17:05:29] [ServletContextListener] [INFO] this.getClass() at listener : class words.util.ServletContextListener 
+[17:05:29] [ServletContextListener] [INFO] LogContextListener start 
+[17:05:29] [LogFilter] [INFO] this.getClass() at filter : class words.util.LogFilter 
+[17:05:29] [LogFilter] [INFO] LogFilter start 
+15-Dec-2017 17:05:29.021 정보 [http-nio-8895-exec-467] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /home/hosting_users/bettertoday/tomcat/webapps/words.war has finished in 377 ms
+15-Dec-2017 17:05:29.021 정보 [http-nio-8895-exec-467] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+[17:05:51] [member_005fcontrol_jsp] [INFO] ID bettertoday logged in 
+[17:05:51] [MemberDAO] [INFO] member_id : bettertoday logged in 
+[17:05:53] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:08:40] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:09:05] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:09:34] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:10:04] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:11:09] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:11:42] [MemberDAO] [INFO] 10 questions selected for quiz 
+15-Dec-2017 17:17:23.035 정보 [http-nio-8895-exec-485] org.apache.catalina.core.ApplicationContext.log HTMLManager: stop: Stopping web application '/words'
+15-Dec-2017 17:17:23.939 정보 [http-nio-8895-exec-486] org.apache.catalina.core.ApplicationContext.log HTMLManager: undeploy: Undeploying web application at '/words'
+[17:17:25] [LogFilter] [INFO] LogFilter stop 
+[17:17:25] [ServletContextListener] [INFO] LogContextListener stop 
+15-Dec-2017 17:17:25.164 경고 [http-nio-8895-exec-485] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation. Stack trace of request processing thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ org.apache.tomcat.dbcp.pool2.impl.LinkedBlockingDeque.takeFirst(LinkedBlockingDeque.java:586)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:438)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:359)
+ org.apache.tomcat.dbcp.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
+ org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:1532)
+ words.util.DBManager.getConnection(DBManager.java:24)
+ words.question.MemberWordHistoryDAO.addMemberWordHistory(MemberWordHistoryDAO.java:32)
+ org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:276)
+ org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ words.util.EncFilter.doFilter(EncFilter.java:41)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+ org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+ org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+ org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+ org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+ org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+ org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+ org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+ org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 17:17:25.165 경고 [http-nio-8895-exec-485] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation. Stack trace of request processing thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ org.apache.tomcat.dbcp.pool2.impl.LinkedBlockingDeque.takeFirst(LinkedBlockingDeque.java:586)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:438)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:359)
+ org.apache.tomcat.dbcp.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
+ org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:1532)
+ words.util.DBManager.getConnection(DBManager.java:24)
+ words.question.MemberWordHistoryDAO.addMemberWordHistory(MemberWordHistoryDAO.java:31)
+ org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:276)
+ org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ words.util.EncFilter.doFilter(EncFilter.java:41)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+ org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+ org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+ org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+ org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+ org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+ org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+ org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+ org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 17:17:25.166 경고 [http-nio-8895-exec-485] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation. Stack trace of request processing thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ org.apache.tomcat.dbcp.pool2.impl.LinkedBlockingDeque.takeFirst(LinkedBlockingDeque.java:586)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:438)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:359)
+ org.apache.tomcat.dbcp.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
+ org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:1532)
+ words.util.DBManager.getConnection(DBManager.java:24)
+ words.question.MemberWordHistoryDAO.addMemberWordHistory(MemberWordHistoryDAO.java:31)
+ org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:324)
+ org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ words.util.EncFilter.doFilter(EncFilter.java:41)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+ org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+ org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+ org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+ org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+ org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+ org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+ org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+ org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 17:17:25.167 경고 [http-nio-8895-exec-485] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation. Stack trace of request processing thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ org.apache.tomcat.dbcp.pool2.impl.LinkedBlockingDeque.takeFirst(LinkedBlockingDeque.java:586)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:438)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:359)
+ org.apache.tomcat.dbcp.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
+ org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:1532)
+ words.util.DBManager.getConnection(DBManager.java:24)
+ words.question.MemberWordHistoryDAO.addMemberWordHistory(MemberWordHistoryDAO.java:31)
+ org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:324)
+ org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ words.util.EncFilter.doFilter(EncFilter.java:41)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+ org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+ org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+ org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+ org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+ org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+ org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+ org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+ org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 17:17:25.168 경고 [http-nio-8895-exec-485] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation. Stack trace of request processing thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ org.apache.tomcat.dbcp.pool2.impl.LinkedBlockingDeque.takeFirst(LinkedBlockingDeque.java:586)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:438)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:359)
+ org.apache.tomcat.dbcp.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
+ org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:1532)
+ words.util.DBManager.getConnection(DBManager.java:24)
+ words.question.MemberWordHistoryDAO.addMemberWordHistory(MemberWordHistoryDAO.java:31)
+ org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:324)
+ org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ words.util.EncFilter.doFilter(EncFilter.java:41)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+ org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+ org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+ org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+ org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+ org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+ org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+ org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+ org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 17:17:25.168 경고 [http-nio-8895-exec-485] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation. Stack trace of request processing thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ org.apache.tomcat.dbcp.pool2.impl.LinkedBlockingDeque.takeFirst(LinkedBlockingDeque.java:586)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:438)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:359)
+ org.apache.tomcat.dbcp.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
+ org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:1532)
+ words.util.DBManager.getConnection(DBManager.java:24)
+ words.question.MemberWordHistoryDAO.addMemberWordHistory(MemberWordHistoryDAO.java:31)
+ org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:324)
+ org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ words.util.EncFilter.doFilter(EncFilter.java:41)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+ org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+ org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+ org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+ org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+ org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+ org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+ org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+ org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 17:17:25.169 경고 [http-nio-8895-exec-485] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation. Stack trace of request processing thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ org.apache.tomcat.dbcp.pool2.impl.LinkedBlockingDeque.takeFirst(LinkedBlockingDeque.java:586)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:438)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:359)
+ org.apache.tomcat.dbcp.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
+ org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:1532)
+ words.util.DBManager.getConnection(DBManager.java:24)
+ words.question.MemberWordHistoryDAO.addMemberWordHistory(MemberWordHistoryDAO.java:31)
+ org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:324)
+ org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ words.util.EncFilter.doFilter(EncFilter.java:41)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+ org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+ org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+ org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+ org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+ org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+ org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+ org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+ org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 17:17:25.170 경고 [http-nio-8895-exec-485] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation. Stack trace of request processing thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ org.apache.tomcat.dbcp.pool2.impl.LinkedBlockingDeque.takeFirst(LinkedBlockingDeque.java:586)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:438)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:359)
+ org.apache.tomcat.dbcp.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
+ org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:1532)
+ words.util.DBManager.getConnection(DBManager.java:24)
+ words.question.MemberWordHistoryDAO.addMemberWordHistory(MemberWordHistoryDAO.java:31)
+ org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:324)
+ org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ words.util.EncFilter.doFilter(EncFilter.java:41)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+ org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+ org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+ org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+ org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+ org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+ org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+ org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+ org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 17:17:25.170 경고 [http-nio-8895-exec-485] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation. Stack trace of request processing thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ org.apache.tomcat.dbcp.pool2.impl.LinkedBlockingDeque.takeFirst(LinkedBlockingDeque.java:586)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:438)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:359)
+ org.apache.tomcat.dbcp.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
+ org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:1532)
+ words.util.DBManager.getConnection(DBManager.java:24)
+ words.question.MemberWordHistoryDAO.addMemberWordHistory(MemberWordHistoryDAO.java:31)
+ org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:324)
+ org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ words.util.EncFilter.doFilter(EncFilter.java:41)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+ org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+ org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+ org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+ org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+ org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+ org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+ org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+ org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 17:17:25.177 경고 [http-nio-8895-exec-485] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation. Stack trace of request processing thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ org.apache.tomcat.dbcp.pool2.impl.LinkedBlockingDeque.takeFirst(LinkedBlockingDeque.java:586)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:438)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:359)
+ org.apache.tomcat.dbcp.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
+ org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:1532)
+ words.util.DBManager.getConnection(DBManager.java:24)
+ words.question.MemberWordHistoryDAO.addMemberWordHistory(MemberWordHistoryDAO.java:31)
+ org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:324)
+ org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ words.util.EncFilter.doFilter(EncFilter.java:41)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+ org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+ org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+ org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+ org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+ org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+ org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+ org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+ org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 17:17:25.178 경고 [http-nio-8895-exec-485] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation. Stack trace of request processing thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ org.apache.tomcat.dbcp.pool2.impl.LinkedBlockingDeque.takeFirst(LinkedBlockingDeque.java:586)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:438)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:359)
+ org.apache.tomcat.dbcp.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
+ org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:1532)
+ words.util.DBManager.getConnection(DBManager.java:24)
+ words.question.MemberWordHistoryDAO.addMemberWordHistory(MemberWordHistoryDAO.java:31)
+ org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:276)
+ org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ words.util.EncFilter.doFilter(EncFilter.java:41)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+ org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+ org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+ org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+ org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+ org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+ org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+ org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+ org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 17:17:25.179 경고 [http-nio-8895-exec-485] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] is still processing a request that has yet to finish. This is very likely to create a memory leak. You can control the time allowed for requests to finish by using the unloadDelay attribute of the standard Context implementation. Stack trace of request processing thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ org.apache.tomcat.dbcp.pool2.impl.LinkedBlockingDeque.takeFirst(LinkedBlockingDeque.java:586)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:438)
+ org.apache.tomcat.dbcp.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:359)
+ org.apache.tomcat.dbcp.dbcp2.PoolingDataSource.getConnection(PoolingDataSource.java:134)
+ org.apache.tomcat.dbcp.dbcp2.BasicDataSource.getConnection(BasicDataSource.java:1532)
+ words.util.DBManager.getConnection(DBManager.java:24)
+ words.question.MemberWordHistoryDAO.addMemberWordHistory(MemberWordHistoryDAO.java:31)
+ org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:324)
+ org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+ org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+ org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+ javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ words.util.EncFilter.doFilter(EncFilter.java:41)
+ org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+ org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+ org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+ org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+ org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+ org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+ org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+ org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+ org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+ org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+ org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+ org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 17:17:25.180 경고 [http-nio-8895-exec-485] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:64)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 17:17:25.185 정보 [http-nio-8895-exec-485] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 17:17:25.185 정보 [http-nio-8895-exec-486] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [StandardEngine[bettertoday].StandardHost[bettertoday.cafe24.com].StandardContext[/words]] after stop() had already been called. The second call will be ignored.
+15-Dec-2017 17:17:25.688 정보 [http-nio-8895-exec-486] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/words]
+15-Dec-2017 17:17:25.690 정보 [http-nio-8895-exec-486] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 17:17:30.166 정보 [Abandoned connection cleanup thread] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:1029)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.checkContextClassLoaders(AbandonedConnectionCleanupThread.java:90)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:63)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+15-Dec-2017 17:17:35.318 정보 [http-nio-8895-exec-487] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /home/hosting_users/bettertoday/tomcat/webapps/words.war
+15-Dec-2017 17:17:35.564 정보 [Finalizer] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load [java.io.InterruptedIOException]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load [java.io.InterruptedIOException]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1347)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1206)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at org.apache.log4j.helpers.OnlyOnceErrorHandler.error(OnlyOnceErrorHandler.java:79)
+	at org.apache.log4j.helpers.OnlyOnceErrorHandler.error(OnlyOnceErrorHandler.java:70)
+	at org.apache.log4j.helpers.QuietWriter.flush(QuietWriter.java:61)
+	at org.apache.log4j.WriterAppender.writeFooter(WriterAppender.java:361)
+	at org.apache.log4j.WriterAppender.close(WriterAppender.java:206)
+	at org.apache.log4j.AppenderSkeleton.finalize(AppenderSkeleton.java:144)
+	at java.lang.System$2.invokeFinalize(System.java:1270)
+	at java.lang.ref.Finalizer.runFinalizer(Finalizer.java:98)
+	at java.lang.ref.Finalizer.access$100(Finalizer.java:34)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:210)
+
+15-Dec-2017 17:17:35.572 정보 [Finalizer] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load [java.io.InterruptedIOException]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load [java.io.InterruptedIOException]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1347)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1206)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at org.apache.log4j.helpers.OnlyOnceErrorHandler.error(OnlyOnceErrorHandler.java:79)
+	at org.apache.log4j.helpers.OnlyOnceErrorHandler.error(OnlyOnceErrorHandler.java:70)
+	at org.apache.log4j.helpers.QuietWriter.flush(QuietWriter.java:61)
+	at org.apache.log4j.WriterAppender.writeFooter(WriterAppender.java:361)
+	at org.apache.log4j.WriterAppender.close(WriterAppender.java:206)
+	at org.apache.log4j.AppenderSkeleton.finalize(AppenderSkeleton.java:144)
+	at java.lang.System$2.invokeFinalize(System.java:1270)
+	at java.lang.ref.Finalizer.runFinalizer(Finalizer.java:98)
+	at java.lang.ref.Finalizer.access$100(Finalizer.java:34)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:210)
+
+15-Dec-2017 17:17:35.579 정보 [Finalizer] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load [java.io.InterruptedIOException]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load [java.io.InterruptedIOException]. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForClassLoading(WebappClassLoaderBase.java:1347)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1206)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1167)
+	at org.apache.log4j.helpers.OnlyOnceErrorHandler.error(OnlyOnceErrorHandler.java:79)
+	at org.apache.log4j.helpers.OnlyOnceErrorHandler.error(OnlyOnceErrorHandler.java:70)
+	at org.apache.log4j.helpers.QuietWriter.flush(QuietWriter.java:61)
+	at org.apache.log4j.WriterAppender.writeFooter(WriterAppender.java:361)
+	at org.apache.log4j.WriterAppender.close(WriterAppender.java:206)
+	at org.apache.log4j.AppenderSkeleton.finalize(AppenderSkeleton.java:144)
+	at java.lang.System$2.invokeFinalize(System.java:1270)
+	at java.lang.ref.Finalizer.runFinalizer(Finalizer.java:98)
+	at java.lang.ref.Finalizer.access$100(Finalizer.java:34)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:210)
+
+15-Dec-2017 17:17:35.725 심각 [http-nio-8895-exec-487] org.apache.catalina.core.NamingContextListener.addResource Failed to bind object: javax.naming.NamingException: Name is not valid
+[17:17:35] [ServletContextListener] [INFO] this.getClass() at listener : class words.util.ServletContextListener 
+[17:17:35] [ServletContextListener] [INFO] LogContextListener start 
+[17:17:35] [LogFilter] [INFO] this.getClass() at filter : class words.util.LogFilter 
+[17:17:35] [LogFilter] [INFO] LogFilter start 
+15-Dec-2017 17:17:35.849 정보 [http-nio-8895-exec-487] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /home/hosting_users/bettertoday/tomcat/webapps/words.war has finished in 531 ms
+15-Dec-2017 17:17:35.850 정보 [http-nio-8895-exec-487] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+[17:17:58] [member_005fcontrol_jsp] [INFO] ID bettertoday logged in 
+[17:17:58] [MemberDAO] [INFO] member_id : bettertoday logged in 
+[17:18:00] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:18:33] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:19:01] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:19:28] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:19:56] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:20:24] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:20:59] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:21:23] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:21:37] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:21:48] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:23:24] [member_005fcontrol_jsp] [INFO] ID level001 logged in 
+[17:23:24] [MemberDAO] [INFO] member_id : level001 logged in 
+[17:23:27] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:24:01] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:24:44] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:25:28] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:25:43] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:26:22] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:26:48] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:27:00] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:27:41] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:29:47] [member_005fcontrol_jsp] [INFO] ID level002 logged in 
+[17:29:47] [MemberDAO] [INFO] member_id : level002 logged in 
+[17:29:49] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:30:30] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:31:15] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:31:48] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:32:29] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:33:13] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:33:44] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:33:54] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:34:03] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:34:10] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:34:16] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:34:27] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:34:44] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:35:01] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:35:37] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:36:13] [member_005fcontrol_jsp] [INFO] ID level003 logged in 
+[17:36:13] [MemberDAO] [INFO] member_id : level003 logged in 
+[17:36:17] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:37:02] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:37:46] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:38:36] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:42:01] [member_005fcontrol_jsp] [INFO] ID bettertoday logged in 
+[17:42:01] [MemberDAO] [INFO] member_id : bettertoday logged in 
+[17:42:04] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:42:32] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:43:02] [MemberDAO] [INFO] 10 questions selected for quiz 
+[17:43:30] [MemberDAO] [INFO] 10 questions selected for quiz 
+15-Dec-2017 18:02:09.903 정보 [http-nio-8895-exec-507] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 18:02:22.311 정보 [http-nio-8895-exec-508] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 18:02:23.523 정보 [http-nio-8895-exec-507] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 18:02:24.009 정보 [http-nio-8895-exec-508] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 18:02:24.202 정보 [http-nio-8895-exec-507] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 18:03:17.277 정보 [http-nio-8895-exec-507] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 18:05:26.255 정보 [http-nio-8895-exec-509] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 18:05:34.247 정보 [http-nio-8895-exec-509] org.apache.catalina.core.ApplicationContext.log HTMLManager: stop: Stopping web application '/words'
+[18:05:34] [LogFilter] [INFO] LogFilter stop 
+[18:05:34] [ServletContextListener] [INFO] LogContextListener stop 
+15-Dec-2017 18:05:34.285 경고 [http-nio-8895-exec-509] org.apache.catalina.loader.WebappClassLoaderBase.clearReferencesThreads The web application [words] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:64)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+ java.lang.Thread.run(Thread.java:745)
+15-Dec-2017 18:05:34.290 정보 [http-nio-8895-exec-509] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 18:05:36.310 정보 [http-nio-8895-exec-510] org.apache.catalina.core.ApplicationContext.log HTMLManager: undeploy: Undeploying web application at '/words'
+15-Dec-2017 18:05:36.311 정보 [http-nio-8895-exec-510] org.apache.catalina.util.LifecycleBase.stop The stop() method was called on component [StandardEngine[bettertoday].StandardHost[bettertoday.cafe24.com].StandardContext[/words]] after stop() had already been called. The second call will be ignored.
+15-Dec-2017 18:05:36.817 정보 [http-nio-8895-exec-510] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/words]
+15-Dec-2017 18:05:36.824 정보 [http-nio-8895-exec-510] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+15-Dec-2017 18:05:39.284 정보 [Abandoned connection cleanup thread] org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+ java.lang.IllegalStateException: Illegal access: this web application instance has been stopped already. Could not load []. The following stack trace is thrown for debugging purposes as well as to attempt to terminate the thread which caused the illegal access.
+	at org.apache.catalina.loader.WebappClassLoaderBase.checkStateForResourceLoading(WebappClassLoaderBase.java:1359)
+	at org.apache.catalina.loader.WebappClassLoaderBase.getResource(WebappClassLoaderBase.java:1029)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.checkContextClassLoaders(AbandonedConnectionCleanupThread.java:90)
+	at com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:63)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+
+15-Dec-2017 18:05:45.221 정보 [http-nio-8895-exec-511] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive /home/hosting_users/bettertoday/tomcat/webapps/words.war
+15-Dec-2017 18:05:45.512 심각 [http-nio-8895-exec-511] org.apache.catalina.core.NamingContextListener.addResource Failed to bind object: javax.naming.NamingException: Name is not valid
+[18:05:45] [ServletContextListener] [INFO] this.getClass() at listener : class words.util.ServletContextListener 
+[18:05:45] [ServletContextListener] [INFO] LogContextListener start 
+[18:05:45] [LogFilter] [INFO] this.getClass() at filter : class words.util.LogFilter 
+[18:05:45] [LogFilter] [INFO] LogFilter start 
+15-Dec-2017 18:05:45.593 정보 [http-nio-8895-exec-511] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive /home/hosting_users/bettertoday/tomcat/webapps/words.war has finished in 372 ms
+15-Dec-2017 18:05:45.593 정보 [http-nio-8895-exec-511] org.apache.catalina.core.ApplicationContext.log HTMLManager: list: Listing contexts for virtual host 'bettertoday.cafe24.com'
+[18:05:57] [member_005fcontrol_jsp] [INFO] ID bettertoday logged in 
+[18:05:57] [MemberDAO] [INFO] member_id : bettertoday logged in 
+[18:05:59] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:06:36] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:07:04] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:07:30] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:07:50] [member_005fcontrol_jsp] [INFO] ID level001 logged in 
+[18:07:50] [MemberDAO] [INFO] member_id : level001 logged in 
+[18:07:51] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:08:41] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:09:12] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:09:19] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:09:29] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:13:46] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:14:07] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:14:29] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:14:35] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:14:41] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:15:18] [MemberDAO] [INFO] 10 questions selected for quiz 
+15-Dec-2017 18:15:22.439 심각 [http-nio-8895-exec-516] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [/words] threw exception [An exception occurred processing JSP page /words_control.jsp at line 55
+
+52: 	if(history_string != null){
+53: 		
+54: 		// jason string을 jason array 객체로 변환
+55: 		JSONArray history_json = new JSONArray(history_string);
+56: 	
+57: 	
+58: 		// jason array에 담긴 이력정보를 하나씩 꺼내어 List객체에 저장
+
+
+Stacktrace:] with root cause
+ org.json.JSONException: A JSONArray text must start with '[' at 1 [character 2 line 1]
+	at org.json.JSONTokener.syntaxError(JSONTokener.java:432)
+	at org.json.JSONArray.<init>(JSONArray.java:107)
+	at org.json.JSONArray.<init>(JSONArray.java:145)
+	at org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:206)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at words.util.EncFilter.doFilter(EncFilter.java:41)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+[18:15:28] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:15:56] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:16:22] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:16:53] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:17:17] [MemberDAO] [INFO] 10 questions selected for quiz 
+15-Dec-2017 18:17:20.385 심각 [http-nio-8895-exec-515] org.apache.catalina.core.StandardWrapperValve.invoke Servlet.service() for servlet [jsp] in context with path [/words] threw exception [An exception occurred processing JSP page /words_control.jsp at line 55
+
+52: 	if(history_string != null){
+53: 		
+54: 		// jason string을 jason array 객체로 변환
+55: 		JSONArray history_json = new JSONArray(history_string);
+56: 	
+57: 	
+58: 		// jason array에 담긴 이력정보를 하나씩 꺼내어 List객체에 저장
+
+
+Stacktrace:] with root cause
+ org.json.JSONException: A JSONArray text must start with '[' at 1 [character 2 line 1]
+	at org.json.JSONTokener.syntaxError(JSONTokener.java:432)
+	at org.json.JSONArray.<init>(JSONArray.java:107)
+	at org.json.JSONArray.<init>(JSONArray.java:145)
+	at org.apache.jsp.words_005fcontrol_jsp._jspService(words_005fcontrol_jsp.java:206)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:70)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:438)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:396)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:340)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at words.util.EncFilter.doFilter(EncFilter.java:41)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:504)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+	at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+	at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+
+[18:17:24] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:17:33] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:17:39] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:17:46] [MemberDAO] [INFO] 10 questions selected for quiz 
+[18:17:55] [MemberDAO] [INFO] 10 questions selected for quiz 

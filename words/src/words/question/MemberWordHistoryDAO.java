@@ -65,39 +65,39 @@ public class MemberWordHistoryDAO {
 						"            (COALESCE((SELECT (try_1st/try_sum)*100 " + 
 						"                        FROM question_correct_by_level " + 
 						"                        WHERE (question_id = " + questionId + ")" + 
-						"                            AND (member_level = 1)), 50) * 0.292) + " + 
+						"                            AND (member_level = 1)), 55) * 0.292) + " + 
 						"            (COALESCE((SELECT (try_1st/try_sum)*100 " + 
 						"                        FROM question_correct_by_level " + 
 						"                        WHERE (question_id = " + questionId + ")" + 
-						"                            AND (member_level = 2)), 50) * 0.228) + " + 
+						"                            AND (member_level = 2)), 60) * 0.228) + " + 
 						"            (COALESCE((SELECT (try_1st/try_sum)*100 " + 
 						"                        FROM question_correct_by_level " + 
 						"                        WHERE (question_id = " + questionId + ")" + 
-						"                            AND (member_level = 3)), 50) * 0.172) + " + 
+						"                            AND (member_level = 3)), 65) * 0.172) + " + 
 						"            (COALESCE((SELECT (try_1st/try_sum)*100 " + 
 						"                        FROM question_correct_by_level " + 
 						"                        WHERE (question_id = " + questionId + ")" + 
-						"                            AND (member_level = 4)), 50) * 0.124) + " + 
+						"                            AND (member_level = 4)), 70) * 0.124) + " + 
 						"            (COALESCE((SELECT (try_1st/try_sum)*100 " + 
 						"                        FROM question_correct_by_level " + 
 						"                        WHERE (question_id = " + questionId + ")" + 
-						"                            AND (member_level = 5)), 50) * 0.084) + " + 
+						"                            AND (member_level = 5)), 75) * 0.084) + " + 
 						"            (COALESCE((SELECT (try_1st/try_sum)*100 " + 
 						"                        FROM question_correct_by_level " + 
 						"                        WHERE (question_id = " + questionId + ")" + 
-						"                            AND (member_level = 6)), 50) * 0.052) + " + 
+						"                            AND (member_level = 6)), 80) * 0.052) + " + 
 						"            (COALESCE((SELECT (try_1st/try_sum)*100 " + 
 						"                        FROM question_correct_by_level " + 
 						"                        WHERE (question_id = " + questionId + ")" + 
-						"                            AND (member_level = 7)), 50) * 0.028) + " + 
+						"                            AND (member_level = 7)), 85) * 0.028) + " + 
 						"            (COALESCE((SELECT (try_1st/try_sum)*100 " + 
 						"                        FROM question_correct_by_level " + 
 						"                        WHERE (question_id = " + questionId + ")" + 
-						"                            AND (member_level = 8)), 50) * 0.012) + " + 
+						"                            AND (member_level = 8)), 90) * 0.012) + " + 
 						"            (COALESCE((SELECT (try_1st/try_sum)*100 " + 
 						"                        FROM question_correct_by_level " + 
 						"                        WHERE (question_id = " + questionId + ")" + 
-						"                            AND (member_level = 9)), 50) * 0.004) " + 
+						"                            AND (member_level = 9)), 95) * 0.004) " + 
 						"		) " + 
 						"	) " + 
 						"	where question_id = " + questionId;
