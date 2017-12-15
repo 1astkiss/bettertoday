@@ -26,10 +26,10 @@ public class QuestionsDAO {
 	int SameLevelQuestions = 20;
 
 	//회원레벨보다 한레벨 위 문제수
-	int OneLevelUpQuestions = 15;
+	int OneLevelUpQuestions = 20;
 	
 	//회원레벨보다 2레벨 위 문제수
-	int TwoLevelUpQuestions = 10;
+	int TwoLevelUpQuestions = 15;
 	
 	//레벨에 따른 문제 총수
 	int TotalQuestionsByLevel = SameLevelQuestions + OneLevelUpQuestions+TwoLevelUpQuestions;
@@ -41,10 +41,10 @@ public class QuestionsDAO {
 	int MAX_WEIGHT = 100;
 	
 	//과거 오답문제 선정 갯수
-	int NUM_OF_WRONG = 15;
+	int NUM_OF_WRONG = 25;
 	
 	//신규문제 선정 갯수
-	int NUM_OF_NEW = 45;
+	int NUM_OF_NEW = 20;
 	
 	//최종 출제 문제 갯수
 	int NUM_OF_QUESTIONS = 10;

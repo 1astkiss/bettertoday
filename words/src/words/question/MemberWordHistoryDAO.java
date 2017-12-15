@@ -29,7 +29,6 @@ public class MemberWordHistoryDAO {
 	public boolean addMemberWordHistory(ArrayList<MemberWordHistory> history) {
 
 		conn = DBManager.getConnection();
-		conn2 = DBManager.getConnection();
 		int questionId = 0;
 		int memberLevel = 0;
 		
@@ -103,17 +102,7 @@ public class MemberWordHistoryDAO {
 						"	) " + 
 						"	where question_id = " + questionId;
 
-				pstmt = conn2.prepareStatement(sql2);
-				/*pstmt.setInt(1,  mwh.getQuestion_id());
-				pstmt.setInt(2,  mwh.getQuestion_id());
-				pstmt.setInt(3,  mwh.getQuestion_id());
-				pstmt.setInt(4,  mwh.getQuestion_id());
-				pstmt.setInt(5,  mwh.getQuestion_id());
-				pstmt.setInt(6,  mwh.getQuestion_id());
-				pstmt.setInt(7,  mwh.getQuestion_id());
-				pstmt.setInt(8,  mwh.getQuestion_id());
-				pstmt.setInt(9,  mwh.getQuestion_id());
-				pstmt.setInt(10,  mwh.getQuestion_id());*/
+				pstmt = conn.prepareStatement(sql2);
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
