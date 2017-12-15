@@ -17,7 +17,6 @@ public class MemberWordHistoryDAO {
 
 	Connection conn;
 	PreparedStatement pstmt;
-	Statement stmt;
 	ResultSet rs;
 	Logger logger = LoggerFactory.getLogger(MemberDAO.class);
 
@@ -31,6 +30,46 @@ public class MemberWordHistoryDAO {
 		conn = DBManager.getConnection();
 		String sql = "insert into member_word_history(member_id, member_level, question_id, date_created, count_tried, weight, score)"
 				+ " values(?,?,?,now(),?,?,?)";
+		String sql2 = "update questions set weight = (100 - ( " + 
+				"            (COALESCE((SELECT ratio_1st" + 
+				"                        FROM question_correct_by_level " + 
+				"                        WHERE (question_id = ?)" + 
+				"                            AND (member_level = 1)), 50) * 0.292) + " + 
+				"            (COALESCE((SELECT ratio_1st" + 
+				"                        FROM question_correct_by_level " + 
+				"                        WHERE (question_id = ?)" + 
+				"                            AND (member_level = 2)), 50) * 0.228) + " + 
+				"            (COALESCE((SELECT ratio_1st" + 
+				"                        FROM question_correct_by_level " + 
+				"                        WHERE (question_id = ?)" + 
+				"                            AND (member_level = 3)), 50) * 0.172) + " + 
+				"            (COALESCE((SELECT ratio_1st" + 
+				"                        FROM question_correct_by_level " + 
+				"                        WHERE (question_id = ?)" + 
+				"                            AND (member_level = 4)), 50) * 0.124) + " + 
+				"            (COALESCE((SELECT ratio_1st" + 
+				"                        FROM question_correct_by_level " + 
+				"                        WHERE (question_id = ?)" + 
+				"                            AND (member_level = 5)), 50) * 0.084) + " + 
+				"            (COALESCE((SELECT ratio_1st" + 
+				"                        FROM question_correct_by_level " + 
+				"                        WHERE (question_id = ?)" + 
+				"                            AND (member_level = 6)), 50) * 0.052) + " + 
+				"            (COALESCE((SELECT ratio_1st" + 
+				"                        FROM question_correct_by_level " + 
+				"                        WHERE (question_id = ?)" + 
+				"                            AND (member_level = 7)), 50) * 0.028) + " + 
+				"            (COALESCE((SELECT ratio_1st" + 
+				"                        FROM question_correct_by_level " + 
+				"                        WHERE (question_id = ?)" + 
+				"                            AND (member_level = 8)), 50) * 0.012) + " + 
+				"            (COALESCE((SELECT ratio_1st" + 
+				"                        FROM question_correct_by_level " + 
+				"                        WHERE (question_id = ?)" + 
+				"                            AND (member_level = 9)), 50) * 0.004) " + 
+				"		) " + 
+				"	) " + 
+				"	where question_id = ?";
 
 		try {
 			for(MemberWordHistory mwh : history ) {
@@ -41,6 +80,19 @@ public class MemberWordHistoryDAO {
 				pstmt.setInt(4, mwh.getCount_tried());
 				pstmt.setDouble(5, mwh.getWeight());
 				pstmt.setDouble(6, mwh.getScore());
+				pstmt.executeUpdate();
+				
+				pstmt = conn.prepareStatement(sql2);
+				pstmt.setInt(1,  mwh.getQuestion_id());
+				pstmt.setInt(2,  mwh.getQuestion_id());
+				pstmt.setInt(3,  mwh.getQuestion_id());
+				pstmt.setInt(4,  mwh.getQuestion_id());
+				pstmt.setInt(5,  mwh.getQuestion_id());
+				pstmt.setInt(6,  mwh.getQuestion_id());
+				pstmt.setInt(7,  mwh.getQuestion_id());
+				pstmt.setInt(8,  mwh.getQuestion_id());
+				pstmt.setInt(9,  mwh.getQuestion_id());
+				pstmt.setInt(10,  mwh.getQuestion_id());
 				pstmt.executeUpdate();
 			}
 		} catch (SQLException e) {
