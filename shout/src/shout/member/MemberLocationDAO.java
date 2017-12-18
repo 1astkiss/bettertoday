@@ -17,6 +17,8 @@ public class MemberLocationDAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
 	Member result = new Member();
+	double METER_GEO_RATIO = 0.000009;
+	double SUM_DIFF_LIMIT = 0.7066275 * 2;
 	
 	Logger log = LoggerFactory.getLogger(MemberLocationDAO.class);
 	
@@ -25,13 +27,26 @@ public class MemberLocationDAO {
 		conn = DBManager.getConnection();
 		String sql = "insert into shout_member_location(member_id, time, latitude, longitude) "
 				+ "values(?,now(),?,?)";
-		
+		String sql2 = "delete from shout_member_location_recent where member_id=?";
+		String sql3 = "insert into shout_member_location_recent(member_id, time, latitude, longitude) "
+				+ "values(?,now(),?,?)";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,  location.getMember_id());
 			pstmt.setDouble(2, location.getLatitude());
 			pstmt.setDouble(3,  location.getLongitude());
 			pstmt.executeUpdate();
+			
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setString(1,  location.getMember_id());
+			pstmt.executeUpdate();
+			
+			pstmt = conn.prepareStatement(sql3);
+			pstmt.setString(1,  location.getMember_id());
+			pstmt.setDouble(2, location.getLatitude());
+			pstmt.setDouble(3,  location.getLongitude());
+			pstmt.executeUpdate();
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 			log.info("Error Code : {}", e.getErrorCode());
@@ -45,52 +60,67 @@ public class MemberLocationDAO {
 			}
 		}
 		
-		log.info("member : {} located registered", location.getMember_id());
+		log.info("member : {} location registered", location.getMember_id());
 
 		return true;
 	}
 	
-	public boolean getTarget(String member_id, int distance) {
+	public LinkedList<MemberLocation> getTarget(String member_id, int distance) {
 		MemberLocation target =new MemberLocation(); 
 		LinkedList<MemberLocation> target_list = new LinkedList<>();
 		conn = DBManager.getConnection();
+		String sql1 = "select latitude, longitude from shout_member_location "
+						+ "where member_id=? "
+						+ "order by time desc limit 0,1)";
+		
 		String sql = "SELECT member_id, time, latitude, longitude "
 				+ "FROM "
-					+ "(select member_id, time, latitude, longitude "
-						+ "from bettertoday.shout_member_location_recent "
-						+ "group by member_id) recent "
-				+"where "
-					+ "abs(recent.latitude - (select latitude "
-												+ "from bettertoday.shout_member_location "
-//												+ "where member_id=? "
-												+ "order by time desc limit 0,1)"
-						+ ") < ? " 
-					+ "and abs(recent.longitude - (select longitude "
-													+ "from bettertoday.shout_member_location "
-													+ "where member_id='a' "
-													+ "order by time desc limit 0,1)) < ?"; 
+					+ "shout_member_location_recent recent "
+				+ "where "
+					+ "abs(recent.latitude - ?) < ? " 
+					+ "and abs(recent.longitude - ?) < ? "
+					+ "and member_id <> ? "; 
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
+			
+			pstmt = conn.prepareStatement(sql1);
 			pstmt.setString(1, member_id);
-			pstmt.setDouble(2, distance*0.000009);
-			pstmt.setDouble(3,  distance*0.000009);
 			rs = pstmt.executeQuery();
+			
+			double shouterLat = 0;
+			double shouterLon = 0;
+			
+			while(rs.next()) {
+				shouterLat = rs.getDouble("latitude");
+				shouterLon = rs.getDouble("longitude");
+			}
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setDouble(1, shouterLat);
+			pstmt.setDouble(2, distance * METER_GEO_RATIO);
+			pstmt.setDouble(3, shouterLon);
+			pstmt.setDouble(4, distance * METER_GEO_RATIO);
+			pstmt.setString(5, member_id);
+			rs = pstmt.executeQuery();
+			
+			double sumDiff;
 			
 			while(rs.next()) {
 				target.setMember_id(rs.getString("member_id"));
 				target.setLatitude(rs.getDouble("latitude"));
 				target.setLongitude(rs.getDouble("longitude"));
 				
-				if(target.getLatitude)
-				// Question객체를 LinkedList에 추가
-				target_list.add(target);
+				sumDiff = Math.abs(target.getLatitude() - shouterLat)
+							+ Math.abs(target.getLongitude() - shouterLon);
+				
+				if(sumDiff < (1.41 * distance * METER_GEO_RATIO)) {
+					target_list.add(target);
+				}
 			}
 			
 		}catch(SQLException e) {
 			e.printStackTrace();
 			log.info("Error Code : {}", e.getErrorCode());
-			return false;
 		}finally {
 			try {
 				pstmt.close();
@@ -100,8 +130,6 @@ public class MemberLocationDAO {
 			}
 		}
 		
-		log.info("member : {} located registered", location.getMember_id());
-		
-		return true;
+		return target_list;
 	}
 }

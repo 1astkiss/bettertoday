@@ -56,7 +56,7 @@ function getDistanceFromLatLon(lat1,lon1,lat2,lon2) {
 	  return deg * (Math.PI/180)
 	}
 	
-var distance = getDistanceFromLatLon(1.0000,1.0000,1.00009,1.00000);
+var distance = getDistanceFromLatLon(1.0000,1.0000,1+ 0.000009*0.7066275,1+ 0.000009*0.7066275);
 
 alert("distance : " + distance);
 </script>

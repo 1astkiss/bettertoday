@@ -10,7 +10,7 @@
 		<!--  틀린문제 복습페이지로 링크 -->
 		<li><a href="words_control.jsp?action=missed"> 복습 &nbsp;&nbsp; </a></li>
 
-		<!-- 출제권한이 있는 회원인 경우 문제출제 페이지 링크 활성화 -->
+		<!-- 메시지 발송권한이 있는 회원인 경우 메시지 발송 페이지 링크 활성화 -->
 		<c:if test="${member_type == 2}">
 			<li><a href="send_shout.jsp"> 메시지발송 &nbsp;&nbsp; </a></li>
 		</c:if>
