@@ -19,7 +19,7 @@
 		<hr>
 	
 		<!-- Welcome message 출력 -->
-		<h2 style="text-align: center">Lets have some fun <br> with words!!!</h2>
+		<h2 style="text-align: center">Let's have some fun <br> with words!!!</h2>
 		<hr>
 		<p class="info">회원가입후 로그인하시면 퀴즈가 시작됩니다.</p>
 		<p class="info">문제를 풀 수록 본인의 실력에 맞추어 문제가 나오기 시작합니다.</p>

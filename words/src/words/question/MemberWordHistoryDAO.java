@@ -2,9 +2,7 @@ package words.question;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import org.slf4j.Logger;
@@ -16,9 +14,7 @@ import words.util.DBManager;
 public class MemberWordHistoryDAO {
 
 	Connection conn;
-	Connection conn2;
 	PreparedStatement pstmt;
-	ResultSet rs;
 	Logger logger = LoggerFactory.getLogger(MemberDAO.class);
 
 	/**

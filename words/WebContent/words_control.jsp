@@ -118,6 +118,7 @@
 	// 문제 출제를 요청한 경우	
 	case "quiz":
 		
+		System.out.println("history size at words_control.jsp : " + word_history.size());
 		// 저장해야할 문제이력이 있는 경우
 		if(word_history.size() > 0){
 			
@@ -148,6 +149,8 @@
 		// 문제를 가져와서 ArrayList<Qeustion>에 저장
 		questionDAO_result = questions_dao.getQuestion(member_id, member_level);
 			
+		System.out.println("question size at words_control.jsp2 : " + questionDAO_result.size());
+		
 		if(questionDAO_result.size() == 0){
 			pageContext.forward(home);		
 			//JOptionPane.showMessageDialog(null, "not enough questions for you");
@@ -155,6 +158,7 @@
 			return;
 		}
 		
+		System.out.println(questionDAO_result.get(0).getSelection1());
 		// DB에서 가져온 문제들을 request 객체에 담음 (quiz.jsp로 보내기 위해)
 		request.setAttribute("questions", questionDAO_result);
 		

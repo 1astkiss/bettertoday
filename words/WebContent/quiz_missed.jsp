@@ -203,7 +203,7 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 		else q_level = 9;
 			
 		return q_level;
-	}
+	};
 	
 	
 	/***************************************
@@ -365,6 +365,7 @@ form{
 	display: inline;
 }
 </style>
+</head>
 
 <body>
 	<header>

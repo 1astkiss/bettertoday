@@ -16,16 +16,15 @@
 <meta name="viewport" 
 content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>Quiz Page</title>
-<style>
-form{
-	display: inline;
-}
-</style>
+
 <link rel="stylesheet" href="css/styles.css" type="text/css"
 	media="screen" />
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+
 <script>
-	window.onload = function() {
+	$(function(){
+		
+		<% System.out.println("quiz.jsp onload started..."); %>
 		
 		// 퀴즈를 시작할때 첫번째 문제 load
 		next_question();
@@ -40,7 +39,7 @@ form{
 		});
 		
 		
-	};
+	});
 
 	// words_control.jsp에서 보내온 Question객체 LinkedList를 담아두기 위한 Array
 	var q_array = new Array();
@@ -99,6 +98,7 @@ form{
 	
 	****************************************/
 	var next_question = function() {
+		<% System.out.println("next_question called"); %>
 		
 		// 문제 시도 횟수를 초기화하고 화면에 표시
 		count_tried = 0;
@@ -107,6 +107,7 @@ form{
 		// 감추었던 타이머를 화면에 표시
 		$('#timer').removeClass('hide_element');
 
+		
 		// 문제가 하나도 안 남아 있으면 새로운 문제를 가져옴
 		if (q_array.length <= 0) {
 			
@@ -220,7 +221,7 @@ form{
 		else q_level = 9;
 			
 		return q_level;
-	}
+	};
 	
 	
 	/***************************************
@@ -417,6 +418,13 @@ form{
 	
 </script>
 
+<style>
+form{
+	display: inline;
+}
+</style>
+
+</head>
 
 <body>
 	<header>
@@ -451,16 +459,9 @@ form{
 			</tr>
 		</table>
 		
-		<h1 style="margin:0.2em;">Out Count : <span id='out_count'>0</span></h1>
-				
-		<H1 id='timer' style="margin:0.2em;"></H1>
-
-		<table id='next_table'>
-			<tr id='next_quiz'>
-				<td align='center' valign='middle' height='30'>정답은 <span id="answer"></span>번 입니다!!!</td>
-				</tr>
+		<table id='next_table' style="border-collapse:collapse; border:none;">
 			<tr>
-				<td>
+				<td style="border:none">
 					<input class='quiz_control' type='button' value='다음문제' onclick='next_question()'>
 		
 					<form class='hide_element' method='post' action='words_control.jsp?action=quiz'>
@@ -474,7 +475,16 @@ form{
 					</form>
 				</td>
 			</tr>
+			<tr id='next_quiz'>
+				<td style="border:none; text-align:center; valign:middle; height:30">정답은 <span id="answer"></span>번 입니다!!!</td>
+			</tr>
 		</table>
+		
+		<h2 style="margin:0.2em;">Out Count : <span id='out_count'>0</span></h2>
+				
+		<H1 id='timer' style="margin:0.2em;"></H1>
+
+		
 	</div>
 </body>
 </html>

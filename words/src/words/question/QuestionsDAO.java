@@ -302,20 +302,45 @@ public class QuestionsDAO {
 			
 			//tmp_questions.size()가 0일 경우 난수발생에서 에러가 발생하기때문...
 			if(tmp_questions.size() != 0) {
+
+				Question tmp_question = new Question();
+				boolean duplication = false;
+				int tmp_question_id;
+				System.out.println("tmp_questions size : " + tmp_questions.size());
 				//최종 문제를 random하게 선정
-				for(int i = 0; i < NUM_OF_QUESTIONS; i++) {
+				for(int i = 0; i < NUM_OF_QUESTIONS; ) {
 					
 					//난수 생성
 					randomInt = rand.nextInt(tmp_questions.size());
 					
-					//문제pool에서 선정된 문제를 최종 출제 문제 List에 저장
-					questions.add(tmp_questions.get(randomInt));
+					tmp_question = tmp_questions.get(randomInt);
 					
-					//선정된 문제를 pool에서 삭제
-					tmp_questions.remove(randomInt);
+					tmp_question_id = tmp_question.getQuestion_id();
+					
+					for(int j = 0; j < questions.size(); j++) {
+						if(questions.get(j).getQuestion_id() == tmp_question_id) {
+							duplication = true;
+							break;
+						}
+					}
+					
+					// 중복된 문제를 거른 후 문제 선정
+					if(duplication){
+						//선정된 문제를 pool에서 삭제
+						tmp_questions.remove(randomInt);
+					}else {
+						//문제pool에서 선정된 문제를 최종 출제 문제 List에 저장
+						questions.add(tmp_question);
+						
+						//선정된 문제를 pool에서 삭제
+						tmp_questions.remove(randomInt);
+						
+						i++;
+						
+					}
 					
 					//문제 pool수가 선정 목표보다 적을 경우 loop 종료
-					if(tmp_questions.size()==0) {
+					if(tmp_questions.size() == 0) {
 						break;
 					}
 				}

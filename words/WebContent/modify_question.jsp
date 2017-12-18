@@ -76,7 +76,7 @@ $(function(){
 			$('#radio4').attr("checked", "checked");
 			break;
 			
-		}
+	}
 });
 		
 </script>
