@@ -22,14 +22,17 @@ public class QuestionsDAO {
 	ResultSet rs = null;
 	Logger log = LoggerFactory.getLogger(MemberDAO.class);
 	
+	//최종 출제 문제 갯수
+	int NUM_OF_QUESTIONS = 9;
+	
 	//회원레벨과 동일한 문제수
-	int SameLevelQuestions = 20;
+	int SameLevelQuestions = NUM_OF_QUESTIONS * 2;
 
 	//회원레벨보다 한레벨 위 문제수
-	int OneLevelUpQuestions = 20;
+	int OneLevelUpQuestions = (int)(NUM_OF_QUESTIONS * 1.5);
 	
 	//회원레벨보다 2레벨 위 문제수
-	int TwoLevelUpQuestions = 15;
+	int TwoLevelUpQuestions = (int)(NUM_OF_QUESTIONS * 1.5);
 	
 	//레벨에 따른 문제 총수
 	int TotalQuestionsByLevel = SameLevelQuestions + OneLevelUpQuestions+TwoLevelUpQuestions;
@@ -41,13 +44,11 @@ public class QuestionsDAO {
 	int MAX_WEIGHT = 100;
 	
 	//과거 오답문제 선정 갯수
-	int NUM_OF_WRONG = 25;
+	int NUM_OF_WRONG = NUM_OF_QUESTIONS * 3;
 	
 	//신규문제 선정 갯수
-	int NUM_OF_NEW = 20;
+	int NUM_OF_NEW = NUM_OF_QUESTIONS * 2;
 	
-	//최종 출제 문제 갯수
-	int NUM_OF_QUESTIONS = 10;
 
 	
 	/**

@@ -38,7 +38,25 @@ html, body {
 </style>
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
 <script>
-function getDistanceFromLatLon(lat1,lon1,lat2,lon2) {
+var checkTarget = function(){
+	with(document.check_target){
+		$.ajax({
+			async: "true",
+			url: 'get_target.jsp',
+			type: 'post',
+			
+			data: {
+				distance: distance.value,
+				member_id: '${member_id}'
+			},
+			success: function(data){
+				$('#target_list').append(data);
+			}
+		});
+	}
+};
+
+var getDistanceFromLatLon = function(lat1,lon1,lat2,lon2) {
 	  var R = 6371*1000; // Radius of the earth in km
 	  var dLat = deg2rad(lat2-lat1);  // deg2rad below
 	  var dLon = deg2rad(lon2-lon1); 
@@ -50,13 +68,13 @@ function getDistanceFromLatLon(lat1,lon1,lat2,lon2) {
 	  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
 	  var d = R * c; // Distance in km
 	  return d;
-	}
+	};
 
-	function deg2rad(deg) {
+var deg2rad = function(deg) {
 	  return deg * (Math.PI/180)
-	}
-	
-var distance = getDistanceFromLatLon(1.0000,1.0000,1+ 0.000009*0.7066275,1+ 0.000009*0.7066275);
+	};
+
+var distance = getDistanceFromLatLon(1.0000,1.0000,1+ 0.00000,1+ 0.000009);
 
 alert("distance : " + distance);
 </script>
@@ -69,7 +87,7 @@ alert("distance : " + distance);
 	
 	<div>
 		<br>
-		<form>
+		<form name="check_target">
 		<table>
 			<tr>
 				<td colspan="2">검색조건</td>
@@ -79,10 +97,23 @@ alert("distance : " + distance);
 				<td><input type="number" name="distance" placeholder="거리" min="10" max="3000" step="10">m</td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" value="조회"></td>
+				<td colspan="2"><input type="button" value="조회" onclick="checkTarget(this.form)"></td>
 			</tr>
 		</table>
-		</form>		
+		</form>	
+		
+		<table id="target_list">
+			<tr>
+				<th>id
+				</th>
+				<th>Latitude
+				</th>
+				<th>Longitude
+				</th>
+				<th>Distance
+				</th>
+			</tr>
+		</table>	
 	</div>
 </body>
 </html>

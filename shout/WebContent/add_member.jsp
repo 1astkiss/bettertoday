@@ -105,7 +105,7 @@ tr:last-child {
 			</tr>
 			<tr>
 				<td colspan="2"><input id="add_member_btn" type="submit" value="회원등록"></form>
-				<form id="cancel_add_member" method='post' action='words_main.jsp'>
+				<form id="cancel_add_member" method='post' action='shout_main.jsp'>
 					<input type="submit" value="등록취소"></td>
 				</form>
 			</tr>

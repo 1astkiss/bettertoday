@@ -66,12 +66,12 @@ public class MemberLocationDAO {
 	}
 	
 	public LinkedList<MemberLocation> getTarget(String member_id, int distance) {
-		MemberLocation target =new MemberLocation(); 
+		
 		LinkedList<MemberLocation> target_list = new LinkedList<>();
 		conn = DBManager.getConnection();
 		String sql1 = "select latitude, longitude from shout_member_location "
 						+ "where member_id=? "
-						+ "order by time desc limit 0,1)";
+						+ "order by time desc limit 0,1";
 		
 		String sql = "SELECT member_id, time, latitude, longitude "
 				+ "FROM "
@@ -91,8 +91,13 @@ public class MemberLocationDAO {
 			double shouterLon = 0;
 			
 			while(rs.next()) {
+				MemberLocation target = new MemberLocation(); 
 				shouterLat = rs.getDouble("latitude");
 				shouterLon = rs.getDouble("longitude");
+				target.setMember_id(member_id);
+				target.setLatitude(shouterLat);
+				target.setLongitude(shouterLon);
+				target_list.add(target);
 			}
 			
 			pstmt = conn.prepareStatement(sql);
@@ -101,21 +106,24 @@ public class MemberLocationDAO {
 			pstmt.setDouble(3, shouterLon);
 			pstmt.setDouble(4, distance * METER_GEO_RATIO);
 			pstmt.setString(5, member_id);
+			System.out.println("pstmt at MLDAO " + pstmt);
 			rs = pstmt.executeQuery();
 			
 			double sumDiff;
 			
 			while(rs.next()) {
+				MemberLocation target = new MemberLocation(); 
 				target.setMember_id(rs.getString("member_id"));
+				System.out.println("target.getMember_id():" + target.getMember_id());
 				target.setLatitude(rs.getDouble("latitude"));
 				target.setLongitude(rs.getDouble("longitude"));
 				
-				sumDiff = Math.abs(target.getLatitude() - shouterLat)
+				/*sumDiff = Math.abs(target.getLatitude() - shouterLat)
 							+ Math.abs(target.getLongitude() - shouterLon);
 				
-				if(sumDiff < (1.41 * distance * METER_GEO_RATIO)) {
+				if(sumDiff < (1.41 * distance * METER_GEO_RATIO)) {*/
 					target_list.add(target);
-				}
+				//}
 			}
 			
 		}catch(SQLException e) {
@@ -130,6 +138,9 @@ public class MemberLocationDAO {
 			}
 		}
 		
+		for(int i = 0; i < target_list.size(); i++) {
+			System.out.println("target_list.get(" + i + ").getMember_id() : " + target_list.get(i).getMember_id());
+		}
 		return target_list;
 	}
 }
