@@ -308,7 +308,9 @@ public class QuestionsDAO {
 				boolean duplication = false;
 				int tmp_question_id;
 				System.out.println("tmp_questions size : " + tmp_questions.size());
+				
 				//최종 문제를 random하게 선정
+				loop1:
 				for(int i = 0; i < NUM_OF_QUESTIONS; ) {
 					
 					//난수 생성
@@ -318,10 +320,13 @@ public class QuestionsDAO {
 					
 					tmp_question_id = tmp_question.getQuestion_id();
 					
+					loop2:
 					for(int j = 0; j < questions.size(); j++) {
 						if(questions.get(j).getQuestion_id() == tmp_question_id) {
 							duplication = true;
-							break;
+							break loop2;
+						}else {
+							duplication = false;
 						}
 					}
 					
@@ -342,7 +347,7 @@ public class QuestionsDAO {
 					
 					//문제 pool수가 선정 목표보다 적을 경우 loop 종료
 					if(tmp_questions.size() == 0) {
-						break;
+						break loop1;
 					}
 				}
 			}

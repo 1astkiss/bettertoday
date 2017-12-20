@@ -158,9 +158,11 @@
 			return;
 		}
 		
-		System.out.println(questionDAO_result.get(0).getSelection1());
+		System.out.println("word before save : " + questionDAO_result.get(0).getWord());
 		// DB에서 가져온 문제들을 request 객체에 담음 (quiz.jsp로 보내기 위해)
 		request.setAttribute("questions", questionDAO_result);
+		System.out.println("word after save : " + ((Question)(((LinkedList)request.getAttribute("questions")).get(0))).getWord());
+		
 		
 		// 문제 출제 페이지로 이동
 		pageContext.forward("quiz.jsp");

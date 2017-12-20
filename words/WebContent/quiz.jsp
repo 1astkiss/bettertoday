@@ -20,11 +20,14 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="css/styles.css" type="text/css"
 	media="screen" />
 <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
-
+<%
+	System.out.println("word at quiz 1(before save) : " + ((Question)(questions.get(0))).getWord());
+%>
 <script>
 	$(function(){
 		
-		<% System.out.println("quiz.jsp onload started..."); %>
+		<% System.out.println("quiz.jsp onload started..."); 
+		%>
 		
 		// 퀴즈를 시작할때 첫번째 문제 load
 		next_question();
@@ -91,7 +94,10 @@ content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	</c:forEach>
 
-	
+<%
+	System.out.println("word at quiz 2(after save) : " + ((Question)(questions.get(0))).getWord());
+%>
+
 	/***************************************
 	
 	사용자가 다음 문제 버튼을 눌렀을 때 다음 문제를 출제하는 함수 
